@@ -15,7 +15,7 @@ router.route('/')
   .post(protect, createFaculty);
 
 router.route('/:id')
-  .get(validateObjectId('id'), getFacultyById)
+  .get(getFacultyById)
   .put(protect, validateObjectId('id'), updateFaculty)
   .delete(protect, validateObjectId('id'), deleteFaculty);
 

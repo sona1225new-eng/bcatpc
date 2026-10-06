@@ -12,6 +12,12 @@ const facultySchema = new mongoose.Schema(
       required: [true, 'Faculty name is required'],
       trim: true,
     },
+    slug: {
+      type: String,
+      unique: true,
+      trim: true,
+      lowercase: true,
+    },
     designation: {
       type: String,
       default: '',

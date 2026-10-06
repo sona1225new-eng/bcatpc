@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const asyncHandler = require('../utils/asyncHandler');
 const { sendSuccess, sendCreated, sendNotFound, sendBadRequest } = require('../utils/apiResponse');
 const Faculty = require('../models/Faculty');
@@ -29,8 +30,20 @@ const getAllFaculties = asyncHandler(async (req, res) => {
 
 /** GET /api/faculties/:id — Get a single faculty by MongoDB ObjectId */
 const getFacultyById = asyncHandler(async (req, res) => {
-  const faculty = await Faculty.findById(req.params.id);
-  if (!faculty) return sendNotFound(res, `Faculty with id '${req.params.id}' not found.`);
+  const { id } = req.params;
+
+  let faculty;
+
+  if (mongoose.Types.ObjectId.isValid(id)) {
+    faculty = await Faculty.findById(id);
+  } else {
+    faculty = await Faculty.findOne({ slug: id });
+  }
+
+  if (!faculty) {
+    return sendNotFound(res, `Faculty with id or slug '${id}' not found.`);
+  }
+
   return sendSuccess(res, faculty, 'Faculty retrieved.');
 });
 

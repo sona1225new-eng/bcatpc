@@ -5,9 +5,9 @@
  */
 
 const API_CONFIG = {
-  // Uses backend API; services safely fall back to mock data if backend is offline
-  USE_MOCK_API: import.meta.env.VITE_USE_MOCK_API === "true" ? true : false,
-  BASE_URL: import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api",
+  // Mock API disabled by default; set VITE_USE_MOCK_API=true in .env to enable mock mode
+  USE_MOCK_API: import.meta.env.VITE_USE_MOCK_API === "true",
+  BASE_URL: import.meta.env.VITE_API_URL || "http://localhost:5000/api",
   SIMULATED_DELAY_MS: 80, // Snappy realistic response
 };
 

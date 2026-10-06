@@ -21,26 +21,40 @@ app.use(helmet());
 app.use(cookieParser());
 
 // CORS configuration
-const allowedOrigins = [
-  process.env.CLIENT_URL,
-  process.env.FRONTEND_URL,
-  'http://localhost:5173',
-  'http://localhost:5174',
-  'http://127.0.0.1:5173',
-  'http://127.0.0.1:5174',
-].filter(Boolean);
+// Parses each env var supporting comma-separated URLs, e.g. CLIENT_URL=http://a.com,http://b.com
+const parseOrigins = (envValue) =>
+  (envValue || '')
+    .split(',')
+    .map((u) => u.trim())
+    .filter(Boolean);
+
+const allowedOrigins = new Set([
+  ...parseOrigins(process.env.CLIENT_URL),
+  ...parseOrigins(process.env.FRONTEND_URL),
+  ...parseOrigins(process.env.ADMIN_URL),
+  // Always permit local dev origins in non-production
+  ...(process.env.NODE_ENV !== 'production'
+    ? [
+        'http://localhost:5173',
+        'http://localhost:5174',
+        'http://127.0.0.1:5173',
+        'http://127.0.0.1:5174',
+      ]
+    : []),
+]);
 
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin) || process.env.NODE_ENV !== 'production') {
-        callback(null, true);
-      } else {
-        callback(null, origin);
+      // Allow server-to-server requests (no Origin header) and whitelisted origins
+      if (!origin || allowedOrigins.has(origin)) {
+        return callback(null, true);
       }
+      return callback(new Error(`CORS: origin '${origin}' is not allowed.`));
     },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    // Authorization header required for Bearer token auth
     allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );

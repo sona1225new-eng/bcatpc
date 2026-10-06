@@ -2,6 +2,8 @@ import api from './api';
 
 export const authService = {
   async login(email, password) {
+    // Backend: { success, message, data: { token, admin } }
+    // Axios interceptor returns response.data (the full body object)
     const res = await api.post('/auth/login', { email, password });
     if (res.data?.token) {
       localStorage.setItem('tp_admin_token', res.data.token);

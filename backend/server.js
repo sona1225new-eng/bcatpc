@@ -28,36 +28,40 @@ const parseOrigins = (envValue) =>
     .map((u) => u.trim())
     .filter(Boolean);
 
+
 const allowedOrigins = new Set([
   ...parseOrigins(process.env.CLIENT_URL),
   ...parseOrigins(process.env.FRONTEND_URL),
   ...parseOrigins(process.env.ADMIN_URL),
-  // Always permit local dev origins in non-production
-  ...(process.env.NODE_ENV !== 'production'
-    ? [
-        'http://localhost:5173',
-        'http://localhost:5174',
-        'http://127.0.0.1:5173',
-        'http://127.0.0.1:5174',
-      ]
-    : []),
+
+  // Vercel production frontend
+  'https://bcatpc.vercel.app',
+
+  // Local development
+  'http://localhost:5173',
+  'http://localhost:5174',
+  'http://127.0.0.1:5173',
+  'http://127.0.0.1:5174',
 ]);
 
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow server-to-server requests (no Origin header) and whitelisted origins
+      // Allow requests without an Origin header
       if (!origin || allowedOrigins.has(origin)) {
         return callback(null, true);
       }
-      return callback(new Error(`CORS: origin '${origin}' is not allowed.`));
+
+      return callback(
+        new Error(`CORS: origin '${origin}' is not allowed.`)
+      );
     },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    // Authorization header required for Bearer token auth
     allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );
+
 
 // Body parser
 app.use(express.json({ limit: '10mb' }));

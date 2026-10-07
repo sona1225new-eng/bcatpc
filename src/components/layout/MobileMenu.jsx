@@ -159,19 +159,6 @@ export default function MobileMenu({
             )}
           </div>
 
-          {/* Campus Updates */}
-          <NavLink
-            to="/campus-updates"
-            onClick={handleNavClick}
-            className={({ isActive }) =>
-              `block px-4 py-3 rounded-xl text-sm font-semibold transition ${
-                isActive ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' : 'text-slate-200 hover:bg-slate-800'
-              }`
-            }
-          >
-            Campus Updates
-          </NavLink>
-
           {/* PYQs Accordion */}
           <div>
             <div className="flex items-center justify-between rounded-xl overflow-hidden hover:bg-slate-800">
@@ -232,19 +219,6 @@ export default function MobileMenu({
             }
           >
             Notices & Circulars
-          </NavLink>
-
-          {/* Blogs */}
-          <NavLink
-            to="/blogs"
-            onClick={handleNavClick}
-            className={({ isActive }) =>
-              `block px-4 py-3 rounded-xl text-sm font-semibold transition ${
-                isActive ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' : 'text-slate-200 hover:bg-slate-800'
-              }`
-            }
-          >
-            Blogs
           </NavLink>
 
           {/* Gallery */}

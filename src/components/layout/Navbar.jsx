@@ -203,18 +203,6 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Campus Updates */}
-          <NavLink
-            to="/campus-updates"
-            className={({ isActive }) =>
-              `px-3 py-2 rounded-lg text-sm font-semibold transition duration-150 ${
-                isActive ? 'text-amber-400' : 'text-slate-200 hover:text-white hover:bg-slate-800/60'
-              }`
-            }
-          >
-            Campus Updates
-          </NavLink>
-
           {/* PYQs Dropdown Trigger */}
           <div
             className="relative"
@@ -250,18 +238,6 @@ export default function Navbar() {
               />
             )}
           </div>
-
-          {/* Blogs */}
-          <NavLink
-            to="/blogs"
-            className={({ isActive }) =>
-              `px-3 py-2 rounded-lg text-sm font-semibold transition duration-150 ${
-                isActive ? 'text-amber-400' : 'text-slate-200 hover:text-white hover:bg-slate-800/60'
-              }`
-            }
-          >
-            Blogs
-          </NavLink>
 
           {/* Gallery */}
           <NavLink

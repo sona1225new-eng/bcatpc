@@ -13,7 +13,7 @@
       "destination": "https://tpcollege-admin.onrender.com/$1"
     },
     {
-      "source": "/(.*)",
+      "source": "/((?!admin|assets).*)",
       "destination": "/index.html"
     }
   ]

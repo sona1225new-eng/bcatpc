@@ -9,12 +9,12 @@
       "destination": "https://tpcollege-admin.onrender.com/"
     },
     {
-      "source": "/admin/assets/(.*)",
-      "destination": "https://tpcollege-admin.onrender.com/assets/$1"
+      "source": "/admin/assets/:path*",
+      "destination": "https://tpcollege-admin.onrender.com/assets/:path*"
     },
     {
-      "source": "/admin/(.*)",
-      "destination": "https://tpcollege-admin.onrender.com/$1"
+      "source": "/admin/:path*",
+      "destination": "https://tpcollege-admin.onrender.com/:path*"
     },
     {
       "source": "/((?!admin|assets).*)",

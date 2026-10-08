@@ -9,6 +9,10 @@
       "destination": "https://tpcollege-admin.onrender.com/:path*"
     },
     {
+      "source": "/assets/:path*",
+      "destination": "/assets/:path*"
+    },
+    {
       "source": "/((?!admin|assets).*)",
       "destination": "/index.html"
     }

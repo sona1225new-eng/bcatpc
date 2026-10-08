@@ -41,7 +41,7 @@ function ProtectedRoute({ children }) {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/admin">
       <ToastProvider>
         <AuthProvider>
           <Routes>

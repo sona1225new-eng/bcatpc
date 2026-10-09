@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && vite build --config admin-app/vite.config.js",
     "lint": "oxlint",
     "preview": "vite preview",
     "admin": "vite admin --port 5174",

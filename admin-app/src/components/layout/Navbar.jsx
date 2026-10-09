@@ -67,7 +67,7 @@ export default function Navbar({ onOpenSidebar }) {
           rel="noopener noreferrer"
           className="hidden sm:flex items-center gap-2 px-3 py-1.5 text-xs font-semibold text-slate-300 bg-slate-800/80 hover:bg-slate-700/80 hover:text-white border border-slate-700/80 rounded-xl transition-all shadow-sm"
         >
-          <HiOutlineGlobeAlt className="text-base text-blue-400" />
+          <HiOutlineGlobeAlt className="text-base text-gold-400" />
           <span>View Public Site</span>
         </a>
 
@@ -77,7 +77,7 @@ export default function Navbar({ onOpenSidebar }) {
           className="flex items-center gap-2.5 px-3 py-1.5 bg-slate-800/80 hover:bg-slate-800 border border-slate-700 rounded-xl transition-colors"
           title="Account Settings"
         >
-          <div className="w-7 h-7 rounded-lg bg-blue-600/20 text-blue-400 border border-blue-500/30 font-bold flex items-center justify-center text-xs">
+          <div className="w-7 h-7 rounded-lg bg-gold-500/20 text-gold-400 border border-gold-500/30 font-bold flex items-center justify-center text-xs">
             {admin?.name?.charAt(0) || 'A'}
           </div>
           <div className="hidden md:block text-left">

@@ -135,14 +135,14 @@ export default function PYQDetailPage() {
           </div>
 
           {/* Download Box */}
-          <div className="bg-gradient-to-r from-navy-900 to-[#0B192C] text-white p-6 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="bg-gradient-to-r from-navy-900 to-[#233B5D] text-white p-6 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <h4 className="text-base font-bold text-white">Download Verified PDF</h4>
               <p className="text-xs text-slate-400 mt-0.5">Filename: {paper.fileName || `${paper.subjectCode}_${paper.year}.pdf`}</p>
             </div>
             <button
               onClick={() => alert(`Downloading: ${paper.fileName || `${paper.subject}_${paper.year}.pdf`}`)}
-              className="px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm inline-flex items-center justify-center gap-2 shadow-lg transition"
+              className="px-6 py-3 rounded-xl bg-navy-900 hover:bg-navy-800 text-white font-black text-xs sm:text-sm inline-flex items-center justify-center gap-2 shadow-lg transition"
             >
               <HiOutlineDownload className="w-5 h-5" />
               <span>Download Question Paper</span>

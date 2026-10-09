@@ -110,14 +110,14 @@ export default function ComputingLabsPage() {
         </section>
 
         {/* Explore Academics CTA */}
-        <div className="bg-gradient-to-r from-navy-900 to-[#0B192C] text-white rounded-3xl p-8 sm:p-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6 border border-slate-800">
+        <div className="bg-gradient-to-r from-navy-900 to-[#233B5D] text-white rounded-3xl p-8 sm:p-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6 border border-slate-800">
           <div>
             <h4 className="text-xl font-bold text-white">Interested in exploring our syllabus & subjects?</h4>
             <p className="text-xs sm:text-sm text-slate-400 mt-1">Review complete semester-wise credit distributions and practical lab details.</p>
           </div>
           <Link
             to="/academics/labs-structure"
-            className="px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm inline-flex items-center gap-2 whitespace-nowrap shadow-lg transition"
+            className="px-6 py-3.5 rounded-xl bg-navy-900 hover:bg-navy-800 text-white font-black text-xs sm:text-sm inline-flex items-center gap-2 whitespace-nowrap shadow-lg transition"
           >
             <span>Labs & Course Structure</span>
             <HiOutlineArrowRight className="w-4 h-4" />

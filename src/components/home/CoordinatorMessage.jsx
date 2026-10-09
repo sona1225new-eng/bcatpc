@@ -19,7 +19,7 @@ export default function CoordinatorMessage() {
 
         {/* Section Label */}
         <div className="flex items-center justify-center mb-6">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-ivory text-navy-900 border border-slate-200">
             <span>★</span>
             <span>{badge || 'DESK OF THE COORDINATOR'}</span>
           </span>
@@ -30,7 +30,7 @@ export default function CoordinatorMessage() {
 
           {/* Photo + Identity */}
           <div className="flex-shrink-0 flex flex-col items-center sm:items-start gap-3 w-full sm:w-auto">
-            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-amber-400/50 bg-slate-200 shadow-md flex-shrink-0">
+            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-gold-500/50 bg-slate-200 shadow-md flex-shrink-0">
               <img
                 src={photo}
                 alt={name}
@@ -40,9 +40,9 @@ export default function CoordinatorMessage() {
             </div>
             <div className="text-center sm:text-left">
               <p className="text-sm font-extrabold text-slate-900 leading-tight">{name}</p>
-              <p className="text-[11px] font-semibold text-amber-700 mt-0.5">{designation}</p>
+              <p className="text-[11px] font-semibold text-navy-800 mt-0.5">{designation}</p>
               {institution && (
-                <p className="text-[10px] text-slate-400 mt-0.5">{institution}</p>
+                <p className="text-[10px] text-muted mt-0.5">{institution}</p>
               )}
             </div>
           </div>
@@ -56,7 +56,7 @@ export default function CoordinatorMessage() {
               {title}
             </h2>
             <div className="flex items-start gap-2.5">
-              <HiOutlineChatAlt2 className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
+              <HiOutlineChatAlt2 className="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" />
               <p className="text-sm text-slate-600 leading-relaxed">
                 {message}
               </p>

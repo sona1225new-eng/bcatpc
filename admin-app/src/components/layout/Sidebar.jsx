@@ -54,14 +54,14 @@ export default function Sidebar({ isOpen, onClose }) {
       >
         {/* Brand Header */}
         <div className="h-18 flex items-center gap-3 px-6 border-b border-slate-800/80 bg-slate-950">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white font-bold shadow-lg shadow-blue-500/20">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-navy-900 to-navy-700 flex items-center justify-center text-white font-bold shadow-lg shadow-navy-900/20">
             <span className="font-serif text-lg tracking-wider">TP</span>
           </div>
           <div>
             <h1 className="text-sm font-bold text-white tracking-wide leading-tight">
               T.P. College BCA
             </h1>
-            <span className="text-[11px] font-semibold tracking-wider text-blue-400 uppercase">
+            <span className="text-[11px] font-semibold tracking-wider text-gold-400 uppercase">
               Admin Portal
             </span>
           </div>
@@ -69,7 +69,7 @@ export default function Sidebar({ isOpen, onClose }) {
 
         {/* Navigation List */}
         <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
-          <div className="px-3 pb-2 text-[10px] font-bold uppercase tracking-wider text-slate-500">
+          <div className="px-3 pb-2 text-[10px] font-bold uppercase tracking-wider text-slate-300">
             Management Modules
           </div>
 
@@ -86,7 +86,7 @@ export default function Sidebar({ isOpen, onClose }) {
                 className={({ isActive }) =>
                   `flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all group ${
                     isActive
-                      ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/30'
+                      ? 'bg-gold-500 text-navy-900 shadow-lg shadow-navy-900/30'
                       : 'text-slate-400 hover:text-white hover:bg-slate-900'
                   }`
                 }
@@ -95,7 +95,7 @@ export default function Sidebar({ isOpen, onClose }) {
                   <>
                     <Icon
                       className={`text-lg transition-transform group-hover:scale-110 ${
-                        isActive ? 'text-white' : 'text-slate-400 group-hover:text-blue-400'
+                        isActive ? 'text-white' : 'text-slate-400 group-hover:text-gold-400'
                       }`}
                     />
                     <span className="truncate">{item.name}</span>
@@ -116,7 +116,7 @@ export default function Sidebar({ isOpen, onClose }) {
             className="flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium text-slate-400 hover:text-white hover:bg-slate-900 transition-colors"
           >
             <span className="flex items-center gap-2">
-              <HiOutlineGlobeAlt className="text-base text-blue-400" />
+              <HiOutlineGlobeAlt className="text-base text-gold-400" />
               <span>Public Website</span>
             </span>
             <span className="text-[10px] bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded">
@@ -127,7 +127,7 @@ export default function Sidebar({ isOpen, onClose }) {
           {/* Admin Info Card */}
           <div className="flex items-center justify-between p-2.5 rounded-xl bg-slate-900/80 border border-slate-800/80">
             <div className="flex items-center gap-2.5 min-w-0">
-              <div className="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 font-bold flex items-center justify-center text-xs shrink-0">
+              <div className="w-8 h-8 rounded-lg bg-gold-500/20 text-gold-400 border border-gold-500/30 font-bold flex items-center justify-center text-xs shrink-0">
                 {admin?.name?.charAt(0) || 'A'}
               </div>
               <div className="min-w-0">

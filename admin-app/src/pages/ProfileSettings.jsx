@@ -64,7 +64,7 @@ export default function ProfileSettings() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Profile Card */}
         <div className="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-xl flex flex-col items-center text-center space-y-4">
-          <div className="w-20 h-20 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white font-bold text-3xl flex items-center justify-center shadow-xl shadow-blue-600/30">
+          <div className="w-20 h-20 rounded-2xl bg-gradient-to-tr from-navy-900 to-navy-900 text-white font-bold text-3xl flex items-center justify-center shadow-xl shadow-navy-900/30">
             {admin?.name?.charAt(0) || 'A'}
           </div>
 
@@ -73,7 +73,7 @@ export default function ProfileSettings() {
             <p className="text-xs text-slate-400 mt-0.5">{admin?.email}</p>
           </div>
 
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/20 text-gold-400 text-xs font-semibold uppercase tracking-wider">
             <HiShieldCheck className="text-sm" />
             <span>Role: {admin?.role || 'superadmin'}</span>
           </div>
@@ -123,7 +123,7 @@ export default function ProfileSettings() {
                 value={currentPassword}
                 onChange={(e) => setCurrentPassword(e.target.value)}
                 placeholder="••••••••••••"
-                className="w-full px-3 py-2 bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
 
@@ -137,7 +137,7 @@ export default function ProfileSettings() {
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
                 placeholder="••••••••••••"
-                className="w-full px-3 py-2 bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
 
@@ -151,7 +151,7 @@ export default function ProfileSettings() {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="••••••••••••"
-                className="w-full px-3 py-2 bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
 
@@ -159,7 +159,7 @@ export default function ProfileSettings() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-blue-900/40 disabled:opacity-50 flex items-center gap-2"
+                className="px-5 py-2.5 bg-navy-900 hover:bg-navy-800 text-white font-semibold rounded-xl transition-all shadow-lg shadow-navy-900/40 disabled:opacity-50 flex items-center gap-2"
               >
                 {submitting ? (
                   <>
@@ -178,11 +178,11 @@ export default function ProfileSettings() {
       {/* Database & Architecture Information Card */}
       <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-3 text-xs">
         <div className="flex items-center gap-2 text-white font-bold text-sm">
-          <HiServerStack className="text-blue-400 text-lg" />
+          <HiServerStack className="text-gold-400 text-lg" />
           <span>System & Database Architecture</span>
         </div>
         <p className="text-slate-400 leading-relaxed">
-          The Admin Dashboard is isolated within <code className="text-blue-300">/admin</code> and communicates
+          The Admin Dashboard is isolated within <code className="text-gold-400">/admin</code> and communicates
           directly with the Express.js REST API on port 5000. All updates made across Faculty, Academics, PYQs,
           Blogs, Galleries, Campus Updates, and Notices are persisted to MongoDB and immediately reflected on the
           public frontend.

@@ -66,7 +66,7 @@ export default function FacultyCard({ faculty }) {
       <div className="p-5 pt-0">
         <Link
           to={`/faculties/${faculty.id}`}
-          className="w-full py-2.5 px-4 rounded-xl bg-slate-50 hover:bg-[#0B192C] text-slate-800 hover:text-white border border-slate-200 hover:border-transparent text-xs font-bold inline-flex items-center justify-center gap-2 transition duration-200"
+          className="w-full py-2.5 px-4 rounded-xl bg-slate-50 hover:bg-[#233B5D] text-slate-800 hover:text-white border border-slate-200 hover:border-transparent text-xs font-bold inline-flex items-center justify-center gap-2 transition duration-200"
         >
           <span>View Faculty Profile</span>
           <HiOutlineArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />

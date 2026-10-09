@@ -19,7 +19,7 @@ export default function EmptyState({
         <button
           type="button"
           onClick={onAction}
-          className="px-5 py-2.5 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-xl transition-all shadow-lg shadow-blue-900/30 active:scale-95"
+          className="px-5 py-2.5 text-sm font-semibold text-white bg-navy-900 hover:bg-navy-800 rounded-xl transition-all shadow-lg shadow-navy-900/30 active:scale-95"
         >
           {actionText}
         </button>

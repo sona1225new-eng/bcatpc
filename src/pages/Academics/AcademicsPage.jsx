@@ -108,7 +108,7 @@ export default function AcademicsPage() {
           </div>
 
           {/* Right Card: Eligibility & Admission Info */}
-          <div className="lg:col-span-5 bg-gradient-to-br from-slate-900 via-navy-950 to-[#0B192C] text-white rounded-3xl p-8 border border-slate-800 shadow-xl space-y-6">
+          <div className="lg:col-span-5 bg-gradient-to-br from-slate-900 via-navy-950 to-[#233B5D] text-white rounded-3xl p-8 border border-slate-800 shadow-xl space-y-6">
             <div>
               <span className="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500/20 text-amber-400 border border-amber-500/30">
                 ADMISSION CRITERIA

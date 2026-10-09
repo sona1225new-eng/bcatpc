@@ -189,7 +189,7 @@ export default function FacultyDetailPage() {
 
             {/* Awards & Honors */}
             {faculty.awards && faculty.awards.length > 0 && (
-              <div className="bg-gradient-to-r from-navy-900 to-[#0B192C] text-white rounded-3xl p-6 border border-slate-800 space-y-3">
+              <div className="bg-gradient-to-r from-navy-900 to-[#233B5D] text-white rounded-3xl p-6 border border-slate-800 space-y-3">
                 <h5 className="text-base font-bold text-amber-400">Honors & Recognitions</h5>
                 <ul className="space-y-1.5 text-xs sm:text-sm text-slate-200">
                   {faculty.awards.map((award, idx) => (

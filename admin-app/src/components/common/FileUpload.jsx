@@ -78,7 +78,7 @@ export default function FileUpload({
                 }}
               />
             ) : (
-              <div className="w-12 h-12 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
+              <div className="w-12 h-12 rounded-lg bg-gold-500/10 border border-gold-500/20 text-gold-400 flex items-center justify-center shrink-0">
                 <HiOutlineDocumentText className="text-2xl" />
               </div>
             )}
@@ -101,7 +101,7 @@ export default function FileUpload({
         </div>
       ) : (
         /* Upload Area */
-        <label className="relative flex flex-col items-center justify-center p-6 border-2 border-dashed border-slate-700 hover:border-blue-500/60 bg-slate-800/40 hover:bg-slate-800/70 rounded-xl cursor-pointer transition-all group">
+        <label className="relative flex flex-col items-center justify-center p-6 border-2 border-dashed border-slate-700 hover:border-gold-500/60 bg-slate-800/40 hover:bg-slate-800/70 rounded-xl cursor-pointer transition-all group">
           <input
             type="file"
             accept={accept}
@@ -111,12 +111,12 @@ export default function FileUpload({
           />
           {uploading ? (
             <div className="flex flex-col items-center gap-2">
-              <div className="w-8 h-8 border-2 border-blue-500/30 border-t-blue-500 rounded-full animate-spin" />
+              <div className="w-8 h-8 border-2 border-gold-500/30 border-t-gold-500 rounded-full animate-spin" />
               <span className="text-xs font-medium text-slate-300">Uploading file...</span>
             </div>
           ) : (
             <div className="flex flex-col items-center gap-2 text-center">
-              <div className="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 text-slate-400 group-hover:text-blue-400 group-hover:border-blue-500/40 flex items-center justify-center transition-colors">
+              <div className="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 text-slate-400 group-hover:text-gold-400 group-hover:border-gold-500/40 flex items-center justify-center transition-colors">
                 {isImage ? (
                   <HiOutlinePhoto className="text-xl" />
                 ) : (
@@ -125,7 +125,7 @@ export default function FileUpload({
               </div>
               <div>
                 <p className="text-xs font-medium text-slate-300">
-                  <span className="text-blue-400 font-semibold underline underline-offset-2">
+                  <span className="text-gold-400 font-semibold underline underline-offset-2">
                     Click to browse
                   </span>{' '}
                   or drag & drop
@@ -144,7 +144,7 @@ export default function FileUpload({
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder="Or paste external/relative URL here (e.g., /uploads/...)"
-          className="w-full px-3 py-1.5 text-xs bg-slate-950/60 border border-slate-800 rounded-lg text-slate-300 placeholder-slate-500 focus:outline-none focus:border-blue-500/50"
+          className="w-full px-3 py-1.5 text-xs bg-slate-950/60 border border-slate-800 rounded-lg text-slate-300 placeholder-slate-400 focus:outline-none focus:border-gold-500/50"
         />
       </div>
     </div>

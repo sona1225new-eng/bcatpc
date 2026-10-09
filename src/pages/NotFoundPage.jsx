@@ -4,7 +4,7 @@ import { HiOutlineHome, HiOutlineSearch, HiOutlineAcademicCap } from 'react-icon
 
 export default function NotFoundPage() {
   return (
-    <div className="min-h-[70vh] flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8 bg-[#F8FAFC]">
+    <div className="min-h-[70vh] flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8 bg-[#F7F6F2]">
       <div className="max-w-md w-full text-center space-y-6">
         <div className="inline-flex items-center justify-center w-24 h-24 rounded-3xl bg-amber-500/10 border-2 border-amber-500/30 text-amber-600 text-4xl font-black shadow-inner">
           404
@@ -22,7 +22,7 @@ export default function NotFoundPage() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
           <Link
             to="/"
-            className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#0B192C] hover:bg-slate-900 text-white font-bold text-xs sm:text-sm inline-flex items-center justify-center gap-2 shadow-md transition"
+            className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#233B5D] hover:bg-slate-900 text-white font-bold text-xs sm:text-sm inline-flex items-center justify-center gap-2 shadow-md transition"
           >
             <HiOutlineHome className="w-4 h-4" />
             <span>Return to Homepage</span>

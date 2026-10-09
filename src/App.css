@@ -1,19 +1,19 @@
 /* App.css - Clean utility styles */
 .text-gold-gradient {
-  background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 50%, #D97706 100%);
+  background: linear-gradient(135deg, #C5A15B 0%, #C5A15B 50%, #233B5D 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-navy-gradient {
-  background: linear-gradient(135deg, #0B192C 0%, #1E3E62 100%);
+  background: linear-gradient(135deg, #233B5D 0%, #233B5D 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .bg-navy-pattern {
-  background-color: #0B192C;
-  background-image: radial-gradient(rgba(245, 158, 11, 0.08) 1px, transparent 1px), radial-gradient(rgba(30, 62, 98, 0.4) 1px, #0B192C 1px);
+  background-color: #233B5D;
+  background-image: radial-gradient(rgba(197, 161, 91, 0.08) 1px, transparent 1px), radial-gradient(rgba(35, 59, 93, 0.4) 1px, #233B5D 1px);
   background-size: 40px 40px;
   background-position: 0 0, 20px 20px;
 }

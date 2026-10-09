@@ -182,7 +182,7 @@ export default function AcademicsManagement() {
         <button
           type="button"
           onClick={handleOpenAdd}
-          className="inline-flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-semibold shadow-lg shadow-blue-900/30 transition-all active:scale-95 shrink-0"
+          className="inline-flex items-center gap-2 px-4 py-2.5 bg-navy-900 hover:bg-navy-800 text-white rounded-xl text-xs font-semibold shadow-lg shadow-navy-900/30 transition-all active:scale-95 shrink-0"
         >
           <HiPlus className="text-base" />
           <span>Add Academic Program</span>
@@ -211,7 +211,7 @@ export default function AcademicsManagement() {
             >
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center text-2xl shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/20 text-gold-400 flex items-center justify-center text-2xl shrink-0">
                     <HiOutlineAcademicCap />
                   </div>
                   <div>
@@ -237,7 +237,7 @@ export default function AcademicsManagement() {
                   <button
                     type="button"
                     onClick={() => handleOpenEdit(record)}
-                    className="p-2 text-slate-400 hover:text-blue-400 hover:bg-slate-800 rounded-xl transition-colors"
+                    className="p-2 text-slate-400 hover:text-gold-400 hover:bg-slate-800 rounded-xl transition-colors"
                     title="Edit Program"
                   >
                     <HiOutlinePencilSquare className="text-lg" />
@@ -307,7 +307,7 @@ export default function AcademicsManagement() {
                 value={formData.programTitle}
                 onChange={(e) => setFormData({ ...formData, programTitle: e.target.value })}
                 placeholder="Bachelor of Computer Applications (BCA)"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
 
@@ -318,7 +318,7 @@ export default function AcademicsManagement() {
                 value={formData.degree}
                 onChange={(e) => setFormData({ ...formData, degree: e.target.value })}
                 placeholder="Undergraduate Degree (B.C.A.)"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
 
@@ -329,7 +329,7 @@ export default function AcademicsManagement() {
                 value={formData.duration}
                 onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
                 placeholder="3 Years (6 Semesters)"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
 
@@ -340,7 +340,7 @@ export default function AcademicsManagement() {
                 value={formData.intake}
                 onChange={(e) => setFormData({ ...formData, intake: e.target.value })}
                 placeholder="60"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
 
@@ -351,7 +351,7 @@ export default function AcademicsManagement() {
                 value={formData.affiliation}
                 onChange={(e) => setFormData({ ...formData, affiliation: e.target.value })}
                 placeholder="B.N. Mandal University, Madhepura"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
 
@@ -362,7 +362,7 @@ export default function AcademicsManagement() {
                 value={formData.curriculumFramework}
                 onChange={(e) => setFormData({ ...formData, curriculumFramework: e.target.value })}
                 placeholder="Choice Based Credit System (CBCS) & NEP Aligned"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
           </div>
@@ -374,7 +374,7 @@ export default function AcademicsManagement() {
               value={formData.overview}
               onChange={(e) => setFormData({ ...formData, overview: e.target.value })}
               placeholder="Detailed description of the BCA degree program..."
-              className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+              className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
             />
           </div>
 
@@ -387,13 +387,13 @@ export default function AcademicsManagement() {
               value={formData.objectivesText}
               onChange={(e) => setFormData({ ...formData, objectivesText: e.target.value })}
               placeholder="Develop deep problem solving and algorithmic thinking.&#10;Build robust web, cloud, and mobile software applications."
-              className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+              className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
             />
           </div>
 
           {/* Eligibility Section */}
           <div className="p-4 bg-slate-950/40 rounded-xl border border-slate-800/80 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-blue-400">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-gold-400">
               Eligibility & Admission Requirements
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
@@ -458,7 +458,7 @@ export default function AcademicsManagement() {
               id="isAcademicPublished"
               checked={formData.isPublished}
               onChange={(e) => setFormData({ ...formData, isPublished: e.target.checked })}
-              className="w-4 h-4 rounded text-blue-600 bg-slate-900 border-slate-700 focus:ring-blue-500"
+              className="w-4 h-4 rounded text-amber-500 bg-slate-900 border-slate-700 focus:ring-gold-500"
             />
             <label htmlFor="isAcademicPublished" className="text-xs font-semibold text-slate-300">
               Published on Public Website
@@ -477,7 +477,7 @@ export default function AcademicsManagement() {
             <button
               type="submit"
               disabled={submitting}
-              className="px-5 py-2 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-xl transition-all shadow-lg shadow-blue-900/40 disabled:opacity-50 flex items-center gap-2"
+              className="px-5 py-2 text-xs font-semibold text-white bg-navy-900 hover:bg-navy-800 rounded-xl transition-all shadow-lg shadow-navy-900/40 disabled:opacity-50 flex items-center gap-2"
             >
               {submitting ? (
                 <>

@@ -57,7 +57,7 @@ export default function WelcomeAbout() {
             <div className="pt-4 flex flex-wrap items-center gap-4">
               <Link
                 to="/academics"
-                className="px-6 py-3 rounded-xl bg-[#0B192C] hover:bg-slate-800 text-white text-xs sm:text-sm font-bold inline-flex items-center gap-2 shadow-md transition-all"
+                className="px-6 py-3 rounded-xl bg-[#233B5D] hover:bg-slate-800 text-white text-xs sm:text-sm font-bold inline-flex items-center gap-2 shadow-md transition-all"
               >
                 <span>Read Full BCA Syllabus & Details</span>
                 <HiOutlineArrowRight className="w-4 h-4" />
@@ -84,7 +84,7 @@ export default function WelcomeAbout() {
               {/* Bottom Glass Overlay Card */}
               <div className="absolute bottom-5 inset-x-5 bg-slate-950/80 backdrop-blur-md border border-slate-700/80 rounded-2xl p-4 text-white shadow-xl">
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-amber-500 text-slate-950">
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-gold-500 text-slate-950">
                     T.P. COLLEGE CAMPUS
                   </span>
                   <span className="text-xs text-slate-300 font-semibold">• Madhepura</span>

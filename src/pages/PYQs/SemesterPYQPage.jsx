@@ -69,7 +69,7 @@ export default function SemesterPYQPage() {
                 to={`/pyqs/${s.id}`}
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition ${
                   s.id === semesterId
-                    ? 'bg-[#0B192C] text-amber-400'
+                    ? 'bg-[#233B5D] text-amber-400'
                     : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                 }`}
               >

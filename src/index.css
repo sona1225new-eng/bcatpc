@@ -1,23 +1,31 @@
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    --color-navy-950: #070d18;
-    --color-navy-900: #0B192C;
-    --color-navy-800: #1E3E62;
-    --color-navy-700: #254F7A;
-    --color-gold-500: #F59E0B;
-    --color-gold-600: #D97706;
-    --color-gold-400: #FBBF24;
-    --color-wine-900: #4C0519;
-    --color-wine-800: #881337;
-    --color-wine-700: #9F1239;
-  }
+@theme {
+  --color-navy-950: #233B5D;
+  --color-navy-900: #233B5D;
+  --color-navy-800: #233B5D;
+  --color-navy-700: #233B5D;
+  --color-wine-900: #233B5D;
+  --color-wine-800: #233B5D;
+  --color-wine-700: #233B5D;
+  --color-gold-500: #C5A15B;
+  --color-gold-400: #C5A15B;
+  --color-ivory: #F7F6F2;
+  --color-muted: #667085;
+  --color-light-gray: #E5E7EB;
+  --color-slate-50: #F7F6F2;
+  --color-slate-100: #E5E7EB;
+  --color-slate-200: #E5E7EB;
+  --color-slate-800: #314B6C;
+  --color-slate-900: #233B5D;
+  --color-slate-950: #1C304C;
+}
 
+@layer base {
   body {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    background-color: #F8FAFC;
-    color: #1E293B;
+    background-color: #F7F6F2;
+    color: #233B5D;
     overflow-x: hidden;
   }
 
@@ -36,14 +44,14 @@
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #F7F6F2;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #E5E7EB;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #C5A15B;
 }
 
 /* Ticker & Marquee Smooth Auto Scroll */
@@ -90,7 +98,7 @@
 
 /* Glassmorphism */
 .glass-nav {
-  background: rgba(11, 25, 44, 0.96);
+  background: rgba(35, 59, 93, 0.96);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
@@ -102,7 +110,7 @@
 }
 
 .glass-dark-card {
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(35, 59, 93, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }

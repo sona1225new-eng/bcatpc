@@ -172,7 +172,7 @@ export default function NoticeManagement() {
         <button
           type="button"
           onClick={handleOpenAdd}
-          className="inline-flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-semibold shadow-lg shadow-blue-900/30 transition-all active:scale-95 shrink-0"
+          className="inline-flex items-center gap-2 px-4 py-2.5 bg-navy-900 hover:bg-navy-800 text-white rounded-xl text-xs font-semibold shadow-lg shadow-navy-900/30 transition-all active:scale-95 shrink-0"
         >
           <HiPlus className="text-base" />
           <span>Publish Notice</span>
@@ -190,7 +190,7 @@ export default function NoticeManagement() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search notices by title, reference number, description..."
-            className="w-full pl-10 pr-4 py-2 text-xs bg-slate-900 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors"
+            className="w-full pl-10 pr-4 py-2 text-xs bg-slate-900 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500 transition-colors"
           />
         </div>
 
@@ -198,7 +198,7 @@ export default function NoticeManagement() {
           <select
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
-            className="px-3 py-2 text-xs bg-slate-900 border border-slate-800 rounded-xl text-slate-300 focus:outline-none focus:border-blue-500 cursor-pointer w-full sm:w-auto"
+            className="px-3 py-2 text-xs bg-slate-900 border border-slate-800 rounded-xl text-slate-300 focus:outline-none focus:border-gold-500 cursor-pointer w-full sm:w-auto"
           >
             <option value="All">All Categories</option>
             <option value="Official">Official</option>
@@ -212,7 +212,7 @@ export default function NoticeManagement() {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-3 py-2 text-xs bg-slate-900 border border-slate-800 rounded-xl text-slate-300 focus:outline-none focus:border-blue-500 cursor-pointer w-full sm:w-auto"
+            className="px-3 py-2 text-xs bg-slate-900 border border-slate-800 rounded-xl text-slate-300 focus:outline-none focus:border-gold-500 cursor-pointer w-full sm:w-auto"
           >
             <option value="all">All Status</option>
             <option value="published">Published</option>
@@ -255,7 +255,7 @@ export default function NoticeManagement() {
                           {n.isUrgent && (
                             <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping shrink-0" />
                           )}
-                          <p className="font-semibold text-white group-hover:text-blue-400 transition-colors">
+                          <p className="font-semibold text-white group-hover:text-gold-400 transition-colors">
                             {n.title}
                           </p>
                         </div>
@@ -268,7 +268,7 @@ export default function NoticeManagement() {
                     </td>
 
                     <td className="py-3.5 px-4">
-                      <span className="px-2 py-0.5 rounded-md bg-blue-500/10 border border-blue-500/20 text-blue-300 text-[11px]">
+                      <span className="px-2 py-0.5 rounded-md bg-gold-500/10 border border-gold-500/20 text-gold-400 text-[11px]">
                         {n.category}
                       </span>
                     </td>
@@ -285,11 +285,11 @@ export default function NoticeManagement() {
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1.5 px-2 py-1 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-lg text-[11px] transition-colors"
                         >
-                          <HiOutlineDocumentText className="text-sm text-blue-400" />
+                          <HiOutlineDocumentText className="text-sm text-gold-400" />
                           <span>PDF</span>
                         </a>
                       ) : (
-                        <span className="text-slate-500">—</span>
+                        <span className="text-slate-300">—</span>
                       )}
                     </td>
 
@@ -305,7 +305,7 @@ export default function NoticeManagement() {
                             New
                           </Badge>
                         )}
-                        {!n.isUrgent && !n.isNew && <span className="text-slate-500">—</span>}
+                        {!n.isUrgent && !n.isNew && <span className="text-slate-300">—</span>}
                       </div>
                     </td>
 
@@ -328,7 +328,7 @@ export default function NoticeManagement() {
                         <button
                           type="button"
                           onClick={() => handleOpenEdit(n)}
-                          className="p-1.5 text-slate-400 hover:text-blue-400 hover:bg-slate-800 rounded-lg transition-colors"
+                          className="p-1.5 text-slate-400 hover:text-gold-400 hover:bg-slate-800 rounded-lg transition-colors"
                           title="Edit"
                         >
                           <HiOutlinePencilSquare className="text-base" />
@@ -370,7 +370,7 @@ export default function NoticeManagement() {
               value={formData.title}
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
               placeholder="e.g. Schedule for BCA 2nd Semester Practical Examination 2024"
-              className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+              className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
             />
           </div>
 
@@ -380,7 +380,7 @@ export default function NoticeManagement() {
               <select
                 value={formData.category}
                 onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-blue-500 cursor-pointer"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-gold-500 cursor-pointer"
               >
                 <option value="Official">Official</option>
                 <option value="Admission">Admission</option>
@@ -398,7 +398,7 @@ export default function NoticeManagement() {
                 value={formData.referenceNo}
                 onChange={(e) => setFormData({ ...formData, referenceNo: e.target.value })}
                 placeholder="TPC/BCA/2024/EXAM-04"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
 
@@ -409,7 +409,7 @@ export default function NoticeManagement() {
                 value={formData.tag}
                 onChange={(e) => setFormData({ ...formData, tag: e.target.value })}
                 placeholder="Semester Exam / Practical"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
 
@@ -420,7 +420,7 @@ export default function NoticeManagement() {
                 value={formData.author}
                 onChange={(e) => setFormData({ ...formData, author: e.target.value })}
                 placeholder="Controller of Examinations"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
           </div>
@@ -432,7 +432,7 @@ export default function NoticeManagement() {
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               placeholder="Short description displayed on notice board list..."
-              className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+              className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
             />
           </div>
 
@@ -443,7 +443,7 @@ export default function NoticeManagement() {
               value={formData.content}
               onChange={(e) => setFormData({ ...formData, content: e.target.value })}
               placeholder="Full text of the circular, exam instructions, dates, roll numbers..."
-              className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+              className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
             />
           </div>
 
@@ -485,7 +485,7 @@ export default function NoticeManagement() {
                 id="isNewCheck"
                 checked={formData.isNew}
                 onChange={(e) => setFormData({ ...formData, isNew: e.target.checked })}
-                className="w-4 h-4 rounded text-blue-600 bg-slate-900 border-slate-700"
+                className="w-4 h-4 rounded text-amber-500 bg-slate-900 border-slate-700"
               />
               <label htmlFor="isNewCheck" className="text-xs font-semibold text-slate-300">
                 Mark as New Badge
@@ -496,7 +496,7 @@ export default function NoticeManagement() {
               <select
                 value={formData.status}
                 onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                className="w-full px-3 py-1.5 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-blue-500 cursor-pointer"
+                className="w-full px-3 py-1.5 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-gold-500 cursor-pointer"
               >
                 <option value="published">Published</option>
                 <option value="draft">Draft</option>
@@ -517,7 +517,7 @@ export default function NoticeManagement() {
             <button
               type="submit"
               disabled={submitting}
-              className="px-5 py-2 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-xl transition-all shadow-lg shadow-blue-900/40 disabled:opacity-50 flex items-center gap-2"
+              className="px-5 py-2 text-xs font-semibold text-white bg-navy-900 hover:bg-navy-800 rounded-xl transition-all shadow-lg shadow-navy-900/40 disabled:opacity-50 flex items-center gap-2"
             >
               {submitting ? (
                 <>
@@ -568,7 +568,7 @@ export default function NoticeManagement() {
             {selectedNotice.documentUrl && (
               <div className="p-3 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
-                  <HiOutlineDocumentText className="text-xl text-blue-400" />
+                  <HiOutlineDocumentText className="text-xl text-gold-400" />
                   <div>
                     <p className="font-semibold text-white">
                       {selectedNotice.documentName || 'Notice_Circular.pdf'}
@@ -580,7 +580,7 @@ export default function NoticeManagement() {
                   href={selectedNotice.documentUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3 py-1 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-medium transition-colors"
+                  className="px-3 py-1 bg-navy-900 hover:bg-navy-800 text-white rounded-lg font-medium transition-colors"
                 >
                   View Attachment
                 </a>

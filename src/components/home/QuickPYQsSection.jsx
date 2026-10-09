@@ -50,7 +50,7 @@ export default function QuickPYQsSection() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search subject or code..."
-                className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 bg-slate-50"
+                className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 bg-slate-50"
               />
             </div>
 
@@ -58,7 +58,7 @@ export default function QuickPYQsSection() {
             <select
               value={selectedYear}
               onChange={(e) => setSelectedYear(e.target.value)}
-              className="py-2.5 px-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-700 bg-slate-50 focus:outline-none focus:border-amber-500 cursor-pointer font-medium"
+              className="py-2.5 px-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-700 bg-slate-50 focus:outline-none focus:border-gold-500 cursor-pointer font-medium"
             >
               <option value="all">All Years (2019-2024)</option>
               {years.filter(y => y !== 'all').map(y => (
@@ -75,7 +75,7 @@ export default function QuickPYQsSection() {
             onClick={() => setSelectedSemester('all')}
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all ${
               selectedSemester === 'all'
-                ? 'bg-[#0B192C] text-white shadow-md'
+                ? 'bg-[#233B5D] text-white shadow-md'
                 : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
             }`}
           >
@@ -88,7 +88,7 @@ export default function QuickPYQsSection() {
               onClick={() => setSelectedSemester(sem.id)}
               className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all ${
                 selectedSemester === sem.id
-                  ? 'bg-amber-500 text-slate-950 shadow-md'
+                  ? 'bg-gold-500 text-slate-950 shadow-md'
                   : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
@@ -124,11 +124,11 @@ export default function QuickPYQsSection() {
         <div className="mt-12 text-center">
           <Link
             to="/pyqs"
-            className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-[#0B192C] hover:bg-slate-900 text-white font-extrabold text-sm sm:text-base shadow-xl border border-slate-700 hover:border-amber-400 transition-all duration-300 transform hover:-translate-y-0.5"
+            className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-[#233B5D] hover:bg-slate-900 text-white font-extrabold text-sm sm:text-base shadow-xl border border-slate-700 hover:border-gold-400 transition-all duration-300 transform hover:-translate-y-0.5"
           >
-            <span className="text-amber-400 text-lg">⚡</span>
+            <span className="text-gold-400 text-lg">⚡</span>
             <span>Open Full Question Repository (2019-2024)</span>
-            <HiOutlineArrowRight className="w-5 h-5 text-amber-400" />
+            <HiOutlineArrowRight className="w-5 h-5 text-gold-400" />
           </Link>
         </div>
 

@@ -69,7 +69,7 @@ export default function PYQsHubPage() {
               <Link
                 key={sem.id}
                 to={`/pyqs/${sem.id}`}
-                className="group bg-white rounded-2xl p-4 border border-slate-200 hover:border-amber-400 hover:bg-[#0B192C] text-slate-800 hover:text-white shadow-xs hover:shadow-xl transition-all duration-200 flex flex-col items-center text-center justify-between space-y-2"
+                className="group bg-white rounded-2xl p-4 border border-slate-200 hover:border-amber-400 hover:bg-[#233B5D] text-slate-800 hover:text-white shadow-xs hover:shadow-xl transition-all duration-200 flex flex-col items-center text-center justify-between space-y-2"
               >
                 <div className="w-10 h-10 rounded-xl bg-amber-50 group-hover:bg-amber-500 text-amber-700 group-hover:text-slate-950 flex items-center justify-center font-black text-xs transition-colors">
                   {sem.code}
@@ -101,7 +101,7 @@ export default function PYQsHubPage() {
               <select
                 value={selectedYear}
                 onChange={(e) => setSelectedYear(e.target.value)}
-                className="py-2.5 px-3 rounded-xl border border-slate-200 text-xs sm:text-sm bg-white font-semibold text-slate-700 focus:outline-none focus:border-amber-500"
+                className="py-2.5 px-3 rounded-xl border border-slate-200 text-xs sm:text-sm bg-white font-semibold text-slate-700 focus:outline-none focus:border-gold-500"
               >
                 <option value="all">All Years (2019-2024)</option>
                 {years.filter(y => y !== 'all').map(y => (

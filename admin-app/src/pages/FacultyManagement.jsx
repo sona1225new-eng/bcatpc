@@ -192,7 +192,7 @@ export default function FacultyManagement() {
         <button
           type="button"
           onClick={handleOpenAdd}
-          className="inline-flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-semibold shadow-lg shadow-blue-900/30 transition-all active:scale-95 shrink-0"
+          className="inline-flex items-center gap-2 px-4 py-2.5 bg-navy-900 hover:bg-navy-800 text-white rounded-xl text-xs font-semibold shadow-lg shadow-navy-900/30 transition-all active:scale-95 shrink-0"
         >
           <HiPlus className="text-base" />
           <span>Add New Faculty</span>
@@ -210,7 +210,7 @@ export default function FacultyManagement() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by name, designation, specialization, qualification..."
-            className="w-full pl-10 pr-4 py-2 text-xs bg-slate-900 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors"
+            className="w-full pl-10 pr-4 py-2 text-xs bg-slate-900 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500 transition-colors"
           />
         </div>
 
@@ -218,7 +218,7 @@ export default function FacultyManagement() {
           <select
             value={filterActive}
             onChange={(e) => setFilterActive(e.target.value)}
-            className="px-3 py-2 text-xs bg-slate-900 border border-slate-800 rounded-xl text-slate-300 focus:outline-none focus:border-blue-500 cursor-pointer w-full sm:w-auto"
+            className="px-3 py-2 text-xs bg-slate-900 border border-slate-800 rounded-xl text-slate-300 focus:outline-none focus:border-gold-500 cursor-pointer w-full sm:w-auto"
           >
             <option value="all">All Status</option>
             <option value="active">Active Only</option>
@@ -272,12 +272,12 @@ export default function FacultyManagement() {
                             }}
                           />
                         ) : (
-                          <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-sm shrink-0">
+                          <div className="w-10 h-10 rounded-xl bg-gold-500/10 border border-gold-500/20 text-gold-400 flex items-center justify-center font-bold text-sm shrink-0">
                             {f.name?.charAt(0) || 'F'}
                           </div>
                         )}
                         <div>
-                          <p className="font-semibold text-white group-hover:text-blue-400 transition-colors">
+                          <p className="font-semibold text-white group-hover:text-gold-400 transition-colors">
                             {f.name}
                           </p>
                           <p className="text-[11px] text-slate-400 truncate max-w-xs">
@@ -311,7 +311,7 @@ export default function FacultyManagement() {
                             <span>{f.phone}</span>
                           </div>
                         )}
-                        {!f.email && !f.phone && <span className="text-slate-500">—</span>}
+                        {!f.email && !f.phone && <span className="text-slate-300">—</span>}
                       </div>
                     </td>
 
@@ -340,7 +340,7 @@ export default function FacultyManagement() {
                         <button
                           type="button"
                           onClick={() => handleOpenEdit(f)}
-                          className="p-1.5 text-slate-400 hover:text-blue-400 hover:bg-slate-800 rounded-lg transition-colors"
+                          className="p-1.5 text-slate-400 hover:text-gold-400 hover:bg-slate-800 rounded-lg transition-colors"
                           title="Edit"
                         >
                           <HiOutlinePencilSquare className="text-base" />
@@ -394,7 +394,7 @@ export default function FacultyManagement() {
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 placeholder="Dr. John Doe"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
 
@@ -406,7 +406,7 @@ export default function FacultyManagement() {
                 value={formData.designation}
                 onChange={(e) => setFormData({ ...formData, designation: e.target.value })}
                 placeholder="Assistant Professor & Coordinator"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
 
@@ -418,7 +418,7 @@ export default function FacultyManagement() {
                 value={formData.shortDesignation}
                 onChange={(e) => setFormData({ ...formData, shortDesignation: e.target.value })}
                 placeholder="Asst. Prof."
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
 
@@ -430,7 +430,7 @@ export default function FacultyManagement() {
                 value={formData.qualification}
                 onChange={(e) => setFormData({ ...formData, qualification: e.target.value })}
                 placeholder="Ph.D. in Computer Science, MCA"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
 
@@ -442,7 +442,7 @@ export default function FacultyManagement() {
                 value={formData.specialization}
                 onChange={(e) => setFormData({ ...formData, specialization: e.target.value })}
                 placeholder="Database Systems, AI & Cloud"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
 
@@ -454,7 +454,7 @@ export default function FacultyManagement() {
                 value={formData.experience}
                 onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
                 placeholder="12+ Years Teaching & Research"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
 
@@ -466,7 +466,7 @@ export default function FacultyManagement() {
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 placeholder="faculty@tpcollege.ac.in"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
 
@@ -478,7 +478,7 @@ export default function FacultyManagement() {
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 placeholder="+91 9876543210"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
 
@@ -490,7 +490,7 @@ export default function FacultyManagement() {
                 value={formData.officeRoom}
                 onChange={(e) => setFormData({ ...formData, officeRoom: e.target.value })}
                 placeholder="BCA Dept, Room 204"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
 
@@ -502,7 +502,7 @@ export default function FacultyManagement() {
                 value={formData.order}
                 onChange={(e) => setFormData({ ...formData, order: e.target.value })}
                 placeholder="1"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
           </div>
@@ -515,7 +515,7 @@ export default function FacultyManagement() {
               value={formData.bio}
               onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
               placeholder="Brief professional background, academic achievements, etc."
-              className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+              className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
             />
           </div>
 
@@ -530,7 +530,7 @@ export default function FacultyManagement() {
                 value={formData.teachingAreas}
                 onChange={(e) => setFormData({ ...formData, teachingAreas: e.target.value })}
                 placeholder="C++, Java, DBMS, Operating Systems"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
 
@@ -543,7 +543,7 @@ export default function FacultyManagement() {
                 value={formData.academicInterests}
                 onChange={(e) => setFormData({ ...formData, academicInterests: e.target.value })}
                 placeholder="Machine Learning, Cybersecurity, Cloud Computing"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
           </div>
@@ -555,7 +555,7 @@ export default function FacultyManagement() {
               id="isActiveCheck"
               checked={formData.isActive}
               onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })}
-              className="w-4 h-4 rounded text-blue-600 bg-slate-900 border-slate-700 focus:ring-blue-500"
+              className="w-4 h-4 rounded text-amber-500 bg-slate-900 border-slate-700 focus:ring-gold-500"
             />
             <label htmlFor="isActiveCheck" className="text-xs font-semibold text-slate-300">
               Active (Visible on public college website)
@@ -575,7 +575,7 @@ export default function FacultyManagement() {
             <button
               type="submit"
               disabled={submitting}
-              className="px-5 py-2 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-xl transition-all shadow-lg shadow-blue-900/40 disabled:opacity-50 flex items-center gap-2"
+              className="px-5 py-2 text-xs font-semibold text-white bg-navy-900 hover:bg-navy-800 rounded-xl transition-all shadow-lg shadow-navy-900/40 disabled:opacity-50 flex items-center gap-2"
             >
               {submitting ? (
                 <>
@@ -610,13 +610,13 @@ export default function FacultyManagement() {
                   className="w-16 h-16 rounded-xl object-cover border border-slate-700 bg-slate-900"
                 />
               ) : (
-                <div className="w-16 h-16 rounded-xl bg-blue-600/20 text-blue-400 border border-blue-500/30 flex items-center justify-center font-bold text-2xl">
+                <div className="w-16 h-16 rounded-xl bg-amber-500/20 text-gold-400 border border-gold-500/30 flex items-center justify-center font-bold text-2xl">
                   {selectedFaculty.name.charAt(0)}
                 </div>
               )}
               <div>
                 <h4 className="text-base font-bold text-white">{selectedFaculty.name}</h4>
-                <p className="text-xs text-blue-400 font-medium">
+                <p className="text-xs text-gold-400 font-medium">
                   {selectedFaculty.designation || 'Faculty Member'}
                 </p>
                 <div className="mt-1">
@@ -666,7 +666,7 @@ export default function FacultyManagement() {
                   {selectedFaculty.teachingAreas.map((t, idx) => (
                     <span
                       key={idx}
-                      className="px-2 py-0.5 rounded-md bg-blue-500/10 border border-blue-500/20 text-blue-300 text-[11px]"
+                      className="px-2 py-0.5 rounded-md bg-gold-500/10 border border-gold-500/20 text-gold-400 text-[11px]"
                     >
                       {t}
                     </span>

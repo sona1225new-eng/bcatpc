@@ -71,7 +71,7 @@ export function EmptyState({ title = "No records found", message = "There are no
       {actionText && onAction && (
         <button
           onClick={onAction}
-          className="px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-600 text-slate-900 text-sm font-bold transition shadow-sm"
+          className="px-4 py-2 rounded-lg bg-navy-900 hover:bg-navy-800 text-white text-sm font-bold transition shadow-sm"
         >
           {actionText}
         </button>

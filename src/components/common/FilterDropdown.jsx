@@ -16,7 +16,7 @@ export default function FilterDropdown({
         <select
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="appearance-none w-full bg-white text-slate-800 text-sm font-medium py-2.5 pl-3.5 pr-10 rounded-xl border border-slate-300/80 hover:border-slate-400 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 shadow-xs transition duration-150 outline-none cursor-pointer"
+          className="appearance-none w-full bg-white text-slate-800 text-sm font-medium py-2.5 pl-3.5 pr-10 rounded-xl border border-slate-300/80 hover:border-slate-400 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 shadow-xs transition duration-150 outline-none cursor-pointer"
         >
           {options.map((opt) => {
             const val = typeof opt === "string" ? opt : opt.value;

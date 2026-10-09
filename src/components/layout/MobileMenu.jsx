@@ -27,12 +27,12 @@ export default function MobileMenu({
       {/* Top Header inside Drawer */}
       <div className="flex items-center justify-between px-5 py-4 border-b border-slate-800">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-amber-500 to-amber-300 flex items-center justify-center text-slate-950 font-black text-sm">
+          <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-gold-500 to-gold-400 flex items-center justify-center text-slate-950 font-black text-sm">
             TPC
           </div>
           <div>
             <div className="text-sm font-bold text-white leading-tight">T.P. College Madhepura</div>
-            <div className="text-[11px] text-amber-400 font-semibold">Dept. of Computer Application</div>
+            <div className="text-[11px] text-gold-400 font-semibold">Dept. of Computer Application</div>
           </div>
         </div>
 
@@ -55,7 +55,7 @@ export default function MobileMenu({
             onClick={handleNavClick}
             className={({ isActive }) =>
               `block px-4 py-3 rounded-xl text-sm font-semibold transition ${
-                isActive ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' : 'text-slate-200 hover:bg-slate-800'
+                isActive ? 'bg-gold-500/20 text-gold-400 border border-gold-500/30' : 'text-slate-200 hover:bg-slate-800'
               }`
             }
           >
@@ -70,7 +70,7 @@ export default function MobileMenu({
                 onClick={handleNavClick}
                 className={({ isActive }) =>
                   `flex-1 px-4 py-3 text-sm font-semibold transition ${
-                    isActive ? 'text-amber-400 font-bold' : 'text-slate-200'
+                    isActive ? 'text-gold-400 font-bold' : 'text-slate-200'
                   }`
                 }
               >
@@ -84,14 +84,14 @@ export default function MobileMenu({
               >
                 <HiChevronDown
                   className={`w-5 h-5 transition-transform duration-200 ${
-                    openSection === 'academics' ? 'rotate-180 text-amber-400' : ''
+                    openSection === 'academics' ? 'rotate-180 text-gold-400' : ''
                   }`}
                 />
               </button>
             </div>
 
             {openSection === 'academics' && (
-              <div className="ml-4 mt-1 pl-3 border-l-2 border-amber-500/40 space-y-1 py-1">
+              <div className="ml-4 mt-1 pl-3 border-l-2 border-gold-500/40 space-y-1 py-1">
                 {academicItems.map((item) => (
                   <NavLink
                     key={item.href}
@@ -99,7 +99,7 @@ export default function MobileMenu({
                     onClick={handleNavClick}
                     className={({ isActive }) =>
                       `block px-3 py-2 rounded-lg text-xs font-medium transition ${
-                        isActive ? 'text-amber-400 bg-slate-800/80 font-bold' : 'text-slate-300 hover:text-white'
+                        isActive ? 'text-gold-400 bg-slate-800/80 font-bold' : 'text-slate-300 hover:text-white'
                       }`
                     }
                   >
@@ -118,7 +118,7 @@ export default function MobileMenu({
                 onClick={handleNavClick}
                 className={({ isActive }) =>
                   `flex-1 px-4 py-3 text-sm font-semibold transition ${
-                    isActive ? 'text-amber-400 font-bold' : 'text-slate-200'
+                    isActive ? 'text-gold-400 font-bold' : 'text-slate-200'
                   }`
                 }
               >
@@ -132,14 +132,14 @@ export default function MobileMenu({
               >
                 <HiChevronDown
                   className={`w-5 h-5 transition-transform duration-200 ${
-                    openSection === 'faculties' ? 'rotate-180 text-amber-400' : ''
+                    openSection === 'faculties' ? 'rotate-180 text-gold-400' : ''
                   }`}
                 />
               </button>
             </div>
 
             {openSection === 'faculties' && (
-              <div className="ml-4 mt-1 pl-3 border-l-2 border-amber-500/40 space-y-1 py-1">
+              <div className="ml-4 mt-1 pl-3 border-l-2 border-gold-500/40 space-y-1 py-1">
                 {facultyItems.map((fac) => (
                   <NavLink
                     key={fac.href}
@@ -147,7 +147,7 @@ export default function MobileMenu({
                     onClick={handleNavClick}
                     className={({ isActive }) =>
                       `block px-3 py-2 rounded-lg text-xs font-medium transition ${
-                        isActive ? 'text-amber-400 bg-slate-800/80 font-bold' : 'text-slate-300 hover:text-white'
+                        isActive ? 'text-gold-400 bg-slate-800/80 font-bold' : 'text-slate-300 hover:text-white'
                       }`
                     }
                   >
@@ -167,12 +167,12 @@ export default function MobileMenu({
                 onClick={handleNavClick}
                 className={({ isActive }) =>
                   `flex-1 px-4 py-3 text-sm font-semibold transition flex items-center justify-between ${
-                    isActive ? 'text-amber-400 font-bold' : 'text-slate-200'
+                    isActive ? 'text-gold-400 font-bold' : 'text-slate-200'
                   }`
                 }
               >
                 <span>PYQs</span>
-                <span className="text-[10px] bg-amber-500 text-slate-950 font-bold px-1.5 py-0.5 rounded mr-2">6 Sem</span>
+                <span className="text-[10px] bg-gold-500 text-slate-950 font-bold px-1.5 py-0.5 rounded mr-2">6 Sem</span>
               </NavLink>
               <button
                 type="button"
@@ -182,14 +182,14 @@ export default function MobileMenu({
               >
                 <HiChevronDown
                   className={`w-5 h-5 transition-transform duration-200 ${
-                    openSection === 'pyqs' ? 'rotate-180 text-amber-400' : ''
+                    openSection === 'pyqs' ? 'rotate-180 text-gold-400' : ''
                   }`}
                 />
               </button>
             </div>
 
             {openSection === 'pyqs' && (
-              <div className="ml-4 mt-1 pl-3 border-l-2 border-amber-500/40 grid grid-cols-2 gap-1 py-1">
+              <div className="ml-4 mt-1 pl-3 border-l-2 border-gold-500/40 grid grid-cols-2 gap-1 py-1">
                 {pyqItems.map((sem) => (
                   <NavLink
                     key={sem.href}
@@ -197,7 +197,7 @@ export default function MobileMenu({
                     onClick={handleNavClick}
                     className={({ isActive }) =>
                       `block px-3 py-2 rounded-lg text-xs font-medium transition ${
-                        isActive ? 'text-amber-400 bg-slate-800/80 font-bold' : 'text-slate-300 hover:text-white'
+                        isActive ? 'text-gold-400 bg-slate-800/80 font-bold' : 'text-slate-300 hover:text-white'
                       }`
                     }
                   >
@@ -214,7 +214,7 @@ export default function MobileMenu({
             onClick={handleNavClick}
             className={({ isActive }) =>
               `block px-4 py-3 rounded-xl text-sm font-semibold transition ${
-                isActive ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' : 'text-slate-200 hover:bg-slate-800'
+                isActive ? 'bg-gold-500/20 text-gold-400 border border-gold-500/30' : 'text-slate-200 hover:bg-slate-800'
               }`
             }
           >
@@ -227,7 +227,7 @@ export default function MobileMenu({
             onClick={handleNavClick}
             className={({ isActive }) =>
               `block px-4 py-3 rounded-xl text-sm font-semibold transition ${
-                isActive ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' : 'text-slate-200 hover:bg-slate-800'
+                isActive ? 'bg-gold-500/20 text-gold-400 border border-gold-500/30' : 'text-slate-200 hover:bg-slate-800'
               }`
             }
           >
@@ -240,7 +240,7 @@ export default function MobileMenu({
             onClick={handleNavClick}
             className={({ isActive }) =>
               `block px-4 py-3 rounded-xl text-sm font-semibold transition ${
-                isActive ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' : 'text-slate-200 hover:bg-slate-800'
+                isActive ? 'bg-gold-500/20 text-gold-400 border border-gold-500/30' : 'text-slate-200 hover:bg-slate-800'
               }`
             }
           >
@@ -253,7 +253,7 @@ export default function MobileMenu({
           <Link
             to="/contact#admission-inquiry"
             onClick={handleNavClick}
-            className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-rose-700 via-rose-600 to-rose-700 hover:from-rose-800 hover:to-rose-800 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg transition"
+            className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-navy-900 via-navy-800 to-navy-900 hover:from-navy-800 hover:to-navy-800 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg transition"
           >
             <span>APPLY NOW (Session {siteConfig.admissions.session})</span>
             <HiOutlineArrowRight className="w-4 h-4" />

@@ -149,7 +149,7 @@ export default function GalleryManagement() {
         <button
           type="button"
           onClick={handleOpenAdd}
-          className="inline-flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-semibold shadow-lg shadow-blue-900/30 transition-all active:scale-95 shrink-0"
+          className="inline-flex items-center gap-2 px-4 py-2.5 bg-navy-900 hover:bg-navy-800 text-white rounded-xl text-xs font-semibold shadow-lg shadow-navy-900/30 transition-all active:scale-95 shrink-0"
         >
           <HiPlus className="text-base" />
           <span>Upload Photo</span>
@@ -167,7 +167,7 @@ export default function GalleryManagement() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search photos by title or description..."
-            className="w-full pl-10 pr-4 py-2 text-xs bg-slate-900 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors"
+            className="w-full pl-10 pr-4 py-2 text-xs bg-slate-900 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500 transition-colors"
           />
         </div>
 
@@ -175,7 +175,7 @@ export default function GalleryManagement() {
           <select
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
-            className="px-3 py-2 text-xs bg-slate-900 border border-slate-800 rounded-xl text-slate-300 focus:outline-none focus:border-blue-500 cursor-pointer w-full sm:w-auto"
+            className="px-3 py-2 text-xs bg-slate-900 border border-slate-800 rounded-xl text-slate-300 focus:outline-none focus:border-gold-500 cursor-pointer w-full sm:w-auto"
           >
             <option value="All">All Categories</option>
             <option value="Campus">Campus</option>
@@ -230,7 +230,7 @@ export default function GalleryManagement() {
 
               <div className="p-4 flex-1 flex flex-col justify-between">
                 <div>
-                  <h4 className="font-semibold text-sm text-white group-hover:text-blue-400 transition-colors truncate">
+                  <h4 className="font-semibold text-sm text-white group-hover:text-gold-400 transition-colors truncate">
                     {item.title}
                   </h4>
                   {item.description && (
@@ -241,7 +241,7 @@ export default function GalleryManagement() {
                 </div>
 
                 <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between">
-                  <span className="text-[10px] text-slate-500 font-mono">
+                  <span className="text-[10px] text-slate-300 font-mono">
                     Order: {item.order ?? 0}
                   </span>
 
@@ -249,7 +249,7 @@ export default function GalleryManagement() {
                     <button
                       type="button"
                       onClick={() => handleOpenEdit(item)}
-                      className="p-1.5 text-slate-400 hover:text-blue-400 hover:bg-slate-800 rounded-lg transition-colors"
+                      className="p-1.5 text-slate-400 hover:text-gold-400 hover:bg-slate-800 rounded-lg transition-colors"
                       title="Edit Photo"
                     >
                       <HiOutlinePencilSquare className="text-base" />
@@ -298,7 +298,7 @@ export default function GalleryManagement() {
               value={formData.title}
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
               placeholder="e.g. Modern Computer Programming Lab 1"
-              className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+              className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
             />
           </div>
 
@@ -308,7 +308,7 @@ export default function GalleryManagement() {
               <select
                 value={formData.category}
                 onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-blue-500 cursor-pointer"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-gold-500 cursor-pointer"
               >
                 <option value="Campus">Campus</option>
                 <option value="Department">Department</option>
@@ -327,7 +327,7 @@ export default function GalleryManagement() {
                 value={formData.order}
                 onChange={(e) => setFormData({ ...formData, order: e.target.value })}
                 placeholder="0"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
           </div>
@@ -339,7 +339,7 @@ export default function GalleryManagement() {
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               placeholder="Brief description or caption for the photo..."
-              className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+              className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
             />
           </div>
 
@@ -349,7 +349,7 @@ export default function GalleryManagement() {
               id="isPhotoPublished"
               checked={formData.isPublished}
               onChange={(e) => setFormData({ ...formData, isPublished: e.target.checked })}
-              className="w-4 h-4 rounded text-blue-600 bg-slate-900 border-slate-700 focus:ring-blue-500"
+              className="w-4 h-4 rounded text-amber-500 bg-slate-900 border-slate-700 focus:ring-gold-500"
             />
             <label htmlFor="isPhotoPublished" className="text-xs font-semibold text-slate-300">
               Published on Public College Website
@@ -368,7 +368,7 @@ export default function GalleryManagement() {
             <button
               type="submit"
               disabled={submitting}
-              className="px-5 py-2 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-xl transition-all shadow-lg shadow-blue-900/40 disabled:opacity-50 flex items-center gap-2"
+              className="px-5 py-2 text-xs font-semibold text-white bg-navy-900 hover:bg-navy-800 rounded-xl transition-all shadow-lg shadow-navy-900/40 disabled:opacity-50 flex items-center gap-2"
             >
               {submitting ? (
                 <>

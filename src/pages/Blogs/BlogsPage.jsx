@@ -42,7 +42,7 @@ export default function BlogsPage() {
                 onClick={() => setCategory(cat)}
                 className={`px-4 py-2 rounded-xl text-xs font-bold transition ${
                   category === cat
-                    ? 'bg-[#0B192C] text-amber-400 shadow-sm'
+                    ? 'bg-[#233B5D] text-amber-400 shadow-sm'
                     : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'
                 }`}
               >

@@ -13,7 +13,7 @@ export default function MainLayout() {
   }, [pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F8FAFC] text-slate-800 antialiased font-sans">
+    <div className="min-h-screen flex flex-col bg-[#F7F6F2] text-slate-800 antialiased font-sans">
       <TopBar />
       <Navbar />
       <main className="flex-grow">

@@ -94,7 +94,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-[#0B192C] text-white shadow-xl border-b border-slate-800/90 select-none">
+    <header className="sticky top-0 z-40 bg-[#233B5D] text-white shadow-xl border-b border-slate-800/90 select-none">
       <div
         ref={navContainerRef}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4"
@@ -102,18 +102,18 @@ export default function Navbar() {
         {/* Logo & College Identity */}
         <Link to="/" className="flex items-center gap-3.5 group flex-shrink-0">
           {/* Emblem Icon */}
-          <div className="w-11 h-11 rounded-full bg-gradient-to-tr from-amber-500 via-amber-400 to-amber-600 p-[2px] shadow-md group-hover:scale-105 transition-transform flex-shrink-0">
-            <div className="w-full h-full rounded-full bg-[#0B192C] flex items-center justify-center font-black text-amber-400 text-xs tracking-wider border border-amber-400/40">
+          <div className="w-11 h-11 rounded-full bg-gradient-to-tr from-gold-500 via-gold-400 to-gold-500 p-[2px] shadow-md group-hover:scale-105 transition-transform flex-shrink-0">
+            <div className="w-full h-full rounded-full bg-[#233B5D] flex items-center justify-center font-black text-gold-400 text-xs tracking-wider border border-gold-400/40">
               BCA
             </div>
           </div>
 
           <div className="flex flex-col">
             <div className="flex items-center gap-2">
-              <span className="text-base sm:text-lg font-black tracking-tight text-white group-hover:text-amber-400 transition-colors">
+              <span className="text-base sm:text-lg font-black tracking-tight text-white group-hover:text-gold-400 transition-colors">
                 T.P. College Madhepura
               </span>
-              <span className="hidden sm:inline-block px-2 py-0.2 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-500 text-slate-950">
+              <span className="hidden sm:inline-block px-2 py-0.2 rounded-full text-[10px] font-black uppercase tracking-wider bg-gold-500 text-slate-950">
                 B.C.A.
               </span>
             </div>
@@ -130,7 +130,7 @@ export default function Navbar() {
             to="/"
             className={({ isActive }) =>
               `px-3 py-2 rounded-lg text-sm font-semibold transition duration-150 ${
-                isActive ? 'text-amber-400' : 'text-slate-200 hover:text-white hover:bg-slate-800/60'
+                isActive ? 'text-gold-400' : 'text-slate-200 hover:text-white hover:bg-slate-800/60'
               }`
             }
           >
@@ -148,7 +148,7 @@ export default function Navbar() {
               className={({ isActive }) =>
                 `flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-semibold transition duration-150 ${
                   isActive || activeDropdown === 'academics'
-                    ? 'text-amber-400'
+                    ? 'text-gold-400'
                     : 'text-slate-200 hover:text-white hover:bg-slate-800/60'
                 }`
               }
@@ -156,7 +156,7 @@ export default function Navbar() {
               <span>Academics</span>
               <HiChevronDown
                 className={`w-4 h-4 transition-transform duration-200 ${
-                  activeDropdown === 'academics' ? 'rotate-180 text-amber-400' : 'text-slate-400'
+                  activeDropdown === 'academics' ? 'rotate-180 text-gold-400' : 'text-slate-300'
                 }`}
               />
             </NavLink>
@@ -181,7 +181,7 @@ export default function Navbar() {
               className={({ isActive }) =>
                 `flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-semibold transition duration-150 ${
                   isActive || activeDropdown === 'faculties'
-                    ? 'text-amber-400'
+                    ? 'text-gold-400'
                     : 'text-slate-200 hover:text-white hover:bg-slate-800/60'
                 }`
               }
@@ -189,7 +189,7 @@ export default function Navbar() {
               <span>Faculties</span>
               <HiChevronDown
                 className={`w-4 h-4 transition-transform duration-200 ${
-                  activeDropdown === 'faculties' ? 'rotate-180 text-amber-400' : 'text-slate-400'
+                  activeDropdown === 'faculties' ? 'rotate-180 text-gold-400' : 'text-slate-300'
                 }`}
               />
             </NavLink>
@@ -214,18 +214,18 @@ export default function Navbar() {
               className={({ isActive }) =>
                 `flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-semibold transition duration-150 ${
                   isActive || activeDropdown === 'pyqs'
-                    ? 'text-amber-400'
+                    ? 'text-gold-400'
                     : 'text-slate-200 hover:text-white hover:bg-slate-800/60'
                 }`
               }
             >
               <span>PYQs</span>
-              <span className="text-[10px] bg-amber-500 text-slate-950 font-bold px-1 py-0.5 rounded leading-none">
+              <span className="text-[10px] bg-gold-500 text-slate-950 font-bold px-1 py-0.5 rounded leading-none">
                 New
               </span>
               <HiChevronDown
                 className={`w-4 h-4 transition-transform duration-200 ${
-                  activeDropdown === 'pyqs' ? 'rotate-180 text-amber-400' : 'text-slate-400'
+                  activeDropdown === 'pyqs' ? 'rotate-180 text-gold-400' : 'text-slate-300'
                 }`}
               />
             </NavLink>
@@ -244,7 +244,7 @@ export default function Navbar() {
             to="/gallery"
             className={({ isActive }) =>
               `px-3 py-2 rounded-lg text-sm font-semibold transition duration-150 ${
-                isActive ? 'text-amber-400' : 'text-slate-200 hover:text-white hover:bg-slate-800/60'
+                isActive ? 'text-gold-400' : 'text-slate-200 hover:text-white hover:bg-slate-800/60'
               }`
             }
           >
@@ -256,7 +256,7 @@ export default function Navbar() {
             to="/contact"
             className={({ isActive }) =>
               `px-3 py-2 rounded-lg text-sm font-semibold transition duration-150 ${
-                isActive ? 'text-amber-400' : 'text-slate-200 hover:text-white hover:bg-slate-800/60'
+                isActive ? 'text-gold-400' : 'text-slate-200 hover:text-white hover:bg-slate-800/60'
               }`
             }
           >
@@ -269,7 +269,7 @@ export default function Navbar() {
           {/* Apply Now Pill Button styled exactly as in reference */}
           <Link
             to="/contact#admission-inquiry"
-            className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-gradient-to-r from-rose-700 via-rose-600 to-rose-700 hover:from-rose-800 hover:to-rose-800 text-white shadow-md shadow-rose-900/30 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5"
+            className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-gradient-to-r from-navy-900 via-navy-800 to-navy-900 hover:from-navy-800 hover:to-navy-800 text-white shadow-md shadow-navy-900/30 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5"
           >
             <span>APPLY NOW</span>
             <HiOutlineArrowRight className="w-4 h-4" />
@@ -278,7 +278,7 @@ export default function Navbar() {
           {/* Student/Faculty Portal Indicator */}
           <Link
             to="/notices"
-            className="p-2 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-amber-400 transition"
+            className="p-2 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-gold-400 transition"
             title="Student Notices & Circulars"
           >
             <HiUserCircle className="w-6 h-6" />

@@ -18,7 +18,7 @@ export default function LatestUpdatesSection() {
     : updates;
 
   return (
-    <div className="space-y-16 md:space-y-24 py-16 md:py-24 bg-[#F8FAFC] overflow-hidden">
+    <div className="space-y-16 md:space-y-24 py-16 md:py-24 bg-[#F7F6F2] overflow-hidden">
       
       {/* 1. Latest Campus Updates - Continuous Smooth Horizontal Marquee */}
       <section className="w-full">
@@ -53,8 +53,8 @@ export default function LatestUpdatesSection() {
           /* Continuous Horizontal Marquee Container */
           <div className="relative overflow-hidden w-full group py-2">
             {/* Left & Right Soft Fade Masks */}
-            <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-16 md:w-24 bg-gradient-to-r from-[#F8FAFC] via-[#F8FAFC]/80 to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-16 md:w-24 bg-gradient-to-l from-[#F8FAFC] via-[#F8FAFC]/80 to-transparent z-10 pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-16 md:w-24 bg-gradient-to-r from-[#F7F6F2] via-[#F7F6F2]/80 to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-16 md:w-24 bg-gradient-to-l from-[#F7F6F2] via-[#F7F6F2]/80 to-transparent z-10 pointer-events-none" />
 
             {/* Scrolling Track */}
             <div className="flex gap-6 animate-marquee w-max group-hover:[animation-play-state:paused] focus-within:[animation-play-state:paused]">

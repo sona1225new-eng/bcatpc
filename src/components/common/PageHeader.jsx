@@ -11,10 +11,10 @@ export default function PageHeader({
   stats
 }) {
   return (
-    <div className="relative bg-[#0B192C] text-white pt-10 pb-12 md:pb-16 border-b border-slate-800 overflow-hidden">
+    <div className="relative bg-[#233B5D] text-white pt-10 pb-12 md:pb-16 border-b border-slate-800 overflow-hidden">
       {/* Background ambient gradient glow */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-10 left-10 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-navy-900/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-10 left-10 w-80 h-80 bg-gold-500/10 rounded-full blur-3xl pointer-events-none" />
       
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />

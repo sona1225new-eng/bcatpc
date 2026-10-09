@@ -190,7 +190,7 @@ export default function PyqManagement() {
         <button
           type="button"
           onClick={handleOpenAdd}
-          className="inline-flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-semibold shadow-lg shadow-blue-900/30 transition-all active:scale-95 shrink-0"
+          className="inline-flex items-center gap-2 px-4 py-2.5 bg-navy-900 hover:bg-navy-800 text-white rounded-xl text-xs font-semibold shadow-lg shadow-navy-900/30 transition-all active:scale-95 shrink-0"
         >
           <HiPlus className="text-base" />
           <span>Upload New PYQ</span>
@@ -208,7 +208,7 @@ export default function PyqManagement() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by title, subject name, subject code, or topics..."
-            className="w-full pl-10 pr-4 py-2 text-xs bg-slate-900 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors"
+            className="w-full pl-10 pr-4 py-2 text-xs bg-slate-900 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500 transition-colors"
           />
         </div>
 
@@ -217,7 +217,7 @@ export default function PyqManagement() {
           <select
             value={semesterFilter}
             onChange={(e) => setSemesterFilter(e.target.value)}
-            className="px-3 py-2 text-xs bg-slate-900 border border-slate-800 rounded-xl text-slate-300 focus:outline-none focus:border-blue-500 cursor-pointer w-full sm:w-auto"
+            className="px-3 py-2 text-xs bg-slate-900 border border-slate-800 rounded-xl text-slate-300 focus:outline-none focus:border-gold-500 cursor-pointer w-full sm:w-auto"
           >
             <option value="all">All Semesters</option>
             <option value="semester-1">Semester 1</option>
@@ -232,7 +232,7 @@ export default function PyqManagement() {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-3 py-2 text-xs bg-slate-900 border border-slate-800 rounded-xl text-slate-300 focus:outline-none focus:border-blue-500 cursor-pointer w-full sm:w-auto"
+            className="px-3 py-2 text-xs bg-slate-900 border border-slate-800 rounded-xl text-slate-300 focus:outline-none focus:border-gold-500 cursor-pointer w-full sm:w-auto"
           >
             <option value="all">All Status</option>
             <option value="published">Published</option>
@@ -277,7 +277,7 @@ export default function PyqManagement() {
                   <tr key={p._id} className="hover:bg-slate-800/40 transition-colors group">
                     <td className="py-3.5 px-4">
                       <div>
-                        <p className="font-semibold text-white group-hover:text-blue-400 transition-colors">
+                        <p className="font-semibold text-white group-hover:text-gold-400 transition-colors">
                           {p.title}
                         </p>
                         <p className="text-[11px] text-slate-400">
@@ -287,7 +287,7 @@ export default function PyqManagement() {
                     </td>
 
                     <td className="py-3.5 px-4">
-                      <span className="font-semibold text-blue-400 uppercase tracking-wider text-[11px]">
+                      <span className="font-semibold text-gold-400 uppercase tracking-wider text-[11px]">
                         Sem {p.semesterNumber || p.semester?.replace('semester-', '')}
                       </span>
                     </td>
@@ -306,13 +306,13 @@ export default function PyqManagement() {
                           href={p.fileUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/20 text-blue-400 hover:text-blue-300 rounded-lg text-[11px] font-medium transition-colors"
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-gold-500/10 hover:bg-amber-600/20 border border-gold-500/20 text-gold-400 hover:text-gold-400 rounded-lg text-[11px] font-medium transition-colors"
                         >
                           <HiOutlineDocumentText className="text-sm" />
                           <span>View PDF</span>
                         </a>
                       ) : (
-                        <span className="text-slate-500">No file</span>
+                        <span className="text-slate-300">No file</span>
                       )}
                     </td>
 
@@ -339,7 +339,7 @@ export default function PyqManagement() {
                         <button
                           type="button"
                           onClick={() => handleOpenEdit(p)}
-                          className="p-1.5 text-slate-400 hover:text-blue-400 hover:bg-slate-800 rounded-lg transition-colors"
+                          className="p-1.5 text-slate-400 hover:text-gold-400 hover:bg-slate-800 rounded-lg transition-colors"
                           title="Edit"
                         >
                           <HiOutlinePencilSquare className="text-base" />
@@ -381,7 +381,7 @@ export default function PyqManagement() {
               value={formData.title}
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
               placeholder="e.g. BCA 1st Semester C Programming 2023"
-              className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+              className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
             />
           </div>
 
@@ -391,7 +391,7 @@ export default function PyqManagement() {
               <select
                 value={formData.semester}
                 onChange={(e) => setFormData({ ...formData, semester: e.target.value })}
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-blue-500 cursor-pointer"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-gold-500 cursor-pointer"
               >
                 <option value="semester-1">Semester 1</option>
                 <option value="semester-2">Semester 2</option>
@@ -410,7 +410,7 @@ export default function PyqManagement() {
                 value={formData.year}
                 onChange={(e) => setFormData({ ...formData, year: e.target.value })}
                 placeholder="2023"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
 
@@ -424,7 +424,7 @@ export default function PyqManagement() {
                 value={formData.subject}
                 onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                 placeholder="Programming in C / Data Structures"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
 
@@ -435,7 +435,7 @@ export default function PyqManagement() {
                 value={formData.subjectCode}
                 onChange={(e) => setFormData({ ...formData, subjectCode: e.target.value })}
                 placeholder="BCA-102"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
 
@@ -444,7 +444,7 @@ export default function PyqManagement() {
               <select
                 value={formData.paperType}
                 onChange={(e) => setFormData({ ...formData, paperType: e.target.value })}
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-blue-500 cursor-pointer"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-gold-500 cursor-pointer"
               >
                 <option value="Theory Paper">Theory Paper</option>
                 <option value="Practical Paper">Practical Paper</option>
@@ -460,7 +460,7 @@ export default function PyqManagement() {
                 value={formData.examType}
                 onChange={(e) => setFormData({ ...formData, examType: e.target.value })}
                 placeholder="BNMU University Exam"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
           </div>
@@ -491,7 +491,7 @@ export default function PyqManagement() {
               value={formData.topicsCovered}
               onChange={(e) => setFormData({ ...formData, topicsCovered: e.target.value })}
               placeholder="Pointers, Arrays, File Handling, Recursion"
-              className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+              className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
             />
           </div>
 
@@ -502,7 +502,7 @@ export default function PyqManagement() {
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               placeholder="Special instructions, question format, etc."
-              className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+              className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
             />
           </div>
 
@@ -511,7 +511,7 @@ export default function PyqManagement() {
             <select
               value={formData.status}
               onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-              className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-blue-500 cursor-pointer"
+              className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-gold-500 cursor-pointer"
             >
               <option value="published">Published</option>
               <option value="draft">Draft</option>
@@ -530,7 +530,7 @@ export default function PyqManagement() {
             <button
               type="submit"
               disabled={submitting}
-              className="px-5 py-2 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-xl transition-all shadow-lg shadow-blue-900/40 disabled:opacity-50 flex items-center gap-2"
+              className="px-5 py-2 text-xs font-semibold text-white bg-navy-900 hover:bg-navy-800 rounded-xl transition-all shadow-lg shadow-navy-900/40 disabled:opacity-50 flex items-center gap-2"
             >
               {submitting ? (
                 <>
@@ -560,7 +560,7 @@ export default function PyqManagement() {
             <div className="grid grid-cols-2 gap-3">
               <div className="p-3 bg-slate-950/60 rounded-xl border border-slate-800">
                 <span className="text-slate-400 block mb-1">Semester</span>
-                <span className="text-blue-400 font-bold uppercase">
+                <span className="text-gold-400 font-bold uppercase">
                   {selectedPyq.semester?.replace('-', ' ')}
                 </span>
               </div>
@@ -583,7 +583,7 @@ export default function PyqManagement() {
             {selectedPyq.fileUrl && (
               <div className="p-4 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center text-xl">
+                  <div className="w-10 h-10 rounded-lg bg-gold-500/10 border border-gold-500/20 text-gold-400 flex items-center justify-center text-xl">
                     <HiOutlineDocumentText />
                   </div>
                   <div>
@@ -597,7 +597,7 @@ export default function PyqManagement() {
                   href={selectedPyq.fileUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-medium transition-colors"
+                  className="px-3 py-1.5 bg-navy-900 hover:bg-navy-800 text-white rounded-lg font-medium transition-colors"
                 >
                   Download
                 </a>

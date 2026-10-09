@@ -45,14 +45,14 @@ export default function Pagination({
             return (
               <React.Fragment key={page}>
                 {prevPage && page - prevPage > 1 && (
-                  <span className="px-2 text-slate-500">...</span>
+                  <span className="px-2 text-slate-300">...</span>
                 )}
                 <button
                   type="button"
                   onClick={() => onPageChange(page)}
                   className={`w-8 h-8 rounded-lg font-medium transition-all ${
                     currentPage === page
-                      ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/40'
+                      ? 'bg-amber-500 text-slate-900 shadow-lg shadow-navy-900/40'
                       : 'bg-slate-800 border border-slate-700 text-slate-300 hover:bg-slate-700'
                   }`}
                 >

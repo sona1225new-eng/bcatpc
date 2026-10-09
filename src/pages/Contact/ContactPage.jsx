@@ -202,7 +202,7 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g., Alok Kumar"
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 text-xs sm:text-sm outline-none bg-slate-50 font-medium"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 text-xs sm:text-sm outline-none bg-slate-50 font-medium"
                     />
                   </div>
 
@@ -216,7 +216,7 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="e.g., alok@example.com"
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 text-xs sm:text-sm outline-none bg-slate-50 font-medium"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 text-xs sm:text-sm outline-none bg-slate-50 font-medium"
                     />
                   </div>
                 </div>
@@ -232,7 +232,7 @@ export default function ContactPage() {
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="e.g., +91 98765 43210"
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 text-xs sm:text-sm outline-none bg-slate-50 font-medium"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 text-xs sm:text-sm outline-none bg-slate-50 font-medium"
                     />
                   </div>
 
@@ -243,7 +243,7 @@ export default function ContactPage() {
                     <select
                       value={formData.inquiryType}
                       onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 text-xs sm:text-sm outline-none bg-slate-50 font-medium cursor-pointer"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 text-xs sm:text-sm outline-none bg-slate-50 font-medium cursor-pointer"
                     >
                       <option>BCA Admission Inquiry (Session 2026-29)</option>
                       <option>University Examination & Form Routine</option>
@@ -264,14 +264,14 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Write your questions regarding admission eligibility, documents, or fee structure..."
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 text-xs sm:text-sm outline-none bg-slate-50 font-medium resize-none"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 text-xs sm:text-sm outline-none bg-slate-50 font-medium resize-none"
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full py-4 px-6 rounded-2xl bg-[#0B192C] hover:bg-slate-900 text-white font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg transition-all transform hover:-translate-y-0.5 disabled:opacity-50"
+                  className="w-full py-4 px-6 rounded-2xl bg-[#233B5D] hover:bg-slate-900 text-white font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg transition-all transform hover:-translate-y-0.5 disabled:opacity-50"
                 >
                   {submitting ? (
                     <span>Submitting Inquiry...</span>

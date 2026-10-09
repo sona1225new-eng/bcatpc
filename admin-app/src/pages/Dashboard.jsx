@@ -54,23 +54,23 @@ export default function Dashboard() {
       count: counts.faculty ?? 0,
       icon: HiOutlineUserGroup,
       path: '/faculty',
-      color: 'from-blue-600/20 to-blue-500/10 text-blue-400 border-blue-500/20',
-      textColor: 'text-blue-400',
+      color: 'from-gold-500/15 to-gold-500/5 text-gold-400 border-gold-500/20',
+      textColor: 'text-gold-400',
     },
     {
       title: 'Total Academics',
       count: counts.academics ?? 1,
       icon: HiOutlineAcademicCap,
       path: '/academics',
-      color: 'from-indigo-600/20 to-indigo-500/10 text-indigo-400 border-indigo-500/20',
-      textColor: 'text-indigo-400',
+      color: 'from-gold-500/15 to-gold-500/5 text-gold-400 border-gold-500/20',
+      textColor: 'text-gold-400',
     },
     {
       title: 'Question Bank (PYQ)',
       count: counts.pyqs ?? 0,
       icon: HiOutlineDocumentDuplicate,
       path: '/pyqs',
-      color: 'from-emerald-600/20 to-emerald-500/10 text-emerald-400 border-emerald-500/20',
+      color: 'from-gold-500/15 to-gold-500/5 text-gold-400 border-gold-500/20',
       textColor: 'text-emerald-400',
     },
     {
@@ -78,7 +78,7 @@ export default function Dashboard() {
       count: counts.blogs ?? 0,
       icon: HiOutlineBookOpen,
       path: '/blogs',
-      color: 'from-purple-600/20 to-purple-500/10 text-purple-400 border-purple-500/20',
+      color: 'from-gold-500/15 to-gold-500/5 text-gold-400 border-gold-500/20',
       textColor: 'text-purple-400',
     },
     {
@@ -86,7 +86,7 @@ export default function Dashboard() {
       count: counts.gallery ?? 0,
       icon: HiOutlinePhoto,
       path: '/gallery',
-      color: 'from-pink-600/20 to-pink-500/10 text-pink-400 border-pink-500/20',
+      color: 'from-gold-500/15 to-gold-500/5 text-gold-400 border-gold-500/20',
       textColor: 'text-pink-400',
     },
     {
@@ -94,7 +94,7 @@ export default function Dashboard() {
       count: counts.campusUpdates ?? 0,
       icon: HiOutlineSparkles,
       path: '/campus-updates',
-      color: 'from-amber-600/20 to-amber-500/10 text-amber-400 border-amber-500/20',
+      color: 'from-gold-500/15 to-gold-500/5 text-gold-400 border-gold-500/20',
       textColor: 'text-amber-400',
     },
     {
@@ -102,7 +102,7 @@ export default function Dashboard() {
       count: counts.notices ?? 0,
       icon: HiOutlineBell,
       path: '/notices',
-      color: 'from-rose-600/20 to-rose-500/10 text-rose-400 border-rose-500/20',
+      color: 'from-gold-500/15 to-gold-500/5 text-gold-400 border-gold-500/20',
       textColor: 'text-rose-400',
     },
   ];
@@ -110,7 +110,7 @@ export default function Dashboard() {
   return (
     <div className="space-y-8 animate-in fade-in duration-300">
       {/* Header Banner */}
-      <div className="relative overflow-hidden p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-blue-900/40 via-indigo-900/30 to-slate-900 border border-blue-500/20 shadow-xl">
+      <div className="relative overflow-hidden p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-navy-900/60 via-navy-900/45 to-slate-900 border border-gold-500/20 shadow-xl">
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-wide">
@@ -125,7 +125,7 @@ export default function Dashboard() {
           <div className="flex flex-wrap items-center gap-2.5">
             <Link
               to="/notices"
-              className="inline-flex items-center gap-2 px-3.5 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-semibold shadow-lg shadow-blue-900/40 transition-all active:scale-95"
+              className="inline-flex items-center gap-2 px-3.5 py-2 bg-navy-900 hover:bg-navy-800 text-white rounded-xl text-xs font-semibold shadow-lg shadow-navy-900/40 transition-all active:scale-95"
             >
               <HiPlus className="text-sm" />
               <span>Post Notice</span>
@@ -177,7 +177,7 @@ export default function Dashboard() {
                   </div>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-semibold text-slate-400 group-hover:text-blue-400 transition-colors">
+                <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-semibold text-slate-300 group-hover:text-gold-400 transition-colors">
                   <span>Manage records</span>
                   <HiArrowRight className="transition-transform group-hover:translate-x-1" />
                 </div>
@@ -194,12 +194,12 @@ export default function Dashboard() {
           <div>
             <div className="flex items-center justify-between pb-4 border-b border-slate-800">
               <div className="flex items-center gap-2">
-                <HiOutlineBell className="text-rose-400 text-lg" />
+                <HiOutlineBell className="text-gold-400 text-lg" />
                 <h3 className="text-sm font-bold text-white">Recent Notices</h3>
               </div>
               <Link
                 to="/notices"
-                className="text-xs font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1"
+                className="text-xs font-semibold text-gold-400 hover:text-gold-500 flex items-center gap-1"
               >
                 <span>View all</span>
                 <HiArrowRight className="text-xs" />
@@ -211,7 +211,7 @@ export default function Dashboard() {
                 recent.notices.map((n) => (
                   <div key={n._id} className="py-3 flex items-start justify-between gap-3">
                     <div className="min-w-0">
-                      <p className="text-sm font-semibold text-white truncate hover:text-blue-400 transition-colors">
+                      <p className="text-sm font-semibold text-white truncate hover:text-gold-400 transition-colors">
                         {n.title}
                       </p>
                       <div className="flex items-center gap-2 mt-1 text-xs text-slate-400">
@@ -228,7 +228,7 @@ export default function Dashboard() {
                   </div>
                 ))
               ) : (
-                <p className="py-8 text-center text-xs text-slate-500">
+                <p className="py-8 text-center text-xs text-slate-300">
                   No notices published yet.
                 </p>
               )}
@@ -250,12 +250,12 @@ export default function Dashboard() {
           <div>
             <div className="flex items-center justify-between pb-4 border-b border-slate-800">
               <div className="flex items-center gap-2">
-                <HiOutlineSparkles className="text-amber-400 text-lg" />
+                <HiOutlineSparkles className="text-gold-400 text-lg" />
                 <h3 className="text-sm font-bold text-white">Recent Campus Updates</h3>
               </div>
               <Link
                 to="/campus-updates"
-                className="text-xs font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1"
+                className="text-xs font-semibold text-gold-400 hover:text-gold-500 flex items-center gap-1"
               >
                 <span>View all</span>
                 <HiArrowRight className="text-xs" />
@@ -267,7 +267,7 @@ export default function Dashboard() {
                 recent.campusUpdates.map((u) => (
                   <div key={u._id} className="py-3 flex items-start justify-between gap-3">
                     <div className="min-w-0">
-                      <p className="text-sm font-semibold text-white truncate hover:text-amber-400 transition-colors">
+                      <p className="text-sm font-semibold text-white truncate hover:text-gold-400 transition-colors">
                         {u.title}
                       </p>
                       <div className="flex items-center gap-2 mt-1 text-xs text-slate-400">
@@ -284,7 +284,7 @@ export default function Dashboard() {
                   </div>
                 ))
               ) : (
-                <p className="py-8 text-center text-xs text-slate-500">
+                <p className="py-8 text-center text-xs text-slate-300">
                   No campus updates posted yet.
                 </p>
               )}
@@ -308,12 +308,12 @@ export default function Dashboard() {
         <div className="bg-slate-900/70 border border-slate-800 rounded-2xl p-5 shadow-lg">
           <div className="flex items-center justify-between pb-4 border-b border-slate-800">
             <div className="flex items-center gap-2">
-              <HiOutlineBookOpen className="text-purple-400 text-lg" />
+              <HiOutlineBookOpen className="text-gold-400 text-lg" />
               <h3 className="text-sm font-bold text-white">Recent Technical Blogs</h3>
             </div>
             <Link
               to="/blogs"
-              className="text-xs font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1"
+              className="text-xs font-semibold text-gold-400 hover:text-gold-500 flex items-center gap-1"
             >
               <span>View all</span>
               <HiArrowRight className="text-xs" />
@@ -325,7 +325,7 @@ export default function Dashboard() {
               recent.blogs.map((b) => (
                 <div key={b._id} className="py-3 flex items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <p className="text-sm font-semibold text-white truncate hover:text-purple-400 transition-colors">
+                    <p className="text-sm font-semibold text-white truncate hover:text-gold-400 transition-colors">
                       {b.title}
                     </p>
                     <p className="text-xs text-slate-400 mt-0.5">By {b.author}</p>
@@ -336,7 +336,7 @@ export default function Dashboard() {
                 </div>
               ))
             ) : (
-              <p className="py-8 text-center text-xs text-slate-500">
+              <p className="py-8 text-center text-xs text-slate-300">
                 No blog articles published yet.
               </p>
             )}
@@ -347,12 +347,12 @@ export default function Dashboard() {
         <div className="bg-slate-900/70 border border-slate-800 rounded-2xl p-5 shadow-lg">
           <div className="flex items-center justify-between pb-4 border-b border-slate-800">
             <div className="flex items-center gap-2">
-              <HiOutlineDocumentDuplicate className="text-emerald-400 text-lg" />
+              <HiOutlineDocumentDuplicate className="text-gold-400 text-lg" />
               <h3 className="text-sm font-bold text-white">Recent PYQs Uploaded</h3>
             </div>
             <Link
               to="/pyqs"
-              className="text-xs font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1"
+              className="text-xs font-semibold text-gold-400 hover:text-gold-500 flex items-center gap-1"
             >
               <span>View all</span>
               <HiArrowRight className="text-xs" />
@@ -364,7 +364,7 @@ export default function Dashboard() {
               recent.pyqs.map((p) => (
                 <div key={p._id} className="py-3 flex items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <p className="text-sm font-semibold text-white truncate hover:text-emerald-400 transition-colors">
+                    <p className="text-sm font-semibold text-white truncate hover:text-gold-400 transition-colors">
                       {p.title}
                     </p>
                     <p className="text-xs text-slate-400 mt-0.5">
@@ -377,7 +377,7 @@ export default function Dashboard() {
                 </div>
               ))
             ) : (
-              <p className="py-8 text-center text-xs text-slate-500">
+              <p className="py-8 text-center text-xs text-slate-300">
                 No question papers uploaded yet.
               </p>
             )}

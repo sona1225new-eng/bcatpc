@@ -74,7 +74,7 @@ export default function LabsStructurePage() {
                 onClick={() => setSelectedSemTab(sem.semester)}
                 className={`px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-150 ${
                   selectedSemTab === sem.semester
-                    ? 'bg-[#0B192C] text-amber-400 shadow-lg border border-amber-500/40'
+                    ? 'bg-[#233B5D] text-amber-400 shadow-lg border border-amber-500/40'
                     : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'
                 }`}
               >

@@ -12,12 +12,12 @@ export default function SectionHeading({
   light = false
 }) {
   const badgeStyles = {
-    wine: "text-rose-700 bg-rose-50 border-rose-200/80",
-    gold: "text-amber-700 bg-amber-50 border-amber-200/80",
-    blue: "text-blue-700 bg-blue-50 border-blue-200/80",
+    wine: "text-navy-900 bg-ivory border-slate-200",
+    gold: "text-navy-900 bg-gold-500/15 border-gold-500/30",
+    blue: "text-navy-900 bg-ivory border-slate-200",
     navy: "text-navy-900 bg-slate-100 border-slate-200",
-    darkGold: "text-amber-400 bg-amber-400/10 border-amber-400/30",
-    darkWine: "text-rose-400 bg-rose-400/10 border-rose-400/30",
+    darkGold: "text-gold-400 bg-gold-500/10 border-gold-500/30",
+    darkWine: "text-gold-400 bg-gold-500/10 border-gold-500/30",
   };
 
   const getBadgeClass = () => {
@@ -37,7 +37,7 @@ export default function SectionHeading({
             </span>
           )}
           <h2 className={`text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight ${light ? 'text-white' : 'text-slate-900'}`}>
-            {title} {titleHighlight && <span className="text-amber-500">{titleHighlight}</span>}
+            {title} {titleHighlight && <span className={light ? 'text-gold-400' : 'text-navy-800'}>{titleHighlight}</span>}
           </h2>
         </div>
         {subtitle && (
@@ -60,7 +60,7 @@ export default function SectionHeading({
         </div>
       )}
       <h2 className={`text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight ${light ? 'text-white' : 'text-slate-900'} leading-tight`}>
-        {title} {titleHighlight && <span className="text-amber-500">{titleHighlight}</span>}
+        {title} {titleHighlight && <span className={light ? 'text-gold-400' : 'text-navy-800'}>{titleHighlight}</span>}
       </h2>
       {subtitle && (
         <p className={`mt-3 text-sm sm:text-base ${light ? 'text-slate-300' : 'text-slate-600'} ${align === 'center' ? 'max-w-2xl mx-auto' : 'max-w-3xl'}`}>

@@ -8,15 +8,16 @@ const {
   deleteGalleryItem,
 } = require('../controllers/galleryController');
 const { protect } = require('../middleware/authMiddleware');
+const { requirePermission } = require('../middleware/permissionMiddleware');
 const validateObjectId = require('../middleware/validateObjectId');
 
 router.route('/')
   .get(getAllGallery)
-  .post(protect, createGalleryItem);
+  .post(protect, requirePermission('gallery', 'create'), createGalleryItem);
 
 router.route('/:id')
   .get(validateObjectId('id'), getGalleryById)
-  .put(protect, validateObjectId('id'), updateGalleryItem)
-  .delete(protect, validateObjectId('id'), deleteGalleryItem);
+  .put(protect, requirePermission('gallery', 'edit'), validateObjectId('id'), updateGalleryItem)
+  .delete(protect, requirePermission('gallery', 'delete'), validateObjectId('id'), deleteGalleryItem);
 
 module.exports = router;

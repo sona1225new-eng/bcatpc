@@ -16,6 +16,8 @@ import GalleryManagement from './pages/GalleryManagement';
 import CampusUpdatesManagement from './pages/CampusUpdatesManagement';
 import NoticeManagement from './pages/NoticeManagement';
 import ProfileSettings from './pages/ProfileSettings';
+import UserManagement from './pages/UserManagement';
+import PageManagement from './pages/PageManagement';
 
 /**
  * ProtectedRoute — Ensures only authenticated admin users can access the dashboard.
@@ -63,8 +65,10 @@ export default function App() {
               <Route path="pyqs" element={<PyqManagement />} />
               <Route path="blogs" element={<BlogManagement />} />
               <Route path="gallery" element={<GalleryManagement />} />
+              <Route path="pages" element={<PageManagement />} />
               <Route path="campus-updates" element={<CampusUpdatesManagement />} />
               <Route path="notices" element={<NoticeManagement />} />
+              <Route path="users" element={<UserManagement />} />
               <Route path="settings" element={<ProfileSettings />} />
             </Route>
 

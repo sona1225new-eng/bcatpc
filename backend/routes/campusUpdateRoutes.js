@@ -8,15 +8,16 @@ const {
   deleteCampusUpdate,
 } = require('../controllers/campusUpdateController');
 const { protect } = require('../middleware/authMiddleware');
+const { requirePermission } = require('../middleware/permissionMiddleware');
 const validateObjectId = require('../middleware/validateObjectId');
 
 router.route('/')
   .get(getAllCampusUpdates)
-  .post(protect, createCampusUpdate);
+  .post(protect, requirePermission('campusUpdates', 'create'), createCampusUpdate);
 
 router.route('/:id')
   .get(validateObjectId('id'), getCampusUpdateById)
-  .put(protect, validateObjectId('id'), updateCampusUpdate)
-  .delete(protect, validateObjectId('id'), deleteCampusUpdate);
+  .put(protect, requirePermission('campusUpdates', 'edit'), validateObjectId('id'), updateCampusUpdate)
+  .delete(protect, requirePermission('campusUpdates', 'delete'), validateObjectId('id'), deleteCampusUpdate);
 
 module.exports = router;

@@ -13,28 +13,37 @@ import {
   HiOutlineArrowRightOnRectangle,
   HiOutlineGlobeAlt,
   HiOutlineCog6Tooth,
+  HiOutlineDocumentText,
+  HiOutlineShieldCheck,
 } from 'react-icons/hi2';
 
-const NAV_ITEMS = [
-  { name: 'Dashboard', path: '/', icon: HiOutlineSquares2X2 },
-  { name: 'Faculty', path: '/faculty', icon: HiOutlineUserGroup },
-  { name: 'Academics', path: '/academics', icon: HiOutlineAcademicCap },
-  { name: 'PYQ / Question Bank', path: '/pyqs', icon: HiOutlineDocumentDuplicate },
-  { name: 'Blogs', path: '/blogs', icon: HiOutlineBookOpen },
-  { name: 'Gallery', path: '/gallery', icon: HiOutlinePhoto },
-  { name: 'Campus Updates', path: '/campus-updates', icon: HiOutlineSparkles },
-  { name: 'Notices', path: '/notices', icon: HiOutlineBell },
-  { name: 'Settings & Security', path: '/settings', icon: HiOutlineCog6Tooth },
+const ALL_NAV_ITEMS = [
+  { name: 'Dashboard', path: '/', icon: HiOutlineSquares2X2, module: 'dashboard' },
+  { name: 'Faculty', path: '/faculty', icon: HiOutlineUserGroup, module: 'faculty' },
+  { name: 'Academics', path: '/academics', icon: HiOutlineAcademicCap, module: 'academics' },
+  { name: 'PYQ / Question Bank', path: '/pyqs', icon: HiOutlineDocumentDuplicate, module: 'pyqs' },
+  { name: 'Blogs', path: '/blogs', icon: HiOutlineBookOpen, module: 'blogs' },
+  { name: 'Gallery & Albums', path: '/gallery', icon: HiOutlinePhoto, module: 'gallery' },
+  { name: 'Dynamic Pages', path: '/pages', icon: HiOutlineDocumentText, module: 'pages' },
+  { name: 'Campus Updates', path: '/campus-updates', icon: HiOutlineSparkles, module: 'campusUpdates' },
+  { name: 'Notices', path: '/notices', icon: HiOutlineBell, module: 'notices' },
+  { name: 'User Management', path: '/users', icon: HiOutlineShieldCheck, module: 'users' },
+  { name: 'Settings & Security', path: '/settings', icon: HiOutlineCog6Tooth, module: 'settings' },
 ];
 
 export default function Sidebar({ isOpen, onClose }) {
-  const { admin, logout } = useAuth();
+  const { admin, logout, hasPermission } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     await logout();
     navigate('/login');
   };
+
+  const visibleNavItems = ALL_NAV_ITEMS.filter((item) => {
+    if (!item.module) return true;
+    return hasPermission(item.module, 'view');
+  });
 
   return (
     <>
@@ -73,7 +82,7 @@ export default function Sidebar({ isOpen, onClose }) {
             Management Modules
           </div>
 
-          {NAV_ITEMS.map((item) => {
+          {visibleNavItems.map((item) => {
             const Icon = item.icon;
             return (
               <NavLink

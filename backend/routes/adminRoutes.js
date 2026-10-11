@@ -6,21 +6,27 @@ const {
   createAdmin,
   updateAdmin,
   deleteAdmin,
+  getAuditLogs,
 } = require('../controllers/adminController');
 const { protect } = require('../middleware/authMiddleware');
-const { authorize } = require('../middleware/roleMiddleware');
+const { requirePermission } = require('../middleware/permissionMiddleware');
 const validateObjectId = require('../middleware/validateObjectId');
 
-// All admin management routes require superadmin role
-router.use(protect, authorize('superadmin'));
+// Protect all admin endpoints
+router.use(protect);
 
+// Audit logs route (must precede /:id)
+router.get('/audit-logs', requirePermission('users', 'view'), getAuditLogs);
+
+// Admin collection routes
 router.route('/')
-  .get(getAllAdmins)
-  .post(createAdmin);
+  .get(requirePermission('users', 'view'), getAllAdmins)
+  .post(requirePermission('users', 'create'), createAdmin);
 
+// Admin document routes
 router.route('/:id')
-  .get(validateObjectId('id'), getAdminById)
-  .put(validateObjectId('id'), updateAdmin)
-  .delete(validateObjectId('id'), deleteAdmin);
+  .get(validateObjectId('id'), requirePermission('users', 'view'), getAdminById)
+  .put(validateObjectId('id'), requirePermission('users', 'edit'), updateAdmin)
+  .delete(validateObjectId('id'), requirePermission('users', 'delete'), deleteAdmin);
 
 module.exports = router;

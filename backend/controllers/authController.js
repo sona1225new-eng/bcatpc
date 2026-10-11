@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const asyncHandler = require('../utils/asyncHandler');
 const { sendSuccess, sendCreated, sendBadRequest, sendUnauthorized } = require('../utils/apiResponse');
 const Admin = require('../models/Admin');
+const { getEffectivePermissions } = require('../utils/permissions');
 
 /** Generate a signed JWT for an admin */
 const generateToken = (id) =>
@@ -31,8 +32,9 @@ const loginAdmin = asyncHandler(async (req, res) => {
     return sendUnauthorized(res, 'This account has been deactivated.');
   }
 
-  // Update last login timestamp
+  // Update last login timestamp & activity
   admin.lastLogin = new Date();
+  admin.lastActivity = new Date();
   await admin.save({ validateBeforeSave: false });
 
   const token = generateToken(admin._id);
@@ -46,6 +48,8 @@ const loginAdmin = asyncHandler(async (req, res) => {
   };
   res.cookie('token', token, cookieOptions);
 
+  const effectivePermissions = getEffectivePermissions(admin);
+
   return sendSuccess(res, {
     token,
     admin: {
@@ -53,7 +57,10 @@ const loginAdmin = asyncHandler(async (req, res) => {
       name: admin.name,
       email: admin.email,
       role: admin.role,
+      permissions: admin.permissions || {},
+      effectivePermissions,
       lastLogin: admin.lastLogin,
+      lastActivity: admin.lastActivity,
     },
   }, 'Login successful.');
 });
@@ -75,7 +82,27 @@ const logoutAdmin = asyncHandler(async (req, res) => {
  * Protected — return the authenticated admin's profile.
  */
 const getMe = asyncHandler(async (req, res) => {
-  return sendSuccess(res, req.admin, 'Admin profile retrieved.');
+  const admin = req.admin;
+  const effectivePermissions = getEffectivePermissions(admin);
+
+  // Update last activity timestamp asynchronously
+  Admin.findByIdAndUpdate(admin._id, { lastActivity: new Date() }).exec();
+
+  const responseData = {
+    _id: admin._id,
+    name: admin.name,
+    email: admin.email,
+    role: admin.role,
+    isActive: admin.isActive,
+    permissions: admin.permissions || {},
+    effectivePermissions,
+    lastLogin: admin.lastLogin,
+    lastActivity: admin.lastActivity,
+    createdAt: admin.createdAt,
+    updatedAt: admin.updatedAt,
+  };
+
+  return sendSuccess(res, responseData, 'Admin profile retrieved.');
 });
 
 /**

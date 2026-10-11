@@ -36,6 +36,9 @@ import PYQDetailPage from '../pages/PYQs/PYQDetailPage';
 import GalleryPage from '../pages/Gallery/GalleryPage';
 import ContactPage from '../pages/Contact/ContactPage';
 
+// Dynamic Custom Pages
+import DynamicPage from '../pages/Pages/DynamicPage';
+
 // 404
 import NotFoundPage from '../pages/NotFoundPage';
 
@@ -83,6 +86,9 @@ export default function AppRoutes() {
 
         {/* Contact */}
         <Route path="contact" element={<ContactPage />} />
+
+        {/* Dynamic Pages */}
+        <Route path="pages/:slug" element={<DynamicPage />} />
 
         {/* 404 Catch-All */}
         <Route path="*" element={<NotFoundPage />} />

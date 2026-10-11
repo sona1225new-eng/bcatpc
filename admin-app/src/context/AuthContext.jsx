@@ -56,6 +56,14 @@ export const AuthProvider = ({ children }) => {
     return authService.changePassword(currentPassword, newPassword);
   };
 
+  const hasPermission = (moduleName, action = 'view') => {
+    if (!admin) return false;
+    if (admin.role === 'superadmin') return true;
+    const perms = admin.effectivePermissions || {};
+    const modPerms = perms[moduleName] || [];
+    return modPerms.includes(action);
+  };
+
   const value = {
     admin,
     token,
@@ -64,6 +72,8 @@ export const AuthProvider = ({ children }) => {
     login,
     logout,
     changePassword,
+    hasPermission,
+    isSuperAdmin: admin?.role === 'superadmin',
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -28,14 +28,22 @@ const adminSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ['admin', 'superadmin'],
+      enum: ['superadmin', 'admin', 'editor', 'viewer'],
       default: 'admin',
+    },
+    permissions: {
+      type: Object,
+      default: {},
     },
     isActive: {
       type: Boolean,
       default: true,
     },
     lastLogin: {
+      type: Date,
+      default: null,
+    },
+    lastActivity: {
       type: Date,
       default: null,
     },

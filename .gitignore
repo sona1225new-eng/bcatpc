@@ -27,3 +27,5 @@ dist-ssr
 .env
 .env.*
 !.env.example
+backend/.env.local
+backend/server.local.js

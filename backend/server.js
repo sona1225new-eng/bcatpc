@@ -109,6 +109,8 @@ const academicRoutes = require('./routes/academicRoutes');
 const coordinatorRoutes = require('./routes/coordinatorRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
 const uploadRoutes = require('./routes/uploadRoutes');
+const pageRoutes = require('./routes/pageRoutes');
+const albumRoutes = require('./routes/albumRoutes');
 
 // Apply login rate limiter specifically to /api/auth/login
 app.use('/api/auth/login', loginLimiter);
@@ -121,12 +123,14 @@ app.use('/api/faculty', facultyRoutes);
 app.use('/api/pyqs', pyqRoutes);
 app.use('/api/galleries', galleryRoutes);
 app.use('/api/gallery', galleryRoutes);
+app.use('/api/albums', albumRoutes);
 app.use('/api/blogs', blogRoutes);
 app.use('/api/campus-updates', campusUpdateRoutes);
 app.use('/api/academics', academicRoutes);
 app.use('/api/coordinators', coordinatorRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/upload', uploadRoutes);
+app.use('/api/pages', pageRoutes);
 
 // ── Error Handling Middleware ──────────────────────────────────────────────────
 const { errorHandler, notFoundHandler } = require('./middleware/errorMiddleware');

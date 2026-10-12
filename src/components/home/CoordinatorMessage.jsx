@@ -15,7 +15,7 @@ export default function CoordinatorMessage() {
 
   return (
     <section className="py-10 md:py-14 bg-white border-b border-slate-200/80">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Label */}
         <div className="flex items-center justify-center mb-6">
@@ -26,7 +26,7 @@ export default function CoordinatorMessage() {
         </div>
 
         {/* Card */}
-        <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-start gap-6 sm:gap-8 shadow-sm hover:shadow-md transition-shadow duration-300">
+        <div className="bg-slate-50 border border-slate-200 rounded-2xl p-7 sm:p-9 flex flex-col sm:flex-row items-start gap-6 sm:gap-8 shadow-sm hover:shadow-md transition-shadow duration-300">
 
           {/* Photo + Identity */}
           <div className="flex-shrink-0 flex flex-col items-center sm:items-start gap-3 w-full sm:w-auto">

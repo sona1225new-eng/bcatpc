@@ -62,6 +62,19 @@ export default function MobileMenu({
             Home
           </NavLink>
 
+          {/* About */}
+          <NavLink
+            to="/about"
+            onClick={handleNavClick}
+            className={({ isActive }) =>
+              `block px-4 py-3 rounded-xl text-sm font-semibold transition ${
+                isActive ? 'bg-gold-500/20 text-gold-400 border border-gold-500/30' : 'text-slate-200 hover:bg-slate-800'
+              }`
+            }
+          >
+            About
+          </NavLink>
+
           {/* Academics Accordion */}
           <div>
             <div className="flex items-center justify-between rounded-xl overflow-hidden hover:bg-slate-800">

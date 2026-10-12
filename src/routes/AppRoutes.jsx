@@ -4,6 +4,7 @@ import MainLayout from '../layouts/MainLayout';
 
 // Pages
 import HomePage from '../pages/HomePage';
+import AboutPage from '../pages/AboutPage';
 
 // Academics
 import AcademicsPage from '../pages/Academics/AcademicsPage';
@@ -48,6 +49,9 @@ export default function AppRoutes() {
       <Route path="/" element={<MainLayout />}>
         {/* Home */}
         <Route index element={<HomePage />} />
+
+        {/* About */}
+        <Route path="about" element={<AboutPage />} />
 
         {/* Academics */}
         <Route path="academics" element={<AcademicsPage />} />

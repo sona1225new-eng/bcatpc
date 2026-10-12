@@ -96,6 +96,121 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .ticker-viewport {
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+
+  .animate-ticker {
+    animation: none;
+    will-change: auto;
+  }
+
+  .ticker-duplicate {
+    display: none;
+  }
+}
+
+@keyframes department-notice-title-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.notice-title-marquee {
+  height: 2.75rem;
+  max-width: 100%;
+  overflow: hidden;
+  padding-right: 0.5rem;
+}
+
+.notice-title-track {
+  display: inline-flex;
+  width: max-content;
+}
+
+.notice-title-copy {
+  display: inline-block;
+  padding-right: 2rem;
+  white-space: nowrap;
+}
+
+.notice-title-copy a {
+  display: block;
+  color: #233B5D;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.375rem;
+  transition: color 150ms;
+}
+
+.notice-title-copy a:hover,
+.notice-title-copy a:focus-visible {
+  color: #314B6C;
+  text-decoration: underline;
+}
+
+.notice-title-marquee.is-overflowing .notice-title-track {
+  animation: department-notice-title-scroll 18s linear infinite;
+  will-change: transform;
+}
+
+.notice-title-marquee:hover .notice-title-track,
+.notice-title-marquee:focus-within .notice-title-track {
+  animation-play-state: paused;
+}
+
+.department-notice-viewport {
+  overflow: hidden;
+}
+
+.department-notice-track {
+  transition: transform 350ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .notice-title-marquee.is-overflowing .notice-title-track {
+    animation: none;
+    will-change: auto;
+  }
+
+  .notice-title-marquee {
+    height: auto;
+    overflow: visible;
+    padding-right: 0;
+  }
+
+  .notice-title-track {
+    display: block;
+    width: auto;
+  }
+
+  .notice-title-copy {
+    display: none;
+    padding-right: 0;
+    white-space: normal;
+  }
+
+  .notice-title-copy:first-child {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .notice-title-copy a {
+    display: block;
+  }
+
+  .department-notice-track {
+    transition: none;
+  }
+}
+
 /* Glassmorphism */
 .glass-nav {
   background: rgba(35, 59, 93, 0.96);

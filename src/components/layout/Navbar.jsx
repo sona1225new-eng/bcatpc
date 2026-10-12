@@ -137,6 +137,18 @@ export default function Navbar() {
             Home
           </NavLink>
 
+          {/* About */}
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              `px-3 py-2 rounded-lg text-sm font-semibold transition duration-150 ${
+                isActive ? 'text-gold-400' : 'text-slate-200 hover:text-white hover:bg-slate-800/60'
+              }`
+            }
+          >
+            About
+          </NavLink>
+
           {/* Academics Dropdown Trigger */}
           <div
             className="relative"

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { HiOutlineMail, HiOutlineAcademicCap, HiOutlineArrowRight } from 'react-icons/hi';
-
+const API_URL = "https://tpcollege-backend.onrender.com";
 export default function FacultyCard({ faculty }) {
   if (!faculty) return null;
 
@@ -11,7 +11,11 @@ export default function FacultyCard({ faculty }) {
         {/* Photo Container */}
         <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100">
           <img
-            src={faculty.photo}
+            src={
+  faculty.photo?.startsWith("http")
+    ? faculty.photo
+    : `${API_URL}${faculty.photo || ""}`
+}
             alt={faculty.name}
             className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
             loading="lazy"

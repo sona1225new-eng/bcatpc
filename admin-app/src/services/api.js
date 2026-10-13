@@ -1,12 +1,51 @@
 import axios from 'axios';
 
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL ||
+  (import.meta.env.DEV
+    ? 'http://localhost:5000/api'
+    : 'https://tpcollege-backend.onrender.com/api');
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+  baseURL: API_BASE_URL,
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
   },
 });
+
+export const getPublicFileUrl = (fileUrl) => {
+  if (!fileUrl) return '';
+  try {
+    const apiRoot = new URL(API_BASE_URL, window.location.origin);
+    apiRoot.pathname = `${apiRoot.pathname.replace(/\/api\/?$/, '')}/`;
+    return new URL(fileUrl, apiRoot).toString();
+  } catch {
+    return fileUrl;
+  }
+};
+
+export const isPublicFileUrl = (fileUrl) => {
+  if (typeof fileUrl !== 'string' || !fileUrl.trim()) return false;
+  if (fileUrl.startsWith('/uploads/')) return true;
+  try {
+    return ['http:', 'https:'].includes(new URL(fileUrl).protocol);
+  } catch {
+    return false;
+  }
+};
+
+export const isPublicResumeUrl = (fileUrl) => {
+  if (typeof fileUrl !== 'string' || !fileUrl.trim()) return false;
+  try {
+    const url = new URL(fileUrl);
+    return url.protocol === 'https:' &&
+      !['localhost', '127.0.0.1', '::1'].includes(url.hostname) &&
+      url.pathname.toLowerCase().endsWith('.pdf');
+  } catch {
+    return false;
+  }
+};
 
 // Request interceptor to attach JWT token
 api.interceptors.request.use(

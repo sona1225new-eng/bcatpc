@@ -1,5 +1,3 @@
-const mongoose = require('mongoose');
-
 /**
  * Centralized error-handling middleware.
  * Must be registered LAST in server.js (after all routes).
@@ -15,6 +13,15 @@ const errorHandler = (err, req, res, next) => { // eslint-disable-line no-unused
   let statusCode = err.statusCode || 500;
   let message = err.message || 'Internal Server Error';
   let errors = null;
+
+  if (err.code === 'LIMIT_FILE_SIZE') {
+    const configuredLimit = Number.parseInt(process.env.MAX_UPLOAD_SIZE_MB || '', 10);
+    const maxUploadSizeMb = Number.isFinite(configuredLimit) && configuredLimit > 0
+      ? configuredLimit
+      : 5;
+    statusCode = 413;
+    message = `File size exceeds the ${maxUploadSizeMb}MB upload limit.`;
+  }
 
   // ── Mongoose: invalid ObjectId ──────────────────────────────────────────────
   if (err.name === 'CastError' && err.kind === 'ObjectId') {

@@ -7,7 +7,11 @@
 const API_CONFIG = {
   // Mock API disabled by default; set VITE_USE_MOCK_API=true in .env to enable mock mode
   USE_MOCK_API: import.meta.env.VITE_USE_MOCK_API === "true",
-  BASE_URL: import.meta.env.VITE_API_URL || "http://localhost:5000/api",
+  BASE_URL:
+    import.meta.env.VITE_API_URL ||
+    (import.meta.env.DEV
+      ? "http://localhost:5000/api"
+      : "https://tpcollege-backend.onrender.com/api"),
   SIMULATED_DELAY_MS: 80, // Snappy realistic response
 };
 
@@ -36,5 +40,38 @@ export const createApiResponse = (data, message = "Success", status = 200) => ({
   data,
   timestamp: new Date().toISOString(),
 });
+
+export const getPublicFileUrl = (fileUrl) => {
+  if (!fileUrl) return "";
+  try {
+    const apiRoot = new URL(API_CONFIG.BASE_URL);
+    apiRoot.pathname = `${apiRoot.pathname.replace(/\/api\/?$/, "")}/`;
+    return new URL(fileUrl, apiRoot).toString();
+  } catch {
+    return fileUrl;
+  }
+};
+
+export const isPublicFileUrl = (fileUrl) => {
+  if (typeof fileUrl !== "string" || !fileUrl.trim()) return false;
+  if (fileUrl.startsWith("/uploads/")) return true;
+  try {
+    return ["http:", "https:"].includes(new URL(fileUrl).protocol);
+  } catch {
+    return false;
+  }
+};
+
+export const isPublicResumeUrl = (fileUrl) => {
+  if (typeof fileUrl !== "string" || !fileUrl.trim()) return false;
+  try {
+    const url = new URL(fileUrl);
+    return url.protocol === "https:" &&
+      !["localhost", "127.0.0.1", "::1"].includes(url.hostname) &&
+      url.pathname.toLowerCase().endsWith(".pdf");
+  } catch {
+    return false;
+  }
+};
 
 export default API_CONFIG;

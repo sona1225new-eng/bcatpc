@@ -24,36 +24,57 @@ const storage = multer.diskStorage({
   },
 });
 
-// Allowed file types: Images & PDFs only
-const fileFilter = (req, file, cb) => {
-  const allowedMimeTypes = [
-    'image/jpeg',
-    'image/png',
-    'image/webp',
-    'image/gif',
-    'image/svg+xml',
-    'application/pdf',
-  ];
+const allowedFiles = {
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.png': 'image/png',
+  '.webp': 'image/webp',
+  '.gif': 'image/gif',
+  '.svg': 'image/svg+xml',
+  '.pdf': 'application/pdf',
+};
 
-  const allowedExtensions = ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.svg', '.pdf'];
+const getFileFilter = (pdfOnly = false) => (req, file, cb) => {
   const ext = path.extname(file.originalname).toLowerCase();
+  const expectedMimeType = allowedFiles[ext];
+  const validFile = expectedMimeType === file.mimetype && (!pdfOnly || ext === '.pdf');
 
-  if (allowedMimeTypes.includes(file.mimetype) || allowedExtensions.includes(ext)) {
+  if (validFile) {
     cb(null, true);
   } else {
     cb(
-      new Error('Invalid file type. Only image files (JPG, PNG, WEBP, GIF, SVG) and PDFs are allowed.'),
+      Object.assign(
+        new Error(
+          pdfOnly
+            ? 'Invalid resume file. Select a PDF file.'
+            : 'Invalid file type. Use JPG, PNG, WEBP, GIF, SVG, or PDF files with a matching extension.'
+        ),
+        { statusCode: 400 }
+      ),
       false
     );
   }
 };
 
+const maxFileSizeMb = Number.parseInt(process.env.MAX_UPLOAD_SIZE_MB || '5', 10);
+const maxFileSize = (Number.isFinite(maxFileSizeMb) && maxFileSizeMb > 0 ? maxFileSizeMb : 5) * 1024 * 1024;
+
 const upload = multer({
   storage,
   limits: {
-    fileSize: 5 * 1024 * 1024, // 5 MB max
+    fileSize: maxFileSize,
   },
-  fileFilter,
+  fileFilter: getFileFilter(),
 });
+
+const resumeUpload = multer({
+  storage: multer.memoryStorage(),
+  limits: {
+    fileSize: maxFileSize,
+  },
+  fileFilter: getFileFilter(true),
+});
+
+upload.resumeUpload = resumeUpload;
 
 module.exports = upload;

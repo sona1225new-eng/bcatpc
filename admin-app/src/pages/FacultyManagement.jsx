@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { facultyService } from '../services/facultyService';
 import { useToast } from '../context/ToastContext';
 import LoadingSpinner from '../components/common/LoadingSpinner';
@@ -8,6 +8,7 @@ import ConfirmDialog from '../components/common/ConfirmDialog';
 import Modal from '../components/common/Modal';
 import Badge from '../components/common/Badge';
 import FileUpload from '../components/common/FileUpload';
+import { getPublicFileUrl, isPublicResumeUrl } from '../services/api';
 import {
   HiPlus,
   HiMagnifyingGlass,
@@ -17,25 +18,20 @@ import {
   HiOutlineUser,
   HiOutlineEnvelope,
   HiOutlinePhone,
-  HiOutlineBriefcase,
-  HiOutlineAcademicCap,
 } from 'react-icons/hi2';
+
+const MAX_UPLOAD_SIZE_MB = Math.max(
+  1,
+  Number.parseInt(import.meta.env.VITE_MAX_UPLOAD_SIZE_MB || '5', 10) || 5
+);
 
 const INITIAL_FORM = {
   name: '',
   designation: '',
   shortDesignation: '',
-  qualification: '',
-  specialization: '',
-  experience: '',
-  email: '',
-  phone: '',
   photo: '',
-  bio: '',
-  teachingAreas: '',
-  academicInterests: '',
-  officeRoom: '',
-  officeHours: '',
+  resumeUrl: '',
+  resumeFileName: '',
   order: 0,
   isActive: true,
 };
@@ -52,6 +48,7 @@ export default function FacultyManagement() {
   const [isViewOpen, setIsViewOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [fileUploading, setFileUploading] = useState(false);
   const [deleting, setDeleting] = useState(false);
 
   const [selectedFaculty, setSelectedFaculty] = useState(null);
@@ -59,7 +56,7 @@ export default function FacultyManagement() {
 
   const toast = useToast();
 
-  const fetchFaculties = async () => {
+  const fetchFaculties = useCallback(async () => {
     try {
       setLoading(true);
       setError('');
@@ -74,14 +71,14 @@ export default function FacultyManagement() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [search, filterActive]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       fetchFaculties();
     }, 250);
     return () => clearTimeout(timer);
-  }, [search, filterActive]);
+  }, [fetchFaculties]);
 
   const handleOpenAdd = () => {
     setSelectedFaculty(null);
@@ -95,21 +92,9 @@ export default function FacultyManagement() {
       name: faculty.name || '',
       designation: faculty.designation || '',
       shortDesignation: faculty.shortDesignation || '',
-      qualification: faculty.qualification || '',
-      specialization: faculty.specialization || '',
-      experience: faculty.experience || '',
-      email: faculty.email || '',
-      phone: faculty.phone || '',
       photo: faculty.photo || '',
-      bio: faculty.bio || '',
-      teachingAreas: Array.isArray(faculty.teachingAreas)
-        ? faculty.teachingAreas.join(', ')
-        : faculty.teachingAreas || '',
-      academicInterests: Array.isArray(faculty.academicInterests)
-        ? faculty.academicInterests.join(', ')
-        : faculty.academicInterests || '',
-      officeRoom: faculty.officeRoom || '',
-      officeHours: faculty.officeHours || '',
+      resumeUrl: faculty.resumeUrl || '',
+      resumeFileName: faculty.resumeFileName || '',
       order: faculty.order || 0,
       isActive: faculty.isActive ?? true,
     });
@@ -128,6 +113,7 @@ export default function FacultyManagement() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (fileUploading) return;
     if (!formData.name.trim()) {
       toast.error('Faculty name is required');
       return;
@@ -137,12 +123,6 @@ export default function FacultyManagement() {
       setSubmitting(true);
       const payload = {
         ...formData,
-        teachingAreas: formData.teachingAreas
-          ? formData.teachingAreas.split(',').map((s) => s.trim()).filter(Boolean)
-          : [],
-        academicInterests: formData.academicInterests
-          ? formData.academicInterests.split(',').map((s) => s.trim()).filter(Boolean)
-          : [],
         order: Number(formData.order) || 0,
       };
 
@@ -209,7 +189,7 @@ export default function FacultyManagement() {
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search by name, designation, specialization, qualification..."
+            placeholder="Search by name or designation..."
             className="w-full pl-10 pr-4 py-2 text-xs bg-slate-900 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500 transition-colors"
           />
         </div>
@@ -250,7 +230,7 @@ export default function FacultyManagement() {
                 <tr>
                   <th className="py-3.5 px-4">Faculty Member</th>
                   <th className="py-3.5 px-4">Designation & Dept</th>
-                  <th className="py-3.5 px-4">Qualification</th>
+                  <th className="py-3.5 px-4">Resume PDF</th>
                   <th className="py-3.5 px-4">Contact</th>
                   <th className="py-3.5 px-4">Order</th>
                   <th className="py-3.5 px-4">Status</th>
@@ -281,7 +261,7 @@ export default function FacultyManagement() {
                             {f.name}
                           </p>
                           <p className="text-[11px] text-slate-400 truncate max-w-xs">
-                            {f.specialization || 'Computer Applications'}
+                            {f.resumeFileName || 'Computer Applications'}
                           </p>
                         </div>
                       </div>
@@ -294,7 +274,18 @@ export default function FacultyManagement() {
                     </td>
 
                     <td className="py-3.5 px-4">
-                      <span className="text-slate-300">{f.qualification || '—'}</span>
+                      {isPublicResumeUrl(f.resumeUrl) ? (
+                        <a
+                          href={getPublicFileUrl(f.resumeUrl)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gold-400 hover:text-gold-300 underline underline-offset-2"
+                        >
+                          {f.resumeFileName || 'View Resume'}
+                        </a>
+                      ) : (
+                        <span className="text-slate-400">—</span>
+                      )}
                     </td>
 
                     <td className="py-3.5 px-4">
@@ -382,6 +373,24 @@ export default function FacultyManagement() {
             helperText="Upload JPG, PNG or WEBP (Square ratio recommended)"
           />
 
+          <FileUpload
+            label="Faculty Resume PDF"
+            accept="application/pdf,.pdf"
+            uploadType="resume"
+            value={formData.resumeUrl}
+            fileName={formData.resumeFileName}
+            onChange={(url) => setFormData((current) => ({
+              ...current,
+              resumeUrl: url,
+              ...(url ? {} : { resumeFileName: '' }),
+            }))}
+            onFileNameChange={(name) => setFormData((current) => ({ ...current, resumeFileName: name }))}
+            onUploadStateChange={setFileUploading}
+            maxFileSizeMB={MAX_UPLOAD_SIZE_MB}
+            showUrlInput={false}
+            helperText={`Select a PDF resume (Max ${MAX_UPLOAD_SIZE_MB}MB)`}
+          />
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Full Name */}
             <div className="space-y-1">
@@ -410,86 +419,13 @@ export default function FacultyManagement() {
               />
             </div>
 
-            {/* Short Designation */}
             <div className="space-y-1">
               <label className="text-xs font-semibold text-slate-300">Short Designation</label>
               <input
                 type="text"
                 value={formData.shortDesignation}
                 onChange={(e) => setFormData({ ...formData, shortDesignation: e.target.value })}
-                placeholder="Asst. Prof."
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
-              />
-            </div>
-
-            {/* Qualification */}
-            <div className="space-y-1">
-              <label className="text-xs font-semibold text-slate-300">Qualification</label>
-              <input
-                type="text"
-                value={formData.qualification}
-                onChange={(e) => setFormData({ ...formData, qualification: e.target.value })}
-                placeholder="Ph.D. in Computer Science, MCA"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
-              />
-            </div>
-
-            {/* Specialization */}
-            <div className="space-y-1">
-              <label className="text-xs font-semibold text-slate-300">Specialization</label>
-              <input
-                type="text"
-                value={formData.specialization}
-                onChange={(e) => setFormData({ ...formData, specialization: e.target.value })}
-                placeholder="Database Systems, AI & Cloud"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
-              />
-            </div>
-
-            {/* Experience */}
-            <div className="space-y-1">
-              <label className="text-xs font-semibold text-slate-300">Experience</label>
-              <input
-                type="text"
-                value={formData.experience}
-                onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
-                placeholder="12+ Years Teaching & Research"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
-              />
-            </div>
-
-            {/* Email */}
-            <div className="space-y-1">
-              <label className="text-xs font-semibold text-slate-300">Email Address</label>
-              <input
-                type="email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                placeholder="faculty@tpcollege.ac.in"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
-              />
-            </div>
-
-            {/* Phone */}
-            <div className="space-y-1">
-              <label className="text-xs font-semibold text-slate-300">Phone Number</label>
-              <input
-                type="text"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                placeholder="+91 9876543210"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
-              />
-            </div>
-
-            {/* Office Room */}
-            <div className="space-y-1">
-              <label className="text-xs font-semibold text-slate-300">Office Room</label>
-              <input
-                type="text"
-                value={formData.officeRoom}
-                onChange={(e) => setFormData({ ...formData, officeRoom: e.target.value })}
-                placeholder="BCA Dept, Room 204"
+                placeholder="Assistant Professor"
                 className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
@@ -502,47 +438,6 @@ export default function FacultyManagement() {
                 value={formData.order}
                 onChange={(e) => setFormData({ ...formData, order: e.target.value })}
                 placeholder="1"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
-              />
-            </div>
-          </div>
-
-          {/* Bio */}
-          <div className="space-y-1">
-            <label className="text-xs font-semibold text-slate-300">Biography</label>
-            <textarea
-              rows={3}
-              value={formData.bio}
-              onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
-              placeholder="Brief professional background, academic achievements, etc."
-              className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
-            />
-          </div>
-
-          {/* Teaching Areas & Interests */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="space-y-1">
-              <label className="text-xs font-semibold text-slate-300">
-                Teaching Areas (comma separated)
-              </label>
-              <input
-                type="text"
-                value={formData.teachingAreas}
-                onChange={(e) => setFormData({ ...formData, teachingAreas: e.target.value })}
-                placeholder="C++, Java, DBMS, Operating Systems"
-                className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
-              />
-            </div>
-
-            <div className="space-y-1">
-              <label className="text-xs font-semibold text-slate-300">
-                Academic Interests (comma separated)
-              </label>
-              <input
-                type="text"
-                value={formData.academicInterests}
-                onChange={(e) => setFormData({ ...formData, academicInterests: e.target.value })}
-                placeholder="Machine Learning, Cybersecurity, Cloud Computing"
                 className="w-full px-3 py-2 text-xs bg-slate-950/60 border border-slate-800 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-gold-500"
               />
             </div>
@@ -567,17 +462,22 @@ export default function FacultyManagement() {
             <button
               type="button"
               onClick={() => setIsFormOpen(false)}
-              disabled={submitting}
+              disabled={submitting || fileUploading}
               className="px-4 py-2 text-xs font-semibold text-slate-300 bg-slate-800 hover:bg-slate-700 rounded-xl transition-colors"
             >
               Cancel
             </button>
             <button
               type="submit"
-              disabled={submitting}
+              disabled={submitting || fileUploading}
               className="px-5 py-2 text-xs font-semibold text-white bg-navy-900 hover:bg-navy-800 rounded-xl transition-all shadow-lg shadow-navy-900/40 disabled:opacity-50 flex items-center gap-2"
             >
-              {submitting ? (
+              {fileUploading ? (
+                <>
+                  <div className="w-3.5 h-3.5 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+                  <span>Uploading resume...</span>
+                </>
+              ) : submitting ? (
                 <>
                   <div className="w-3.5 h-3.5 border-2 border-white/20 border-t-white rounded-full animate-spin" />
                   <span>Saving...</span>
@@ -627,53 +527,21 @@ export default function FacultyManagement() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 text-xs">
-              <div className="p-3 rounded-xl bg-slate-800/40 border border-slate-800">
-                <span className="text-slate-400 block mb-1">Qualification</span>
-                <span className="text-white font-medium">
-                  {selectedFaculty.qualification || '—'}
-                </span>
-              </div>
-              <div className="p-3 rounded-xl bg-slate-800/40 border border-slate-800">
-                <span className="text-slate-400 block mb-1">Specialization</span>
-                <span className="text-white font-medium">
-                  {selectedFaculty.specialization || '—'}
-                </span>
-              </div>
-              <div className="p-3 rounded-xl bg-slate-800/40 border border-slate-800">
-                <span className="text-slate-400 block mb-1">Experience</span>
-                <span className="text-white font-medium">
-                  {selectedFaculty.experience || '—'}
-                </span>
-              </div>
-              <div className="p-3 rounded-xl bg-slate-800/40 border border-slate-800">
-                <span className="text-slate-400 block mb-1">Contact Email</span>
-                <span className="text-white font-medium">{selectedFaculty.email || '—'}</span>
-              </div>
+            <div className="p-3 rounded-xl bg-slate-800/40 border border-slate-800 text-xs">
+              <span className="text-slate-400 block mb-1">Faculty Resume PDF</span>
+              {isPublicResumeUrl(selectedFaculty.resumeUrl) ? (
+                <a
+                  href={getPublicFileUrl(selectedFaculty.resumeUrl)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gold-400 hover:text-gold-300 underline underline-offset-2"
+                >
+                  {selectedFaculty.resumeFileName || 'Open Resume'}
+                </a>
+              ) : (
+                <span className="text-slate-300">No resume uploaded</span>
+              )}
             </div>
-
-            {selectedFaculty.bio && (
-              <div className="p-3 rounded-xl bg-slate-800/40 border border-slate-800 text-xs">
-                <span className="text-slate-400 block mb-1">Biography</span>
-                <p className="text-slate-300 leading-relaxed">{selectedFaculty.bio}</p>
-              </div>
-            )}
-
-            {selectedFaculty.teachingAreas?.length > 0 && (
-              <div className="text-xs">
-                <span className="text-slate-400 block mb-1">Teaching Areas:</span>
-                <div className="flex flex-wrap gap-1.5">
-                  {selectedFaculty.teachingAreas.map((t, idx) => (
-                    <span
-                      key={idx}
-                      className="px-2 py-0.5 rounded-md bg-gold-500/10 border border-gold-500/20 text-gold-400 text-[11px]"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
         )}
       </Modal>

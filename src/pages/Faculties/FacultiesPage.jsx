@@ -19,11 +19,12 @@ export default function FacultiesPage() {
   const filteredFaculties = faculties.filter((f) => {
     if (!search.trim()) return true;
     const q = search.toLowerCase();
+    const teachingAreas = Array.isArray(f.teachingAreas) ? f.teachingAreas : [];
     return (
-      f.name.toLowerCase().includes(q) ||
-      f.designation.toLowerCase().includes(q) ||
-      f.specialization.toLowerCase().includes(q) ||
-      (f.teachingAreas && f.teachingAreas.some((t) => t.toLowerCase().includes(q)))
+      (f.name || '').toLowerCase().includes(q) ||
+      (f.designation || '').toLowerCase().includes(q) ||
+      (f.specialization || '').toLowerCase().includes(q) ||
+      teachingAreas.some((area) => area.toLowerCase().includes(q))
     );
   });
 

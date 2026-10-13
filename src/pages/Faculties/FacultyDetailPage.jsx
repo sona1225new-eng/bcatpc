@@ -8,12 +8,14 @@ import {
   HiOutlineLocationMarker,
   HiOutlineBookOpen,
   HiOutlineBadgeCheck,
-  HiOutlineArrowLeft
+  HiOutlineArrowLeft,
+  HiOutlineDocumentText
 } from 'react-icons/hi';
 import { useFacultyDetail } from '../../hooks/useFaculties';
 import PageHeader from '../../components/common/PageHeader';
 import LoadingState from '../../components/common/LoadingState';
 import ErrorState from '../../components/common/ErrorState';
+import { getPublicFileUrl, isPublicResumeUrl } from '../../services/api';
 
 export default function FacultyDetailPage() {
   const { id } = useParams();
@@ -48,6 +50,9 @@ export default function FacultyDetailPage() {
     { label: "Faculties", href: "/faculties" },
     { label: faculty.name }
   ];
+  const resumeUrl = isPublicResumeUrl(faculty.resumeUrl)
+    ? getPublicFileUrl(faculty.resumeUrl)
+    : '';
 
   return (
     <div>
@@ -77,7 +82,7 @@ export default function FacultyDetailPage() {
             <div className="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-lg">
               <div className="aspect-[3/4] w-full overflow-hidden bg-slate-100">
                 <img
-                  src={faculty.photo}
+                  src={getPublicFileUrl(faculty.photo)}
                   alt={faculty.name}
                   className="w-full h-full object-cover object-center"
                 />
@@ -116,6 +121,17 @@ export default function FacultyDetailPage() {
                     </div>
                   )}
                 </div>
+                {resumeUrl && (
+                  <a
+                    href={resumeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-2.5 px-4 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200 text-xs font-bold inline-flex items-center justify-center gap-2 transition duration-200"
+                  >
+                    <HiOutlineDocumentText className="w-4 h-4" />
+                    <span>View Full Resume</span>
+                  </a>
+                )}
               </div>
             </div>
           </div>

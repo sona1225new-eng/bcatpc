@@ -59,6 +59,17 @@ const facultySchema = new mongoose.Schema(
       default: '',
       trim: true,
     },
+    resumeUrl: {
+      type: String,
+      default: '',
+      trim: true,
+    },
+    resumeFileName: {
+      type: String,
+      default: '',
+      trim: true,
+      maxlength: 255,
+    },
     bio: {
       type: String,
       default: '',

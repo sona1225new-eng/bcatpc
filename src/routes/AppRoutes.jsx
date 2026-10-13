@@ -15,6 +15,7 @@ import ComputingLabsPage from '../pages/Academics/ComputingLabsPage';
 // Faculties
 import FacultiesPage from '../pages/Faculties/FacultiesPage';
 import FacultyDetailPage from '../pages/Faculties/FacultyDetailPage';
+import FacultyResumePage from '../pages/Faculties/FacultyResumePage';
 
 // Campus Updates
 import CampusUpdatesPage from '../pages/CampusUpdates/CampusUpdatesPage';
@@ -46,6 +47,7 @@ import NotFoundPage from '../pages/NotFoundPage';
 export default function AppRoutes() {
   return (
     <Routes>
+      <Route path="/faculties/:id/resume" element={<FacultyResumePage />} />
       <Route path="/" element={<MainLayout />}>
         {/* Home */}
         <Route index element={<HomePage />} />

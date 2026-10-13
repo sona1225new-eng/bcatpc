@@ -43,15 +43,13 @@ export default function FacultyCard({ faculty }) {
       {/* Footer link */}
       <div className="p-5 pt-0 space-y-2">
         {resumeUrl && (
-          <a
-            href={resumeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to={`/faculties/${faculty.id || faculty._id}/resume`}
             className="w-full py-2.5 px-4 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200 text-xs font-bold inline-flex items-center justify-center gap-2 transition duration-200"
           >
             <HiOutlineDocumentText className="w-4 h-4" />
             <span>View Full Resume</span>
-          </a>
+          </Link>
         )}
         <Link
           to={`/faculties/${faculty.id || faculty._id}`}

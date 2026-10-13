@@ -123,7 +123,7 @@ export default function FacultyDetailPage() {
                 </div>
                 {resumeUrl && (
                   <Link
-                    to={`/faculties/${faculty.id || faculty._id}/resume`}
+                    to={`/faculties/${faculty._id || faculty.id}/resume`}
                     className="w-full py-2.5 px-4 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200 text-xs font-bold inline-flex items-center justify-center gap-2 transition duration-200"
                   >
                     <HiOutlineDocumentText className="w-4 h-4" />

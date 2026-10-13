@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const asyncHandler = require('../utils/asyncHandler');
-const { sendSuccess, sendCreated, sendNotFound, sendBadRequest } = require('../utils/apiResponse');
+const { sendSuccess, sendCreated, sendNotFound, sendBadRequest, sendError } = require('../utils/apiResponse');
 const Faculty = require('../models/Faculty');
 
 const editableFields = [
@@ -25,6 +25,22 @@ const editableFields = [
   'order',
   'isActive',
 ];
+
+const slugify = (value) => value
+  .normalize('NFKC')
+  .trim()
+  .toLowerCase()
+  .replace(/[^\p{L}\p{N}]+/gu, '-')
+  .replace(/^-|-$/g, '');
+
+const isValidSlug = (value) => typeof value === 'string' && value !== '' && slugify(value) === value;
+
+const sendSlugConflict = (res) => sendError(
+  res,
+  'A faculty profile with this URL slug already exists.',
+  409,
+  [{ field: 'slug', message: 'Choose a distinct faculty name to create a unique profile URL.' }]
+);
 
 const getFacultyPayload = (body, isCreate = false) => {
   if (!body || typeof body !== 'object' || Array.isArray(body)) {
@@ -132,6 +148,14 @@ const getFacultyById = asyncHandler(async (req, res) => {
 const createFaculty = asyncHandler(async (req, res) => {
   const { payload, error } = getFacultyPayload(req.body, true);
   if (error) return sendBadRequest(res, error);
+
+  const slug = slugify(payload.name);
+  if (!slug) return sendBadRequest(res, 'Faculty name must contain letters or numbers.');
+  if (await Faculty.exists({ slug })) {
+    return sendSlugConflict(res);
+  }
+
+  payload.slug = slug;
   const faculty = await Faculty.create(payload);
   return sendCreated(res, faculty, 'Faculty created successfully.');
 });
@@ -140,12 +164,25 @@ const createFaculty = asyncHandler(async (req, res) => {
 const updateFaculty = asyncHandler(async (req, res) => {
   const { payload, error } = getFacultyPayload(req.body);
   if (error) return sendBadRequest(res, error);
-  const faculty = await Faculty.findByIdAndUpdate(
-    req.params.id,
-    payload,
-    { new: true, runValidators: true }
-  );
+
+  const faculty = await Faculty.findById(req.params.id);
   if (!faculty) return sendNotFound(res, `Faculty with id '${req.params.id}' not found.`);
+
+  const nextName = payload.name ?? faculty.name;
+  const nextNameSlug = slugify(nextName);
+  if (!nextNameSlug) return sendBadRequest(res, 'Faculty name must contain letters or numbers.');
+
+  const nameChanged = payload.name !== undefined && nextNameSlug !== slugify(faculty.name);
+  const slug = nameChanged || !isValidSlug(faculty.slug) ? nextNameSlug : faculty.slug;
+  if (
+    slug !== faculty.slug &&
+    await Faculty.exists({ slug, _id: { $ne: faculty._id } })
+  ) {
+    return sendSlugConflict(res);
+  }
+
+  Object.assign(faculty, payload, { slug });
+  await faculty.save();
   return sendSuccess(res, faculty, 'Faculty updated successfully.');
 });
 

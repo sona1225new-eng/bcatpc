@@ -25,6 +25,11 @@ const requestFaculties = async (path = '') => {
   return result;
 };
 
+const normalizeFaculty = (faculty) => ({
+  ...faculty,
+  id: String(faculty._id || faculty.id || ''),
+});
+
 export const facultyService = {
   async getAll() {
     if (API_CONFIG.USE_MOCK_API) {
@@ -36,7 +41,7 @@ export const facultyService = {
     if (!Array.isArray(result.data)) {
       throw new ApiError('The faculty API returned an invalid faculty list.', 502);
     }
-    return result;
+    return { ...result, data: result.data.map(normalizeFaculty) };
   },
 
   async getById(id) {
@@ -51,7 +56,11 @@ export const facultyService = {
       return createApiResponse(faculty, 'Faculty details retrieved');
     }
 
-    return requestFaculties(`/${encodeURIComponent(id)}`);
+    const result = await requestFaculties(`/${encodeURIComponent(id)}`);
+    if (!result.data || typeof result.data !== 'object' || Array.isArray(result.data)) {
+      throw new ApiError('The faculty API returned an invalid faculty record.', 502);
+    }
+    return { ...result, data: normalizeFaculty(result.data) };
   },
 
   async getNavSummary() {

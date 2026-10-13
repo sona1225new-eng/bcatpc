@@ -4,6 +4,7 @@ import { HiOutlineArrowLeft } from 'react-icons/hi';
 import { useFacultyDetail } from '../../hooks/useFaculties';
 import LoadingState from '../../components/common/LoadingState';
 import ErrorState from '../../components/common/ErrorState';
+import FacultyResumeViewer from '../../components/common/FacultyResumeViewer';
 import { getPublicFileUrl, isPublicResumeUrl } from '../../services/api';
 
 export default function FacultyDetailPage() {
@@ -39,23 +40,19 @@ export default function FacultyDetailPage() {
   }
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <section className="w-full px-2 py-2 sm:px-4 sm:py-4">
       <Link
         to="/faculties"
-        className="mb-4 inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-slate-600 hover:text-amber-600 transition"
+        className="mx-auto mb-2 inline-flex max-w-5xl items-center gap-1.5 text-xs sm:text-sm font-bold text-slate-600 hover:text-amber-600 transition"
       >
         <HiOutlineArrowLeft className="w-4 h-4" />
         <span>Back to All Faculties</span>
       </Link>
 
       {resumeUrl ? (
-        <iframe
-          src={resumeUrl}
-          title="Faculty resume PDF"
-          className="block h-[75vh] min-h-[520px] w-full rounded-xl border border-slate-200 bg-slate-100 sm:h-[80vh]"
-        />
+        <FacultyResumeViewer url={resumeUrl} />
       ) : (
-        <div className="flex min-h-[45vh] items-center justify-center rounded-xl border border-slate-200 bg-white px-4 text-center text-sm text-slate-600">
+        <div className="mx-auto flex min-h-[45vh] max-w-5xl items-center justify-center px-4 text-center text-sm text-slate-600">
           This faculty resume is unavailable.
         </div>
       )}

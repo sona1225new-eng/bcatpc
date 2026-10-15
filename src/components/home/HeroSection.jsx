@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { HiOutlineArrowRight, HiOutlineDocumentDownload, HiOutlineSparkles } from 'react-icons/hi';
-import InfoCard from '../cards/InfoCard';
+import { HiOutlineArrowRight } from 'react-icons/hi';
 import { siteConfig } from '../../config/siteConfig';
 
 export default function HeroSection() {
@@ -19,7 +18,7 @@ export default function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
           {/* Left Column: Heading, intro & action buttons */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-6 space-y-6">
             {/* Admission Open Pill Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-navy-900 text-xs font-bold tracking-wide shadow-inner">
               <span className="w-2 h-2 rounded-full bg-gold-500 animate-ping"></span>
@@ -30,10 +29,9 @@ export default function HeroSection() {
 
             {/* Main Hero Heading */}
             <h1 className="text-balance text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.15]">
-              Welcome To Department Of <br className="hidden sm:block" />
-              <span className="text-navy-900">
-                Computer Application
-              </span>
+              <span className="hero-heading-line">Welcome To</span>
+              <span className="hero-heading-line">Department Of</span>
+              <span className="hero-heading-line text-navy-900">Computer Application</span>
             </h1>
 
             {/* Intro Paragraph */}
@@ -85,38 +83,12 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column: 4 Sleek Info Highlights matching reference screenshot */}
-          <div className="lg:col-span-5 space-y-3.5">
-            <InfoCard
-              icon="academic"
-              title="3-Year Program"
-              subtitle="Full-time Undergraduate BCA Degree"
-              badgeText="Full-Time"
-              badgeVariant="gold"
-            />
-
-            <InfoCard
-              icon="book"
-              title="6 Semesters"
-              subtitle="Comprehensive CBCS Curriculum"
-              badgeText="140+ Credits"
-              badgeVariant="wine"
-            />
-
-            <InfoCard
-              icon="briefcase"
-              title="Top IT Recruiters"
-              subtitle="Software & IT Career Pathways"
-              badgeText="Tech Roles"
-              badgeVariant="gold"
-            />
-
-            <InfoCard
-              icon="computer"
-              title="Hands-on Coding Labs"
-              subtitle="Modern Intel Core i7 PC Workstations"
-              badgeText="High-Speed"
-              badgeVariant="gold"
+          {/* Right Column: College campus photograph */}
+          <div className="lg:col-span-6">
+            <img
+              src="/college-campus.png"
+              alt="T.P. College Madhepura campus"
+              className="w-full aspect-[4/3] rounded-3xl object-cover object-center shadow-2xl ring-1 ring-slate-900/10"
             />
           </div>
 

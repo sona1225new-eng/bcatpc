@@ -101,12 +101,13 @@ export default function Navbar() {
       >
         {/* Logo & College Identity */}
         <Link to="/" className="flex items-center gap-3.5 group flex-shrink-0">
-          {/* Emblem Icon */}
-          <div className="w-11 h-11 rounded-full bg-gradient-to-tr from-gold-500 via-gold-400 to-gold-500 p-[2px] shadow-md group-hover:scale-105 transition-transform flex-shrink-0">
-            <div className="w-full h-full rounded-full bg-[#233B5D] flex items-center justify-center font-black text-gold-400 text-xs tracking-wider border border-gold-400/40">
-              BCA
-            </div>
-          </div>
+          <span className="w-[50px] h-[50px] p-1.5 rounded-lg bg-[#FFFDF7] shadow-sm flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105">
+            <img
+              src="/college-logo.png"
+              alt="T.P. College Madhepura emblem"
+              className="w-full h-full object-contain"
+            />
+          </span>
 
           <div className="flex flex-col">
             <div className="flex items-center gap-2">

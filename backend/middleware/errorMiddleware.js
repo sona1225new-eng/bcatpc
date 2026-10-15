@@ -42,8 +42,14 @@ const errorHandler = (err, req, res, next) => { // eslint-disable-line no-unused
   // ── Mongoose: duplicate key (unique constraint) ──────────────────────────────
   if (err.code === 11000) {
     statusCode = 409;
-    const field = Object.keys(err.keyValue || {})[0] || 'field';
-    message = `Duplicate value: a record with this ${field} already exists.`;
+    const field = Object.keys(err.keyValue || err.keyPattern || {})[0] || 'field';
+    const duplicateMessages = {
+      email: 'This email is already registered.',
+      slug: 'A faculty profile with this URL slug already exists.',
+      _id: 'A record with this ID already exists.',
+    };
+    message = duplicateMessages[field] || `A record with this ${field} already exists.`;
+    errors = [{ field, message }];
   }
 
   // ── JWT errors ───────────────────────────────────────────────────────────────

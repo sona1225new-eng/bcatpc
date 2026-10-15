@@ -27,9 +27,13 @@ export default function MobileMenu({
       {/* Top Header inside Drawer */}
       <div className="flex items-center justify-between px-5 py-4 border-b border-slate-800">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-gold-500 to-gold-400 flex items-center justify-center text-slate-950 font-black text-sm">
-            TPC
-          </div>
+          <span className="w-10 h-10 p-1 rounded-md bg-[#FFFDF7] flex items-center justify-center flex-shrink-0">
+            <img
+              src="/college-logo.png"
+              alt="T.P. College Madhepura emblem"
+              className="w-full h-full object-contain"
+            />
+          </span>
           <div>
             <div className="text-sm font-bold text-white leading-tight">T.P. College Madhepura</div>
             <div className="text-[11px] text-gold-400 font-semibold">Dept. of Computer Application</div>

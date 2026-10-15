@@ -19,11 +19,13 @@ export default function Footer() {
           {/* Column 1: College & Department Identity */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-gold-500 to-gold-400 p-[2px]">
-                <div className="w-full h-full rounded-full bg-[#233B5D] flex items-center justify-center font-black text-gold-400 text-xs">
-                  TPC
-                </div>
-              </div>
+              <span className="w-10 h-10 p-1.5 rounded-lg bg-[#FFFDF7] flex items-center justify-center flex-shrink-0">
+                <img
+                  src="/college-logo.png"
+                  alt="T.P. College Madhepura emblem"
+                  className="w-full h-full object-contain"
+                />
+              </span>
               <div>
                 <h3 className="text-base font-bold text-white leading-tight">
                   {siteConfig.collegeName}
@@ -199,16 +201,21 @@ export default function Footer() {
 
       {/* Bottom Copyright Sub-Bar */}
       <div className="border-t border-slate-800/80 bg-slate-950 py-4 text-[11px] sm:text-xs text-slate-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p>
-            © 2026 Department of Computer Application, T.P. College Madhepura (B.N. Mandal University). All Rights Reserved.
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-2">
+          <p className="text-center text-slate-300">
+            Developed &amp; Maintained under the supervision of Abhishek Sinha (Technotricky - IT Solutions)
           </p>
-          <div className="flex items-center gap-4 text-slate-300">
-            <Link to="/contact" className="hover:text-gold-400">Privacy Policy</Link>
-            <span>•</span>
-            <Link to="/contact" className="hover:text-gold-400">Terms of Use</Link>
-            <span>•</span>
-            <Link to="/contact" className="hover:text-gold-400">Helpdesk</Link>
+          <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-2">
+            <p className="text-center">
+              © 2026 Department of Computer Application, T.P. College Madhepura (B.N. Mandal University). All Rights Reserved.
+            </p>
+            <div className="flex items-center gap-4 text-slate-300">
+              <Link to="/contact" className="hover:text-gold-400">Privacy Policy</Link>
+              <span>•</span>
+              <Link to="/contact" className="hover:text-gold-400">Terms of Use</Link>
+              <span>•</span>
+              <Link to="/contact" className="hover:text-gold-400">Helpdesk</Link>
+            </div>
           </div>
         </div>
       </div>

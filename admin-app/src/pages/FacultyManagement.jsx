@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { facultyService } from '../services/facultyService';
 import { useToast } from '../context/ToastContext';
 import LoadingSpinner from '../components/common/LoadingSpinner';
@@ -48,6 +48,7 @@ export default function FacultyManagement() {
   const [isViewOpen, setIsViewOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const submittingRef = useRef(false);
   const [fileUploading, setFileUploading] = useState(false);
   const [deleting, setDeleting] = useState(false);
 
@@ -113,17 +114,24 @@ export default function FacultyManagement() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (fileUploading) return;
+    if (submittingRef.current || fileUploading) return;
     if (!formData.name.trim()) {
       toast.error('Faculty name is required');
       return;
     }
 
+    submittingRef.current = true;
     try {
       setSubmitting(true);
       const payload = {
-        ...formData,
+        name: formData.name.trim(),
+        designation: formData.designation,
+        shortDesignation: formData.shortDesignation,
+        photo: formData.photo,
+        resumeUrl: formData.resumeUrl,
+        resumeFileName: formData.resumeFileName,
         order: Number(formData.order) || 0,
+        isActive: formData.isActive,
       };
 
       if (selectedFaculty) {
@@ -139,6 +147,7 @@ export default function FacultyManagement() {
     } catch (err) {
       toast.error(err.message || 'Operation failed');
     } finally {
+      submittingRef.current = false;
       setSubmitting(false);
     }
   };

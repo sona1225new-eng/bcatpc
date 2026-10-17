@@ -6,6 +6,7 @@ const {
   sendBadRequest,
 } = require('../utils/apiResponse');
 const Gallery = require('../models/Gallery');
+const Album = require('../models/Album');
 
 /** GET /api/galleries — List gallery items (Public) */
 const getAllGallery = asyncHandler(async (req, res) => {
@@ -21,7 +22,49 @@ const getAllGallery = asyncHandler(async (req, res) => {
     filter.title = { $regex: search, $options: 'i' };
   }
 
-  const items = await Gallery.find(filter).sort({ order: 1, date: -1 });
+  const galleryItems = await Gallery.find(filter).sort({ order: 1, date: -1 });
+  const albumItems = [];
+
+  if (req.query.all !== 'true') {
+    const albumFilter = { isPublished: true };
+    if (category) albumFilter.category = category;
+
+    const albums = await Album.find(albumFilter).lean();
+    const searchPattern = search ? new RegExp(search, 'i') : null;
+
+    for (const album of albums) {
+      for (const image of album.images || []) {
+        const item = {
+          _id: image._id,
+          id: image._id?.toString(),
+          title: image.title || album.title,
+          imageUrl: image.url,
+          category: album.category,
+          description: image.caption || image.altText || album.description || '',
+          date: album.eventDate,
+          order: image.order ?? album.order ?? 0,
+          isPublished: true,
+          albumId: album._id,
+          albumTitle: album.title,
+        };
+
+        if (
+          searchPattern &&
+          !searchPattern.test(item.title) &&
+          !searchPattern.test(item.description) &&
+          !searchPattern.test(album.title)
+        ) {
+          continue;
+        }
+        albumItems.push(item);
+      }
+    }
+  }
+
+  const items = [...galleryItems, ...albumItems].sort(
+    (a, b) => (a.order || 0) - (b.order || 0) ||
+      new Date(b.date || 0) - new Date(a.date || 0)
+  );
   return sendSuccess(res, items, `${items.length} gallery items retrieved.`);
 });
 

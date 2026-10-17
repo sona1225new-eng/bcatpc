@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { galleryService } from '../services/galleryService';
 import { albumService } from '../services/albumService';
-import { getPublicFileUrl } from '../services/api';
+import { getPublicFileUrl, isPublicImageUrl } from '../services/api';
 import { useToast } from '../context/ToastContext';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 import ErrorAlert from '../components/common/ErrorAlert';
@@ -190,6 +190,12 @@ export default function GalleryManagement() {
       setUploadProgress(`Uploading ${files.length} images...`);
       const res = await albumService.uploadMultipleImages(files);
       const uploaded = res.data || [];
+      if (!Array.isArray(uploaded) || uploaded.length !== files.length) {
+        throw new Error('The upload service did not return a URL for every selected image. Please try again.');
+      }
+      if (uploaded.some((item) => !isPublicImageUrl(item.fileUrl))) {
+        throw new Error('The upload service returned an invalid public image URL. Please try again.');
+      }
 
       const newImages = uploaded.map((item, idx) => ({
         url: item.fileUrl,
@@ -927,6 +933,11 @@ export default function GalleryManagement() {
                           src={getPublicFileUrl(img.url)}
                           alt={img.altText || 'Thumbnail'}
                           className="w-full h-full object-cover"
+                          onError={(event) => {
+                            event.currentTarget.onerror = null;
+                            event.currentTarget.alt = 'Image unavailable';
+                            event.currentTarget.title = 'This image could not be loaded. Check its URL or upload it again.';
+                          }}
                         />
                         {isCover && (
                           <div className="absolute top-0.5 right-0.5 p-0.5 bg-gold-500 rounded text-navy-950 text-[8px] font-black">

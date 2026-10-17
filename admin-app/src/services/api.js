@@ -42,6 +42,19 @@ export const isPublicFileUrl = (fileUrl) => {
   }
 };
 
+export const isPublicImageUrl = (fileUrl) => {
+  if (typeof fileUrl !== 'string' || !fileUrl.trim()) return false;
+  try {
+    const url = new URL(fileUrl);
+    return url.protocol === 'https:' &&
+      !['localhost', '127.0.0.1', '[::1]'].includes(url.hostname) &&
+      !url.username &&
+      !url.password;
+  } catch {
+    return false;
+  }
+};
+
 export const isPublicResumeUrl = (fileUrl) => {
   if (typeof fileUrl !== 'string' || !fileUrl.trim()) return false;
   try {

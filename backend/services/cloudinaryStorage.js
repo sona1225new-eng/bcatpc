@@ -53,7 +53,27 @@ const uploadToCloudinary = async (file, { resourceType, folder, publicId }) => {
     throw error;
   }
 
-  return result.secure_url;
+  let secureUrl;
+  try {
+    secureUrl = new URL(result.secure_url);
+  } catch {
+    const error = new Error('Persistent storage returned an invalid public file URL.');
+    error.statusCode = 502;
+    throw error;
+  }
+
+  const expectedPath = `/${CLOUDINARY_CLOUD_NAME}/${resourceType}/upload/`;
+  if (
+    secureUrl.protocol !== 'https:' ||
+    secureUrl.hostname !== 'res.cloudinary.com' ||
+    !secureUrl.pathname.startsWith(expectedPath)
+  ) {
+    const error = new Error('Persistent storage returned an invalid public file URL.');
+    error.statusCode = 502;
+    throw error;
+  }
+
+  return secureUrl.toString();
 };
 
 const uploadResume = (file) =>

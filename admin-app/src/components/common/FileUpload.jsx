@@ -1,6 +1,11 @@
 import React, { useId, useRef, useState } from 'react';
 import { uploadService } from '../../services/uploadService';
-import { getPublicFileUrl, isPublicFileUrl, isPublicResumeUrl } from '../../services/api';
+import {
+  getPublicFileUrl,
+  isPublicFileUrl,
+  isPublicImageUrl,
+  isPublicResumeUrl,
+} from '../../services/api';
 import { useToast } from '../../context/ToastContext';
 import {
   HiOutlineCloudArrowUp,
@@ -65,6 +70,9 @@ export default function FileUpload({
       if (!res.data?.fileUrl) {
         throw new Error('Upload completed without a public file URL.');
       }
+      if (file.type.startsWith('image/') && !isPublicImageUrl(res.data.fileUrl)) {
+        throw new Error('The upload service returned an invalid public image URL. Please try again.');
+      }
       onChange(res.data.fileUrl);
       onFileNameChange?.(res.data.fileName || file.name);
       if (onFileInfoChange) {
@@ -119,14 +127,23 @@ export default function FileUpload({
         <div className="flex items-center justify-between gap-3 p-3 bg-slate-800/80 border border-slate-700 rounded-xl">
           <div className="flex items-center gap-3 overflow-hidden">
             {fileIsImage ? (
-              <img
-                src={publicFileUrl}
-                alt="Preview"
-                className="w-12 h-12 rounded-lg object-cover border border-slate-700 bg-slate-900 shrink-0"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                }}
-              />
+              <>
+                <img
+                  src={publicFileUrl}
+                  alt="Preview"
+                  className="w-12 h-12 rounded-lg object-cover border border-slate-700 bg-slate-900 shrink-0"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextElementSibling?.classList.remove('hidden');
+                  }}
+                />
+                <span
+                  role="status"
+                  className="hidden w-12 h-12 rounded-lg border border-rose-500/30 bg-rose-500/10 text-[9px] text-center text-rose-300 items-center justify-center shrink-0 flex"
+                >
+                  Preview unavailable
+                </span>
+              </>
             ) : (
               <div className="w-12 h-12 rounded-lg bg-gold-500/10 border border-gold-500/20 text-gold-400 flex items-center justify-center shrink-0">
                 <HiOutlineDocumentText className="text-2xl" />

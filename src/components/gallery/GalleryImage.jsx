@@ -10,6 +10,8 @@ export default function GalleryImage({ src, ...props }) {
       src={getPublicFileUrl(src) || FALLBACK_IMAGE}
       onError={(event) => {
         event.currentTarget.onerror = null;
+        event.currentTarget.alt = `Image unavailable: ${props.alt || 'Gallery image'}`;
+        event.currentTarget.title = 'This gallery image could not be loaded.';
         event.currentTarget.src = FALLBACK_IMAGE;
       }}
     />

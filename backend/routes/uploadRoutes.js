@@ -3,15 +3,11 @@ const router = express.Router();
 const upload = require('../middleware/uploadMiddleware');
 const { protect } = require('../middleware/authMiddleware');
 const asyncHandler = require('../utils/asyncHandler');
-const { uploadResume, uploadImage, isCloudinaryConfigured } = require('../services/cloudinaryStorage');
+const { uploadResume, uploadImage } = require('../services/cloudinaryStorage');
 const { sendSuccess, sendBadRequest } = require('../utils/apiResponse');
 const fs = require('fs/promises');
 
 const storeUploadedImage = async (file) => {
-  if (!isCloudinaryConfigured() && process.env.NODE_ENV === 'development') {
-    return `/uploads/${file.filename}`;
-  }
-
   try {
     return await uploadImage(file);
   } finally {

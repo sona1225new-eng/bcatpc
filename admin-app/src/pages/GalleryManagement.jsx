@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { galleryService } from '../services/galleryService';
 import { albumService } from '../services/albumService';
+import { getPublicFileUrl } from '../services/api';
 import { useToast } from '../context/ToastContext';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 import ErrorAlert from '../components/common/ErrorAlert';
@@ -525,7 +526,7 @@ export default function GalleryManagement() {
                   >
                     <div className="relative aspect-video bg-slate-950 overflow-hidden">
                       <img
-                        src={cover}
+                        src={getPublicFileUrl(cover)}
                         alt={album.title}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                         onError={(e) => {
@@ -687,7 +688,7 @@ export default function GalleryManagement() {
                 >
                   <div className="relative aspect-video bg-slate-950 overflow-hidden">
                     <img
-                      src={item.imageUrl}
+                      src={getPublicFileUrl(item.imageUrl)}
                       alt={item.title}
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                       onError={(e) => {
@@ -923,7 +924,7 @@ export default function GalleryManagement() {
                       {/* Image Thumbnail */}
                       <div className="relative w-16 h-14 rounded-lg bg-slate-950 overflow-hidden shrink-0 border border-slate-800">
                         <img
-                          src={img.url}
+                          src={getPublicFileUrl(img.url)}
                           alt={img.altText || 'Thumbnail'}
                           className="w-full h-full object-cover"
                         />

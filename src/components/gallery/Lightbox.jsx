@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { HiX, HiChevronLeft, HiChevronRight } from 'react-icons/hi';
+import GalleryImage from './GalleryImage';
 
 export default function Lightbox({ image, onClose, onPrev, onNext }) {
   useEffect(() => {
@@ -40,7 +41,7 @@ export default function Lightbox({ image, onClose, onPrev, onNext }) {
 
       {/* Main Image and details */}
       <div className="max-w-5xl max-h-[90vh] flex flex-col items-center justify-center text-center">
-        <img
+        <GalleryImage
           src={image.imageUrl}
           alt={image.title}
           className="max-h-[75vh] w-auto max-w-full rounded-xl shadow-2xl object-contain"

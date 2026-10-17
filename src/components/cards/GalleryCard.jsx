@@ -1,5 +1,6 @@
 import React from 'react';
 import { HiOutlineEye, HiOutlineCalendar } from 'react-icons/hi';
+import GalleryImage from '../gallery/GalleryImage';
 
 export default function GalleryCard({ item, onClick }) {
   if (!item) return null;
@@ -9,7 +10,7 @@ export default function GalleryCard({ item, onClick }) {
       onClick={() => onClick && onClick(item)}
       className="group relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 cursor-pointer shadow-xs hover:shadow-xl transition-all duration-300 aspect-[4/3]"
     >
-      <img
+      <GalleryImage
         src={item.imageUrl}
         alt={item.title}
         className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"

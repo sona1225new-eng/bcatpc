@@ -1,24 +1,33 @@
 const { createHash, randomUUID } = require('crypto');
+const fs = require('fs/promises');
+const path = require('path');
 
-const uploadResume = async (file) => {
+const isCloudinaryConfigured = () =>
+  Boolean(
+    process.env.CLOUDINARY_CLOUD_NAME &&
+      process.env.CLOUDINARY_API_KEY &&
+      process.env.CLOUDINARY_API_SECRET
+  );
+
+const uploadToCloudinary = async (file, { resourceType, folder, publicId }) => {
   const { CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET } = process.env;
-  if (!CLOUDINARY_CLOUD_NAME || !CLOUDINARY_API_KEY || !CLOUDINARY_API_SECRET) {
+  if (!isCloudinaryConfigured()) {
+    const label = resourceType === 'raw' ? 'Resume' : 'Image';
     const error = new Error(
-      'Resume storage is not configured. Set CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET on the backend.'
+      `${label} storage is not configured. Set CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET on the backend.`
     );
     error.statusCode = 503;
     throw error;
   }
 
   const timestamp = Math.floor(Date.now() / 1000);
-  const publicId = `faculty-resume-${randomUUID()}.pdf`;
-  const folder = 'faculty-resumes';
   const signatureParams = `folder=${folder}&public_id=${publicId}&timestamp=${timestamp}`;
   const signature = createHash('sha1')
     .update(`${signatureParams}${CLOUDINARY_API_SECRET}`)
     .digest('hex');
+  const fileBuffer = file.buffer || await fs.readFile(file.path);
   const form = new FormData();
-  form.append('file', new Blob([file.buffer], { type: 'application/pdf' }), publicId);
+  form.append('file', new Blob([fileBuffer], { type: file.mimetype }), path.basename(file.originalname || publicId));
   form.append('api_key', CLOUDINARY_API_KEY);
   form.append('timestamp', String(timestamp));
   form.append('folder', folder);
@@ -26,7 +35,7 @@ const uploadResume = async (file) => {
   form.append('signature', signature);
 
   const response = await fetch(
-    `https://api.cloudinary.com/v1_1/${encodeURIComponent(CLOUDINARY_CLOUD_NAME)}/raw/upload`,
+    `https://api.cloudinary.com/v1_1/${encodeURIComponent(CLOUDINARY_CLOUD_NAME)}/${resourceType}/upload`,
     { method: 'POST', body: form }
   );
   let result;
@@ -39,7 +48,7 @@ const uploadResume = async (file) => {
   }
 
   if (!response.ok || !result.secure_url) {
-    const error = new Error(result.error?.message || 'Resume upload to persistent storage failed.');
+    const error = new Error(result.error?.message || 'Upload to persistent storage failed.');
     error.statusCode = response.status >= 500 ? 502 : 400;
     throw error;
   }
@@ -47,4 +56,25 @@ const uploadResume = async (file) => {
   return result.secure_url;
 };
 
-module.exports = { uploadResume };
+const uploadResume = (file) =>
+  uploadToCloudinary(file, {
+    resourceType: 'raw',
+    folder: 'faculty-resumes',
+    publicId: `faculty-resume-${randomUUID()}.pdf`,
+  });
+
+const uploadImage = (file) => {
+  if (!file.mimetype || !file.mimetype.startsWith('image/')) {
+    const error = new Error('Only image files can be uploaded to gallery storage.');
+    error.statusCode = 400;
+    throw error;
+  }
+
+  return uploadToCloudinary(file, {
+    resourceType: 'image',
+    folder: 'gallery',
+    publicId: `gallery-${randomUUID()}`,
+  });
+};
+
+module.exports = { uploadResume, uploadImage, isCloudinaryConfigured };

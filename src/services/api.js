@@ -46,7 +46,14 @@ export const getPublicFileUrl = (fileUrl) => {
   try {
     const apiRoot = new URL(API_CONFIG.BASE_URL);
     apiRoot.pathname = `${apiRoot.pathname.replace(/\/api\/?$/, "")}/`;
-    return new URL(fileUrl, apiRoot).toString();
+    const resolvedUrl = new URL(fileUrl, apiRoot);
+    if (
+      ['localhost', '127.0.0.1', '[::1]'].includes(resolvedUrl.hostname) &&
+      resolvedUrl.pathname.startsWith("/uploads/")
+    ) {
+      return new URL(resolvedUrl.pathname, apiRoot).toString();
+    }
+    return resolvedUrl.toString();
   } catch {
     return fileUrl;
   }

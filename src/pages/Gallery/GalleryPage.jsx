@@ -3,6 +3,7 @@ import { useGallery } from '../../hooks/useGallery';
 import { galleryService } from '../../services/galleryService';
 import GalleryCard from '../../components/cards/GalleryCard';
 import Lightbox from '../../components/gallery/Lightbox';
+import GalleryImage from '../../components/gallery/GalleryImage';
 import PageHeader from '../../components/common/PageHeader';
 import LoadingState from '../../components/common/LoadingState';
 import ErrorState from '../../components/common/ErrorState';
@@ -256,7 +257,7 @@ export default function GalleryPage() {
                       >
                         {/* Cover Image */}
                         <div className="relative aspect-[16/10] bg-slate-900 overflow-hidden">
-                          <img
+                          <GalleryImage
                             src={
                               album.coverImage ||
                               'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80'

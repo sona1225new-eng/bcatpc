@@ -3,8 +3,21 @@ const router = express.Router();
 const upload = require('../middleware/uploadMiddleware');
 const { protect } = require('../middleware/authMiddleware');
 const asyncHandler = require('../utils/asyncHandler');
-const { uploadResume } = require('../services/cloudinaryStorage');
+const { uploadResume, uploadImage, isCloudinaryConfigured } = require('../services/cloudinaryStorage');
 const { sendSuccess, sendBadRequest } = require('../utils/apiResponse');
+const fs = require('fs/promises');
+
+const storeUploadedImage = async (file) => {
+  if (!isCloudinaryConfigured() && process.env.NODE_ENV === 'development') {
+    return `/uploads/${file.filename}`;
+  }
+
+  try {
+    return await uploadImage(file);
+  } finally {
+    await fs.unlink(file.path);
+  }
+};
 
 const parseSingleUpload = (req, res, next) => {
   const middleware = req.query.type === 'resume'
@@ -36,7 +49,9 @@ router.post('/', protect, parseSingleUpload, asyncHandler(async (req, res) => {
     );
   }
 
-  const fileUrl = `/uploads/${req.file.filename}`;
+  const fileUrl = req.file.mimetype.startsWith('image/')
+    ? await storeUploadedImage(req.file)
+    : `/uploads/${req.file.filename}`;
   return sendSuccess(
     res,
     {
@@ -50,24 +65,40 @@ router.post('/', protect, parseSingleUpload, asyncHandler(async (req, res) => {
   );
 }));
 
-router.post('/multiple', protect, upload.array('files', 25), (req, res) => {
+router.post('/multiple', protect, upload.array('files', 25), asyncHandler(async (req, res) => {
   if (!req.files || req.files.length === 0) {
     return sendBadRequest(res, 'Please select at least one file to upload.');
   }
 
-  const uploadedFiles = req.files.map((file) => ({
-    fileUrl: `/uploads/${file.filename}`,
-    fileName: file.originalname,
-    storedName: file.filename,
-    fileSize: `${(file.size / (1024 * 1024)).toFixed(2)} MB`,
-    mimetype: file.mimetype,
-  }));
+  const uploadedFiles = [];
+  for (let index = 0; index < req.files.length; index += 1) {
+    const file = req.files[index];
+    let fileUrl;
+    try {
+      fileUrl = file.mimetype.startsWith('image/')
+        ? await storeUploadedImage(file)
+        : `/uploads/${file.filename}`;
+    } catch (error) {
+      for (const pendingFile of req.files.slice(index + 1)) {
+        await fs.unlink(pendingFile.path);
+      }
+      throw error;
+    }
+
+    uploadedFiles.push({
+      fileUrl,
+      fileName: file.originalname,
+      storedName: file.filename,
+      fileSize: `${(file.size / (1024 * 1024)).toFixed(2)} MB`,
+      mimetype: file.mimetype,
+    });
+  }
 
   return sendSuccess(
     res,
     uploadedFiles,
     `${uploadedFiles.length} files uploaded successfully.`
   );
-});
+}));
 
 module.exports = router;

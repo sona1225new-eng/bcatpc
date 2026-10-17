@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { HiChevronDown, HiX, HiOutlineAcademicCap, HiOutlineArrowRight } from 'react-icons/hi';
-import { siteConfig } from '../../config/siteConfig';
+import { HiChevronDown, HiX, HiOutlineAcademicCap } from 'react-icons/hi';
 
 export default function MobileMenu({
   isOpen,
@@ -265,17 +264,6 @@ export default function MobileMenu({
           </NavLink>
         </div>
 
-        {/* CTA in Drawer */}
-        <div className="pt-4 space-y-3">
-          <Link
-            to="/contact#admission-inquiry"
-            onClick={handleNavClick}
-            className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-navy-900 via-navy-800 to-navy-900 hover:from-navy-800 hover:to-navy-800 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg transition"
-          >
-            <span>APPLY NOW (Session {siteConfig.admissions.session})</span>
-            <HiOutlineArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
       </div>
     </div>
   );

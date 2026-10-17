@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { HiMenu, HiChevronDown, HiOutlineArrowRight, HiUserCircle } from 'react-icons/hi';
+import { HiMenu, HiChevronDown, HiUserCircle } from 'react-icons/hi';
 import DropdownMenu from './DropdownMenu';
 import MobileMenu from './MobileMenu';
 import { facultyService } from '../../services/facultyService';
@@ -277,17 +277,8 @@ export default function Navbar() {
           </NavLink>
         </nav>
 
-        {/* Right Actions: Apply Now Button & Mobile Hamburger */}
+        {/* Right Actions: Student/Faculty Portal & Mobile Hamburger */}
         <div className="flex items-center gap-3">
-          {/* Apply Now Pill Button styled exactly as in reference */}
-          <Link
-            to="/contact#admission-inquiry"
-            className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-gradient-to-r from-navy-900 via-navy-800 to-navy-900 hover:from-navy-800 hover:to-navy-800 text-white shadow-md shadow-navy-900/30 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5"
-          >
-            <span>APPLY NOW</span>
-            <HiOutlineArrowRight className="w-4 h-4" />
-          </Link>
-
           {/* Student/Faculty Portal Indicator */}
           <Link
             to="/notices"

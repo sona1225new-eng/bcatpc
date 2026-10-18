@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import TopBar from '../components/layout/TopBar';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 
@@ -14,7 +13,6 @@ export default function MainLayout() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F7F6F2] text-slate-800 antialiased font-sans">
-      <TopBar />
       <Navbar />
       <main className="flex-grow">
         <Outlet />

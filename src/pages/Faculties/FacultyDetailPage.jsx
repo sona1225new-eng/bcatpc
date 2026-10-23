@@ -4,7 +4,7 @@ import { HiOutlineArrowLeft } from 'react-icons/hi';
 import { useFacultyDetail } from '../../hooks/useFaculties';
 import LoadingState from '../../components/common/LoadingState';
 import ErrorState from '../../components/common/ErrorState';
-import FacultyResumeViewer from '../../components/common/FacultyResumeViewer';
+import PDFViewer from '../../components/common/PDFViewer';
 import { getPublicFileUrl, isPublicResumeUrl } from '../../services/api';
 
 export default function FacultyDetailPage() {
@@ -50,7 +50,7 @@ export default function FacultyDetailPage() {
       </Link>
 
       {resumeUrl ? (
-        <FacultyResumeViewer url={resumeUrl} />
+        <PDFViewer url={resumeUrl} documentLabel="faculty resume" />
       ) : (
         <div className="mx-auto flex min-h-[45vh] max-w-5xl items-center justify-center px-4 text-center text-sm text-slate-600">
           This faculty resume is unavailable.

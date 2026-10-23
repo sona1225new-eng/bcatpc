@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HiOutlineDownload, HiOutlineEye } from 'react-icons/hi';
 import { getPublicFileUrl } from '../../services/api';
 
 export default function PYQCard({ paper }) {
+  const [downloadError, setDownloadError] = useState('');
   if (!paper) return null;
 
   const paperId = paper._id || paper.id;
@@ -13,6 +14,33 @@ export default function PYQCard({ paper }) {
   const semester =
     paper.semesterLabel ||
     (paper.semesterNumber ? `Semester ${paper.semesterNumber}` : paper.semester);
+
+  const handleDownload = async () => {
+    setDownloadError('');
+    try {
+      const response = await fetch(pdfUrl);
+      if (!response.ok) {
+        throw new Error(`PDF download failed with status ${response.status}.`);
+      }
+
+      const contentType = response.headers.get('content-type') || '';
+      if (!contentType.toLowerCase().includes('application/pdf')) {
+        throw new Error('The file URL did not return a PDF document.');
+      }
+
+      const objectUrl = URL.createObjectURL(await response.blob());
+      const anchor = document.createElement('a');
+      anchor.href = objectUrl;
+      anchor.download = paper.fileName || `${title}.pdf`;
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
+      window.setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+    } catch (error) {
+      console.error('Failed to download question paper PDF:', error);
+      setDownloadError(error.message || 'PDF download failed.');
+    }
+  };
 
   return (
     <article className="flex min-w-0 flex-col justify-between gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-xs transition hover:border-gold-500 hover:shadow-md">
@@ -53,15 +81,15 @@ export default function PYQCard({ paper }) {
         )}
 
         {pdfUrl ? (
-          <a
-            href={pdfUrl}
-            download={paper.fileName || `${title}.pdf`}
+          <button
+            type="button"
+            onClick={handleDownload}
             className="inline-flex min-h-8 items-center justify-center gap-1.5 rounded-lg bg-navy-900 px-2.5 py-1.5 text-[11px] font-bold text-white shadow-xs transition hover:bg-navy-800"
             title="Download question paper PDF"
           >
             <HiOutlineDownload className="h-4 w-4" />
             <span>Download</span>
-          </a>
+          </button>
         ) : (
           <span className="inline-flex min-h-8 items-center gap-1.5 rounded-lg bg-slate-100 px-2.5 py-1.5 text-[11px] font-bold text-slate-400">
             <HiOutlineDownload className="h-4 w-4" />
@@ -69,6 +97,11 @@ export default function PYQCard({ paper }) {
           </span>
         )}
       </div>
+      {downloadError && (
+        <p role="alert" className="text-[11px] font-medium text-rose-700">
+          {downloadError}
+        </p>
+      )}
     </article>
   );
 }

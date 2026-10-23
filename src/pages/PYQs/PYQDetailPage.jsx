@@ -1,11 +1,8 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { 
-  HiOutlineCalendar, 
   HiOutlineDownload, 
   HiOutlineArrowLeft, 
-  HiOutlineDocumentText,
-  HiOutlineAcademicCap,
   HiOutlineCheckCircle
 } from 'react-icons/hi';
 import { usePYQDetail } from '../../hooks/usePYQs';
@@ -13,6 +10,7 @@ import PageHeader from '../../components/common/PageHeader';
 import LoadingState from '../../components/common/LoadingState';
 import ErrorState from '../../components/common/ErrorState';
 import { getPublicFileUrl } from '../../services/api';
+import PDFViewer from '../../components/common/PDFViewer';
 
 export default function PYQDetailPage() {
   const { id } = useParams();
@@ -156,11 +154,12 @@ export default function PYQDetailPage() {
                   <span>Open PDF</span>
                 </a>
               </div>
-              <iframe
-                title={`${paper.subject} question paper PDF`}
-                src={pdfUrl}
-                className="w-full h-[min(80vh,900px)] rounded-2xl border border-slate-200 bg-slate-100"
-              />
+              <div className="max-h-[min(80vh,900px)] overflow-y-auto rounded-2xl border border-slate-200 bg-slate-100 p-2 sm:p-4">
+                <PDFViewer
+                  url={pdfUrl}
+                  documentLabel={paper.title || 'question paper'}
+                />
+              </div>
             </section>
           ) : (
             <p className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">

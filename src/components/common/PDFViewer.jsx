@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import pdfWorkerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 
-export default function FacultyResumeViewer({ url }) {
+export default function PDFViewer({ url, documentLabel = 'PDF document' }) {
   const pagesRef = useRef(null);
   const [status, setStatus] = useState('loading');
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     let disposed = false;
@@ -13,6 +14,10 @@ export default function FacultyResumeViewer({ url }) {
     let renderVersion = 0;
     let resizeObserver;
     let resizeFrame;
+    let renderedWidth = 0;
+
+    setStatus('loading');
+    setErrorMessage('');
 
     const renderPages = async () => {
       if (!pdfDocument || !pagesRef.current || disposed) return;
@@ -20,6 +25,7 @@ export default function FacultyResumeViewer({ url }) {
       const container = pagesRef.current;
       const width = container.clientWidth;
       if (!width) return;
+      renderedWidth = width;
 
       const version = ++renderVersion;
       renderTask?.cancel();
@@ -38,7 +44,7 @@ export default function FacultyResumeViewer({ url }) {
           const canvas = document.createElement('canvas');
           canvas.className = 'block h-auto w-full bg-white';
           canvas.setAttribute('role', 'img');
-          canvas.setAttribute('aria-label', `Resume page ${pageNumber} of ${pdfDocument.numPages}`);
+          canvas.setAttribute('aria-label', `${documentLabel} page ${pageNumber} of ${pdfDocument.numPages}`);
           canvas.width = Math.ceil(viewport.width * outputScale);
           canvas.height = Math.ceil(viewport.height * outputScale);
           container.appendChild(canvas);
@@ -55,14 +61,17 @@ export default function FacultyResumeViewer({ url }) {
         setStatus('ready');
       } catch (error) {
         if (error.name !== 'RenderingCancelledException' && !disposed && version === renderVersion) {
-          console.error('Failed to render faculty resume PDF:', error);
+          console.error(`Failed to render ${documentLabel}:`, error);
           container.replaceChildren();
+          setErrorMessage(error.message);
           setStatus('error');
         }
       }
     };
 
     const handleResize = () => {
+      const width = pagesRef.current?.clientWidth || 0;
+      if (!width || Math.abs(width - renderedWidth) < 1) return;
       cancelAnimationFrame(resizeFrame);
       resizeFrame = requestAnimationFrame(() => {
         renderPages();
@@ -86,7 +95,8 @@ export default function FacultyResumeViewer({ url }) {
         await renderPages();
       } catch (error) {
         if (!disposed) {
-          console.error('Failed to load faculty resume PDF:', error);
+          console.error(`Failed to load ${documentLabel}:`, error);
+          setErrorMessage(error.message);
           setStatus('error');
         }
       }
@@ -102,7 +112,7 @@ export default function FacultyResumeViewer({ url }) {
       renderTask?.cancel();
       documentTask?.destroy();
     };
-  }, [url]);
+  }, [url, documentLabel]);
 
   return (
     <div className="w-full">
@@ -112,8 +122,8 @@ export default function FacultyResumeViewer({ url }) {
           role={status === 'error' ? 'alert' : 'status'}
         >
           {status === 'error'
-            ? 'Unable to display this PDF.'
-            : 'Loading resume…'}
+            ? `Unable to display ${documentLabel}.${errorMessage ? ` ${errorMessage}` : ''}`
+            : `Loading ${documentLabel}…`}
         </p>
       )}
       <div

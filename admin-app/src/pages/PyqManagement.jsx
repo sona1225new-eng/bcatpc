@@ -470,6 +470,7 @@ export default function PyqManagement() {
           <FileUpload
             label="Upload Question Paper (PDF)"
             accept="application/pdf"
+            uploadType="pyq"
             value={formData.fileUrl}
             onChange={(url) => setFormData({ ...formData, fileUrl: url })}
             onFileInfoChange={(info) => {

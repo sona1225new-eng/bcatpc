@@ -6,6 +6,22 @@ const {
   sendBadRequest,
 } = require('../utils/apiResponse');
 const PYQ = require('../models/PYQ');
+const fs = require('fs/promises');
+const { uploadPYQPdf } = require('../services/cloudinaryStorage');
+
+const persistUploadedPYQ = async (file) => {
+  try {
+    return {
+      fileUrl: await uploadPYQPdf(file),
+      fileName: file.originalname,
+      fileSize: `${(file.size / (1024 * 1024)).toFixed(2)} MB`,
+    };
+  } finally {
+    if (file.path) {
+      await fs.unlink(file.path);
+    }
+  }
+};
 
 /**
  * GET /api/pyqs — List previous year question papers with filters and search
@@ -81,9 +97,7 @@ const createPYQ = asyncHandler(async (req, res) => {
 
   // If a file was uploaded via multer, populate PDF file fields
   if (req.file) {
-    data.fileUrl = `/uploads/${req.file.filename}`;
-    data.fileName = req.file.originalname;
-    data.fileSize = `${(req.file.size / (1024 * 1024)).toFixed(2)} MB`;
+    Object.assign(data, await persistUploadedPYQ(req.file));
   }
 
   // Auto-fill semesterNumber and semesterLabel if semester slug is provided
@@ -107,9 +121,7 @@ const updatePYQ = asyncHandler(async (req, res) => {
   const data = { ...req.body };
 
   if (req.file) {
-    data.fileUrl = `/uploads/${req.file.filename}`;
-    data.fileName = req.file.originalname;
-    data.fileSize = `${(req.file.size / (1024 * 1024)).toFixed(2)} MB`;
+    Object.assign(data, await persistUploadedPYQ(req.file));
   }
 
   if (data.semester && !data.semesterNumber) {

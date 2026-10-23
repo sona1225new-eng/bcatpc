@@ -97,4 +97,28 @@ const uploadImage = (file) => {
   });
 };
 
-module.exports = { uploadResume, uploadImage, isCloudinaryConfigured };
+const uploadPYQPdf = async (file) => {
+  if (file.mimetype !== 'application/pdf') {
+    const error = new Error('Invalid question paper file. Select a PDF document.');
+    error.statusCode = 400;
+    throw error;
+  }
+
+  const buffer = file.buffer || await fs.readFile(file.path);
+  if (buffer.subarray(0, 5).toString('ascii') !== '%PDF-') {
+    const error = new Error('Invalid question paper file. Select a valid PDF document.');
+    error.statusCode = 400;
+    throw error;
+  }
+
+  return uploadToCloudinary(
+    { ...file, buffer },
+    {
+      resourceType: 'raw',
+      folder: 'pyqs',
+      publicId: `pyq-${randomUUID()}.pdf`,
+    }
+  );
+};
+
+module.exports = { uploadResume, uploadImage, uploadPYQPdf, isCloudinaryConfigured };

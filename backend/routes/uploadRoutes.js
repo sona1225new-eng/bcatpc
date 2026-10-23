@@ -3,13 +3,21 @@ const router = express.Router();
 const upload = require('../middleware/uploadMiddleware');
 const { protect } = require('../middleware/authMiddleware');
 const asyncHandler = require('../utils/asyncHandler');
-const { uploadResume, uploadImage } = require('../services/cloudinaryStorage');
+const { uploadResume, uploadImage, uploadPYQPdf } = require('../services/cloudinaryStorage');
 const { sendSuccess, sendBadRequest } = require('../utils/apiResponse');
 const fs = require('fs/promises');
 
 const storeUploadedImage = async (file) => {
   try {
     return await uploadImage(file);
+  } finally {
+    await fs.unlink(file.path);
+  }
+};
+
+const storeUploadedPYQPdf = async (file) => {
+  try {
+    return await uploadPYQPdf(file);
   } finally {
     await fs.unlink(file.path);
   }
@@ -42,6 +50,20 @@ router.post('/', protect, parseSingleUpload, asyncHandler(async (req, res) => {
         mimetype: req.file.mimetype,
       },
       'Resume uploaded successfully.'
+    );
+  }
+
+  if (req.query.type === 'pyq') {
+    const fileUrl = await storeUploadedPYQPdf(req.file);
+    return sendSuccess(
+      res,
+      {
+        fileUrl,
+        fileName: req.file.originalname,
+        fileSize: `${(req.file.size / (1024 * 1024)).toFixed(2)} MB`,
+        mimetype: req.file.mimetype,
+      },
+      'Question paper uploaded successfully.'
     );
   }
 

@@ -162,6 +162,24 @@ export default function Footer() {
                   <span>Anti-Ragging & Grievance Cell</span>
                 </Link>
               </li>
+              <li>
+                <Link to="/contact" className="hover:text-gold-400 transition-colors flex items-center gap-1.5">
+                  <HiOutlineArrowRight className="w-3 h-3 text-slate-600" />
+                  <span>Privacy Policy</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-gold-400 transition-colors flex items-center gap-1.5">
+                  <HiOutlineArrowRight className="w-3 h-3 text-slate-600" />
+                  <span>Terms of Use</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-gold-400 transition-colors flex items-center gap-1.5">
+                  <HiOutlineArrowRight className="w-3 h-3 text-slate-600" />
+                  <span>Helpdesk</span>
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -201,22 +219,13 @@ export default function Footer() {
 
       {/* Bottom Copyright Sub-Bar */}
       <div className="border-t border-slate-800/80 bg-slate-950 py-4 text-[11px] sm:text-xs text-slate-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-2">
-          <p className="text-center text-slate-300">
-            Developed &amp; Maintained under the supervision of Abhishek Sinha (Technotricky - IT Solutions)
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-2 text-center leading-relaxed">
+          <p className="text-slate-300">
+            Developed &amp; Maintained under the supervision of Abhishek Sinha (Faculty - T.P.College)
           </p>
-          <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-2">
-            <p className="text-center">
-              © 2026 Department of Computer Application, T.P. College Madhepura (B.N. Mandal University). All Rights Reserved.
-            </p>
-            <div className="flex items-center gap-4 text-slate-300">
-              <Link to="/contact" className="hover:text-gold-400">Privacy Policy</Link>
-              <span>•</span>
-              <Link to="/contact" className="hover:text-gold-400">Terms of Use</Link>
-              <span>•</span>
-              <Link to="/contact" className="hover:text-gold-400">Helpdesk</Link>
-            </div>
-          </div>
+          <p>
+            © 2026 Department of Computer Application, T.P. College Madhepura (B.N. Mandal University). All Rights Reserved.
+          </p>
         </div>
       </div>
     </footer>

@@ -112,102 +112,46 @@
   }
 }
 
-@keyframes department-notice-title-scroll {
-  from {
-    transform: translateX(0);
-  }
+@keyframes notice-board-scroll-up {
   to {
-    transform: translateX(-50%);
+    transform: translateY(-50%);
   }
 }
 
-.notice-title-marquee {
-  height: 2.75rem;
-  max-width: 100%;
+.notice-board-viewport {
   overflow: hidden;
-  padding-right: 0.5rem;
 }
 
-.notice-title-track {
-  display: inline-flex;
-  width: max-content;
+.notice-board-track {
+  display: flex;
+  flex-direction: column;
 }
 
-.notice-title-copy {
-  display: inline-block;
-  padding-right: 2rem;
-  white-space: nowrap;
+.notice-board-sequence {
+  flex: none;
 }
 
-.notice-title-copy a {
-  display: block;
-  color: #233B5D;
-  font-size: 0.875rem;
-  font-weight: 700;
-  line-height: 1.375rem;
-  transition: color 150ms;
+.notice-board-scrolling .notice-board-track {
+  animation: notice-board-scroll-up var(--notice-board-duration) linear infinite;
 }
 
-.notice-title-copy a:hover,
-.notice-title-copy a:focus-visible {
-  color: #314B6C;
-  text-decoration: underline;
-}
-
-.notice-title-marquee.is-overflowing .notice-title-track {
-  animation: department-notice-title-scroll 18s linear infinite;
-  will-change: transform;
-}
-
-.notice-title-marquee:hover .notice-title-track,
-.notice-title-marquee:focus-within .notice-title-track {
+.department-notice-card:hover .notice-board-track,
+.department-notice-card:focus-within .notice-board-track {
   animation-play-state: paused;
 }
 
-.department-notice-viewport {
-  overflow: hidden;
-}
-
-.department-notice-track {
-  transition: transform 350ms ease;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .notice-title-marquee.is-overflowing .notice-title-track {
+  .notice-board-viewport {
+    overflow-y: auto;
+  }
+
+  .notice-board-scrolling .notice-board-track {
     animation: none;
-    will-change: auto;
   }
 
-  .notice-title-marquee {
-    height: auto;
-    overflow: visible;
-    padding-right: 0;
-  }
-
-  .notice-title-track {
-    display: block;
-    width: auto;
-  }
-
-  .notice-title-copy {
+  .notice-board-sequence[aria-hidden="true"],
+  .notice-board-repeat {
     display: none;
-    padding-right: 0;
-    white-space: normal;
-  }
-
-  .notice-title-copy:first-child {
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-  }
-
-  .notice-title-copy a {
-    display: block;
-  }
-
-  .department-notice-track {
-    transition: none;
   }
 }
 

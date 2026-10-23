@@ -28,7 +28,7 @@ const getAllBlogs = asyncHandler(async (req, res) => {
   }
 
   const limit = parseInt(req.query.limit) || 0;
-  const blogs = await Blog.find(filter).sort({ createdAt: -1 }).limit(limit);
+  const blogs = await Blog.find(filter).sort({ publishedAt: -1, createdAt: -1 }).limit(limit);
   return sendSuccess(res, blogs, `${blogs.length} blogs retrieved.`);
 });
 

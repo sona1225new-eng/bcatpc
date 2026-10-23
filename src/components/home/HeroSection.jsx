@@ -22,14 +22,38 @@ export default function HeroSection() {
 
       <div className="hero-layout relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="hero-copy">
-          <p className="hero-eyebrow">
-            BCA <span aria-hidden="true">·</span> T.P. College, Madhepura
-          </p>
-
+          <div className="hero-code-background" aria-hidden="true">
+            {[22, 30, 26].map((duration, columnIndex) => (
+              <div className={`hero-code-column hero-code-column-${columnIndex + 1}`} key={duration}>
+                <div
+                  className={`hero-code-track${columnIndex === 1 ? ' hero-code-track-reverse' : ''}`}
+                  style={{ animationDuration: `${duration}s` }}
+                >
+                  {[0, 1].map((copy) => (
+                    <pre className="hero-code-copy" key={copy}><code>
+                      <span className="hero-code-comment">// Department of Computer Application</span>{'\n'}
+                      <span className="hero-code-keyword">const</span> <span>students</span> = <span className="hero-code-keyword">await</span> <span>learn</span>(<span className="hero-code-string">'computer science'</span>);{'\n'}
+                      <span className="hero-code-keyword">function</span> <span>buildSkills</span>(<span>practice</span>) {'{'}{'\n'}
+                      {'  '}<span className="hero-code-keyword">return</span> <span>practice</span>.<span>map</span>(<span>concept</span> =&gt; <span>master</span>(<span>concept</span>));{'\n'}
+                      {'}'}{'\n'}
+                      <span className="hero-code-comment">-- Explore, experiment, and create</span>{'\n'}
+                      <span className="hero-code-keyword">SELECT</span> <span>skills</span> <span className="hero-code-keyword">FROM</span> <span>students</span>{'\n'}
+                      <span className="hero-code-keyword">WHERE</span> <span>curiosity</span> = <span className="hero-code-string">'true'</span>;{'\n'}
+                      <span className="hero-code-keyword">#include</span> <span className="hero-code-string">&lt;stdio.h&gt;</span>{'\n'}
+                      <span className="hero-code-keyword">int</span> <span>main</span>() {'{'} <span className="hero-code-keyword">return</span> <span>0</span>; {'}'}{'\n'}
+                      <span className="hero-code-keyword">class</span> <span>Student</span> {'{'} <span className="hero-code-keyword">void</span> <span>learn</span>() {'{}'} {'}'}{'\n'}
+                      <span className="hero-code-keyword">print</span>(<span className="hero-code-string">"Ideas into code"</span>){'\n'}
+                      <span className="hero-code-comment">&lt;!-- Learn by building --&gt;</span>{'\n'}
+                    </code></pre>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
           <h1 className="hero-heading text-balance font-extrabold tracking-tight text-white leading-[1.08]">
             <span className="hero-heading-line">Welcome To</span>
             <span className="hero-heading-line">Department Of</span>
-            <span className="hero-heading-line">Computer Application</span>
+            <span className="hero-heading-line">Computer Application<span className="hero-cursor" aria-hidden="true" /></span>
           </h1>
 
           <p className="hero-college-name mt-5 font-semibold tracking-tight text-white">

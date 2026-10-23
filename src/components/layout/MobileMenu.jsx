@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import { HiChevronDown, HiX, HiOutlineAcademicCap } from 'react-icons/hi';
+import { NavLink } from 'react-router-dom';
+import { HiChevronDown, HiX } from 'react-icons/hi';
 
 export default function MobileMenu({
   isOpen,
@@ -22,7 +22,7 @@ export default function MobileMenu({
   };
 
   return (
-    <div className="fixed inset-0 z-50 lg:hidden flex flex-col bg-slate-950/95 backdrop-blur-xl animate-fadeIn text-white">
+    <div className="fixed inset-0 z-50 xl:hidden flex flex-col bg-slate-950/95 backdrop-blur-xl animate-fadeIn text-white">
       {/* Top Header inside Drawer */}
       <div className="flex items-center justify-between px-5 py-4 border-b border-slate-800">
         <div className="flex items-center gap-3">
@@ -125,6 +125,18 @@ export default function MobileMenu({
               </div>
             )}
           </div>
+
+          <NavLink
+            to="/campus-updates"
+            onClick={handleNavClick}
+            className={({ isActive }) =>
+              `block px-4 py-3 rounded-xl text-sm font-semibold transition ${
+                isActive ? 'bg-gold-500/20 text-gold-400 border border-gold-500/30' : 'text-slate-200 hover:bg-slate-800'
+              }`
+            }
+          >
+            Updates
+          </NavLink>
 
           {/* Faculties Accordion */}
           <div>

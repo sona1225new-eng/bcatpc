@@ -1,9 +1,15 @@
 import React from 'react';
 import { useNotices } from '../../hooks/useNotices';
-import SectionHeading from '../common/SectionHeading';
 import LoadingState from '../common/LoadingState';
 import ErrorState from '../common/ErrorState';
 import DepartmentNoticeMarquee from './DepartmentNoticeMarquee';
+
+const noticeCategories = [
+  'Official Circular / Notice',
+  'Examinations / Exam Updates',
+  'Campus Life / News & Events',
+  'Department Updates',
+];
 
 export default function NoticeBoard() {
   const { notices, loading, error, refetch } = useNotices();
@@ -24,43 +30,33 @@ export default function NoticeBoard() {
     );
   }
 
-  // Filter dynamic categories from the service data
-  const officialNotices = notices.filter(
-    (n) => n.category === "Official" || n.category === "Admission" || n.tag?.includes("Official")
-  );
-  const examNotices = notices.filter(
-    (n) => n.category === "Examination" || n.tag?.includes("Exam")
-  );
-  const campusEvents = notices.filter(
-    (n) => n.category === "Campus Life" || n.category === "Department" || n.tag?.includes("Events")
-  );
-  const marqueeNotices = Array.from(new Map([
-    ...officialNotices.slice(0, 2),
-    ...examNotices.slice(0, 2),
-    ...campusEvents.slice(0, 2),
-  ].map((notice) => [notice.id, notice])).values()).map((notice) => ({
-    ...notice,
-    departmentCategory:
-      notice.category === "Examination" || notice.tag?.includes("Exam")
-        ? "Examinations / Exam Updates"
-        : notice.category === "Campus Life" || notice.category === "Department" || notice.tag?.includes("Events")
-          ? "Campus Life / News & Events"
-          : "Official Circular / Notice",
-    highlight: campusEvents[0]?.id === notice.id ? "🏆 Flagship Hackathon" : null,
+  const categorizedNotices = notices.map((notice) => {
+    const departmentCategory =
+      notice.category === 'Examination' || notice.tag?.includes('Exam')
+        ? 'Examinations / Exam Updates'
+        : notice.category === 'Campus Life' || notice.tag?.includes('Events')
+          ? 'Campus Life / News & Events'
+          : notice.category === 'Official' ||
+              notice.category === 'Admission' ||
+              notice.tag?.includes('Official')
+            ? 'Official Circular / Notice'
+            : 'Department Updates';
+
+    return { ...notice, departmentCategory };
+  });
+
+  const noticeColumns = noticeCategories.map((category) => ({
+    category,
+    notices: categorizedNotices.filter((notice) => notice.departmentCategory === category),
   }));
+
   return (
     <section className="py-16 md:py-20 bg-[#F7F6F2]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <SectionHeading
-          badge="DEPARTMENT NOTICES"
-          badgeVariant="wine"
-          title="Important Notice Board"
-          subtitle="Stay updated with official announcements, examination schedules, circulars, and departmental updates."
-          align="between"
-        />
-
-        <DepartmentNoticeMarquee notices={marqueeNotices} />
+        <h2 className="mb-8 text-3xl font-extrabold tracking-tight text-navy-900 md:text-4xl">
+          Important Notice Board
+        </h2>
+        <DepartmentNoticeMarquee columns={noticeColumns} />
       </div>
     </section>
   );

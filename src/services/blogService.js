@@ -15,8 +15,7 @@ export const blogService = {
         if (limit) params.append("limit", limit);
         const res = await fetch(`${API_CONFIG.BASE_URL}/blogs?${params.toString()}`);
         if (res.ok) {
-          const json = await res.json();
-          if (json.data && json.data.length > 0) return json;
+          return await res.json();
         }
       } catch (err) {
         console.warn("Backend API unavailable, using fallback blogs:", err.message);
@@ -24,7 +23,13 @@ export const blogService = {
     }
 
     await delay();
-    let filtered = [...blogsData];
+    let filtered = blogsData
+      .filter((blog) => blog.status === "published")
+      .sort((a, b) => {
+        const dateA = new Date(a.publishedAt || a.publishedDate || a.createdAt || 0).getTime();
+        const dateB = new Date(b.publishedAt || b.publishedDate || b.createdAt || 0).getTime();
+        return dateB - dateA;
+      });
 
     if (category && category !== "All") {
       filtered = filtered.filter(

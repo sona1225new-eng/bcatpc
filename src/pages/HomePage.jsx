@@ -5,6 +5,7 @@ import CoordinatorMessage from '../components/home/CoordinatorMessage';
 import NoticeBoard from '../components/home/NoticeBoard';
 import WelcomeAbout from '../components/home/WelcomeAbout';
 import VisionMission from '../components/home/VisionMission';
+import TechnicalBlogsSection from '../components/home/TechnicalBlogsSection';
 import QuickPYQsSection from '../components/home/QuickPYQsSection';
 
 export default function HomePage() {
@@ -16,11 +17,11 @@ export default function HomePage() {
       {/* 2. Latest Updates Ticker */}
       <TickerBar />
 
-      {/* 3. Message from the Coordinator */}
-      <CoordinatorMessage />
-
-      {/* 4. Important Notice Board */}
+      {/* 3. Important Notice Board */}
       <NoticeBoard />
+
+      {/* 4. Message from the Coordinator */}
+      <CoordinatorMessage />
 
       {/* 5. About Department Section */}
       <WelcomeAbout />
@@ -28,7 +29,10 @@ export default function HomePage() {
       {/* 6. Vision & Mission Section */}
       <VisionMission />
 
-      {/* 7. Previous Year Papers & Question Bank Hub */}
+      {/* 7. Technical Blogs & Articles */}
+      <TechnicalBlogsSection />
+
+      {/* 8. Previous Year Papers & Question Bank Hub */}
       <QuickPYQsSection />
     </div>
   );

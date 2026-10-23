@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { HiMenu, HiChevronDown, HiUserCircle } from 'react-icons/hi';
+import { HiMenu, HiChevronDown } from 'react-icons/hi';
 import DropdownMenu from './DropdownMenu';
 import MobileMenu from './MobileMenu';
 import { facultyService } from '../../services/facultyService';
@@ -94,14 +94,14 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-[#233B5D] text-white shadow-xl border-b border-slate-800/90 select-none">
+    <header className="sticky top-0 z-40 bg-[#F3F3EF] text-[#10294B] shadow-sm border-b border-[#E7E5DF] select-none">
       <div
         ref={navContainerRef}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4"
+        className="max-w-[1472px] mx-auto px-4 sm:px-6 lg:px-8 2xl:w-[calc(100%-3rem)] 2xl:pl-1 2xl:pr-14 h-[76px] 2xl:h-[92px] flex items-center justify-between gap-4"
       >
         {/* Logo & College Identity */}
-        <Link to="/" className="flex items-center gap-3.5 group flex-shrink-0">
-          <span className="w-[50px] h-[50px] p-1.5 rounded-lg bg-[#FFFDF7] shadow-sm flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105">
+        <Link to="/" className="flex items-center gap-[18px] group flex-shrink-0">
+          <span className="w-[50px] h-[50px] 2xl:w-[62px] 2xl:h-[62px] p-1.5 bg-[#F3F3EF] flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105">
             <img
               src="/college-logo.png"
               alt="T.P. College Madhepura emblem"
@@ -111,27 +111,27 @@ export default function Navbar() {
 
           <div className="flex flex-col">
             <div className="flex items-center gap-2">
-              <span className="text-base sm:text-lg font-black tracking-tight text-white group-hover:text-gold-400 transition-colors">
+              <span className="text-[15px] sm:text-lg 2xl:text-[23px] font-black tracking-tight text-[#10294B] group-hover:text-[#C58A20] transition-colors">
                 T.P. College Madhepura
               </span>
-              <span className="hidden sm:inline-block px-2 py-0.2 rounded-full text-[10px] font-black uppercase tracking-wider bg-gold-500 text-slate-950">
+              <span className="hidden sm:inline-block px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-gold-500 text-slate-950">
                 B.C.A.
               </span>
             </div>
-            <span className="text-[11px] sm:text-xs font-semibold text-slate-300 group-hover:text-white transition-colors">
+            <span className="text-[10px] sm:text-xs font-semibold text-[#243B5A] group-hover:text-[#10294B] transition-colors">
               Department of Computer Application
             </span>
           </div>
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+        <nav className="hidden xl:flex items-center gap-1">
           {/* Home */}
           <NavLink
             to="/"
             className={({ isActive }) =>
-              `px-3 py-2 rounded-lg text-sm font-semibold transition duration-150 ${
-                isActive ? 'text-gold-400' : 'text-slate-200 hover:text-white hover:bg-slate-800/60'
+              `px-2 py-2 rounded-lg text-sm font-semibold transition duration-150 ${
+                isActive ? 'text-[#C58A20]' : 'text-[#10294B] hover:text-[#C58A20] hover:bg-[#E9E8E2]'
               }`
             }
           >
@@ -142,8 +142,8 @@ export default function Navbar() {
           <NavLink
             to="/about"
             className={({ isActive }) =>
-              `px-3 py-2 rounded-lg text-sm font-semibold transition duration-150 ${
-                isActive ? 'text-gold-400' : 'text-slate-200 hover:text-white hover:bg-slate-800/60'
+              `px-2 py-2 rounded-lg text-sm font-semibold transition duration-150 ${
+                isActive ? 'text-[#C58A20]' : 'text-[#10294B] hover:text-[#C58A20] hover:bg-[#E9E8E2]'
               }`
             }
           >
@@ -159,17 +159,17 @@ export default function Navbar() {
             <NavLink
               to="/academics"
               className={({ isActive }) =>
-                `flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-semibold transition duration-150 ${
+                `flex items-center gap-1 px-2 py-2 rounded-lg text-sm font-semibold transition duration-150 ${
                   isActive || activeDropdown === 'academics'
-                    ? 'text-gold-400'
-                    : 'text-slate-200 hover:text-white hover:bg-slate-800/60'
+                      ? 'text-[#C58A20]'
+                      : 'text-[#10294B] hover:text-[#C58A20] hover:bg-[#E9E8E2]'
                 }`
               }
             >
               <span>Academics</span>
               <HiChevronDown
                 className={`w-4 h-4 transition-transform duration-200 ${
-                  activeDropdown === 'academics' ? 'rotate-180 text-gold-400' : 'text-slate-300'
+                  activeDropdown === 'academics' ? 'rotate-180 text-[#C58A20]' : 'text-[#243B5A]'
                 }`}
               />
             </NavLink>
@@ -183,6 +183,17 @@ export default function Navbar() {
             )}
           </div>
 
+          <NavLink
+            to="/campus-updates"
+            className={({ isActive }) =>
+              `px-2 py-2 rounded-lg text-sm font-semibold transition duration-150 ${
+                isActive ? 'text-[#C58A20]' : 'text-[#10294B] hover:text-[#C58A20] hover:bg-[#E9E8E2]'
+              }`
+            }
+          >
+            Updates
+          </NavLink>
+
           {/* Faculties Dropdown Trigger */}
           <div
             className="relative"
@@ -192,17 +203,17 @@ export default function Navbar() {
             <NavLink
               to="/faculties"
               className={({ isActive }) =>
-                `flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-semibold transition duration-150 ${
+                `flex items-center gap-1 px-2 py-2 rounded-lg text-sm font-semibold transition duration-150 ${
                   isActive || activeDropdown === 'faculties'
-                    ? 'text-gold-400'
-                    : 'text-slate-200 hover:text-white hover:bg-slate-800/60'
+                      ? 'text-[#C58A20]'
+                      : 'text-[#10294B] hover:text-[#C58A20] hover:bg-[#E9E8E2]'
                 }`
               }
             >
               <span>Faculties</span>
               <HiChevronDown
                 className={`w-4 h-4 transition-transform duration-200 ${
-                  activeDropdown === 'faculties' ? 'rotate-180 text-gold-400' : 'text-slate-300'
+                  activeDropdown === 'faculties' ? 'rotate-180 text-[#C58A20]' : 'text-[#243B5A]'
                 }`}
               />
             </NavLink>
@@ -225,10 +236,10 @@ export default function Navbar() {
             <NavLink
               to="/pyqs"
               className={({ isActive }) =>
-                `flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-semibold transition duration-150 ${
+                `flex items-center gap-1 px-2 py-2 rounded-lg text-sm font-semibold transition duration-150 ${
                   isActive || activeDropdown === 'pyqs'
-                    ? 'text-gold-400'
-                    : 'text-slate-200 hover:text-white hover:bg-slate-800/60'
+                      ? 'text-[#C58A20]'
+                      : 'text-[#10294B] hover:text-[#C58A20] hover:bg-[#E9E8E2]'
                 }`
               }
             >
@@ -238,7 +249,7 @@ export default function Navbar() {
               </span>
               <HiChevronDown
                 className={`w-4 h-4 transition-transform duration-200 ${
-                  activeDropdown === 'pyqs' ? 'rotate-180 text-gold-400' : 'text-slate-300'
+                  activeDropdown === 'pyqs' ? 'rotate-180 text-[#C58A20]' : 'text-[#243B5A]'
                 }`}
               />
             </NavLink>
@@ -256,8 +267,8 @@ export default function Navbar() {
           <NavLink
             to="/gallery"
             className={({ isActive }) =>
-              `px-3 py-2 rounded-lg text-sm font-semibold transition duration-150 ${
-                isActive ? 'text-gold-400' : 'text-slate-200 hover:text-white hover:bg-slate-800/60'
+              `px-2 py-2 rounded-lg text-sm font-semibold transition duration-150 ${
+                isActive ? 'text-[#C58A20]' : 'text-[#10294B] hover:text-[#C58A20] hover:bg-[#E9E8E2]'
               }`
             }
           >
@@ -268,8 +279,8 @@ export default function Navbar() {
           <NavLink
             to="/contact"
             className={({ isActive }) =>
-              `px-3 py-2 rounded-lg text-sm font-semibold transition duration-150 ${
-                isActive ? 'text-gold-400' : 'text-slate-200 hover:text-white hover:bg-slate-800/60'
+              `px-2 py-2 rounded-lg text-sm font-semibold transition duration-150 ${
+                isActive ? 'text-[#C58A20]' : 'text-[#10294B] hover:text-[#C58A20] hover:bg-[#E9E8E2]'
               }`
             }
           >
@@ -277,22 +288,12 @@ export default function Navbar() {
           </NavLink>
         </nav>
 
-        {/* Right Actions: Student/Faculty Portal & Mobile Hamburger */}
-        <div className="flex items-center gap-3">
-          {/* Student/Faculty Portal Indicator */}
-          <Link
-            to="/notices"
-            className="p-2 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-gold-400 transition"
-            title="Student Notices & Circulars"
-          >
-            <HiUserCircle className="w-6 h-6" />
-          </Link>
-
-          {/* Mobile Hamburger Button */}
+        {/* Mobile Hamburger Button */}
+        <div className="flex items-center xl:hidden">
           <button
             type="button"
             onClick={() => setMobileOpen(true)}
-            className="p-2 rounded-xl bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700 lg:hidden transition"
+            className="p-2 rounded-xl text-[#10294B] hover:bg-[#E9E8E2] xl:hidden transition"
             aria-label="Toggle Mobile Navigation"
           >
             <HiMenu className="w-6 h-6" />

@@ -12,6 +12,7 @@ import { usePYQDetail } from '../../hooks/usePYQs';
 import PageHeader from '../../components/common/PageHeader';
 import LoadingState from '../../components/common/LoadingState';
 import ErrorState from '../../components/common/ErrorState';
+import { getPublicFileUrl } from '../../services/api';
 
 export default function PYQDetailPage() {
   const { id } = useParams();
@@ -46,6 +47,7 @@ export default function PYQDetailPage() {
     { label: paper.semesterLabel, href: `/pyqs/${paper.semester}` },
     { label: `${paper.subject} (${paper.year})` }
   ];
+  const pdfUrl = getPublicFileUrl(paper.fileUrl);
 
   return (
     <div>
@@ -134,20 +136,37 @@ export default function PYQDetailPage() {
             </div>
           </div>
 
-          {/* Download Box */}
-          <div className="bg-gradient-to-r from-navy-900 to-[#233B5D] text-white p-6 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div>
-              <h4 className="text-base font-bold text-white">Download Verified PDF</h4>
-              <p className="text-xs text-slate-400 mt-0.5">Filename: {paper.fileName || `${paper.subjectCode}_${paper.year}.pdf`}</p>
-            </div>
-            <button
-              onClick={() => alert(`Downloading: ${paper.fileName || `${paper.subject}_${paper.year}.pdf`}`)}
-              className="px-6 py-3 rounded-xl bg-navy-900 hover:bg-navy-800 text-white font-black text-xs sm:text-sm inline-flex items-center justify-center gap-2 shadow-lg transition"
-            >
-              <HiOutlineDownload className="w-5 h-5" />
-              <span>Download Question Paper</span>
-            </button>
-          </div>
+          {/* PDF Viewer */}
+          {pdfUrl ? (
+            <section className="space-y-4">
+              <div className="bg-gradient-to-r from-navy-900 to-[#233B5D] text-white p-6 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <h4 className="text-base font-bold text-white">Question Paper PDF</h4>
+                  <p className="text-xs text-slate-400 mt-0.5">
+                    Filename: {paper.fileName || `${paper.subjectCode}_${paper.year}.pdf`}
+                  </p>
+                </div>
+                <a
+                  href={pdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 rounded-xl bg-navy-900 hover:bg-navy-800 text-white font-black text-xs sm:text-sm inline-flex items-center justify-center gap-2 shadow-lg transition"
+                >
+                  <HiOutlineDownload className="w-5 h-5" />
+                  <span>Open PDF</span>
+                </a>
+              </div>
+              <iframe
+                title={`${paper.subject} question paper PDF`}
+                src={pdfUrl}
+                className="w-full h-[min(80vh,900px)] rounded-2xl border border-slate-200 bg-slate-100"
+              />
+            </section>
+          ) : (
+            <p className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+              No PDF file is attached to this question paper.
+            </p>
+          )}
 
         </div>
 

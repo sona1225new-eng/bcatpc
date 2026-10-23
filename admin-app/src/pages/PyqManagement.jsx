@@ -8,6 +8,7 @@ import ConfirmDialog from '../components/common/ConfirmDialog';
 import Modal from '../components/common/Modal';
 import Badge from '../components/common/Badge';
 import FileUpload from '../components/common/FileUpload';
+import { getPublicFileUrl } from '../services/api';
 import {
   HiPlus,
   HiMagnifyingGlass,
@@ -274,7 +275,7 @@ export default function PyqManagement() {
               </thead>
               <tbody className="divide-y divide-slate-800/60 text-slate-300">
                 {pyqs.map((p) => (
-                  <tr key={p._id} className="hover:bg-slate-800/40 transition-colors group">
+                  <tr key={p._id || p.id} className="hover:bg-slate-800/40 transition-colors group">
                     <td className="py-3.5 px-4">
                       <div>
                         <p className="font-semibold text-white group-hover:text-gold-400 transition-colors">
@@ -303,7 +304,7 @@ export default function PyqManagement() {
                     <td className="py-3.5 px-4">
                       {p.fileUrl ? (
                         <a
-                          href={p.fileUrl}
+                          href={getPublicFileUrl(p.fileUrl)}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-gold-500/10 hover:bg-amber-600/20 border border-gold-500/20 text-gold-400 hover:text-gold-400 rounded-lg text-[11px] font-medium transition-colors"
@@ -594,7 +595,7 @@ export default function PyqManagement() {
                   </div>
                 </div>
                 <a
-                  href={selectedPyq.fileUrl}
+                  href={getPublicFileUrl(selectedPyq.fileUrl)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-3 py-1.5 bg-navy-900 hover:bg-navy-800 text-white rounded-lg font-medium transition-colors"

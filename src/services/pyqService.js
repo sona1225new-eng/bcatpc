@@ -75,9 +75,24 @@ export const pyqService = {
    */
   async getBySemester(semester) {
     if (!API_CONFIG.USE_MOCK_API) {
-      const res = await fetch(`${API_CONFIG.BASE_URL}/pyqs/semester/${semester}`);
+      const res = await fetch(
+        `${API_CONFIG.BASE_URL}/pyqs?semester=${encodeURIComponent(semester)}`
+      );
       if (!res.ok) throw new ApiError(`Failed to fetch PYQs for semester ${semester}`, res.status);
-      return res.json();
+      const json = await res.json();
+      const formattedSem = semester.startsWith("semester-") ? semester : `semester-${semester}`;
+      const semInfo = semestersList.find(
+        (item) => item.id === formattedSem || String(item.number) === String(semester)
+      );
+
+      return createApiResponse({
+        semester: semInfo || {
+          id: formattedSem,
+          name: `Semester ${semester}`,
+          roman: `Semester ${semester}`,
+        },
+        papers: json.data || [],
+      }, json.message || "PYQs fetched successfully", res.status);
     }
 
     await delay();

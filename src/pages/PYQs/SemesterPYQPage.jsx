@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { 
   HiOutlineArrowLeft, 
   HiOutlineBookOpen, 
@@ -16,8 +16,7 @@ import LoadingState from '../../components/common/LoadingState';
 import ErrorState from '../../components/common/ErrorState';
 import EmptyState from '../../components/common/EmptyState';
 
-export default function SemesterPYQPage() {
-  const { semesterId } = useParams();
+export default function SemesterPYQPage({ semesterId }) {
   const { semester, papers, loading, error } = useSemesterPYQs(semesterId);
 
   const [search, setSearch] = useState('');
@@ -122,7 +121,7 @@ export default function SemesterPYQPage() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredPapers.map((paper) => (
-              <PYQCard key={paper.id} paper={paper} />
+              <PYQCard key={paper._id || paper.id} paper={paper} />
             ))}
           </div>
         )}

@@ -101,7 +101,10 @@ const pyqSchema = new mongoose.Schema(
       default: 'draft',
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    toJSON: { virtuals: true },
+  }
 );
 
 pyqSchema.index({ semester: 1, year: -1 });

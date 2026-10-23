@@ -1,14 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { HiOutlineDownload, HiOutlineEye, HiOutlineDocumentText } from 'react-icons/hi';
+import { HiOutlineDownload, HiOutlineEye } from 'react-icons/hi';
+import { getPublicFileUrl } from '../../services/api';
 
 export default function PYQCard({ paper }) {
   if (!paper) return null;
 
-  const handleDownload = (e) => {
-    e.preventDefault();
-    alert(`Downloading Question Paper: ${paper.fileName || `${paper.subject}_${paper.year}.pdf`}`);
-  };
+  const paperId = paper._id || paper.id;
+  const pdfUrl = getPublicFileUrl(paper.fileUrl);
 
   return (
     <div className="group bg-white rounded-2xl p-5 border border-slate-200/90 hover:border-gold-500 shadow-xs hover:shadow-xl transition-all duration-200 flex flex-col justify-between">
@@ -25,7 +24,7 @@ export default function PYQCard({ paper }) {
 
         {/* Subject Title */}
         <h3 className="text-base font-extrabold text-navy-900 group-hover:text-navy-800 transition-colors line-clamp-2 leading-tight">
-          <Link to={`/pyqs/${paper.id}`}>
+          <Link to={paperId ? `/pyqs/${paperId}` : '/pyqs'}>
             {paper.subject}
           </Link>
         </h3>
@@ -58,21 +57,34 @@ export default function PYQCard({ paper }) {
 
         <div className="flex items-center gap-1.5">
           <Link
-            to={`/pyqs/${paper.id}`}
+            to={paperId ? `/pyqs/${paperId}` : '/pyqs'}
             className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition"
             title="Preview Question Details"
           >
             <HiOutlineEye className="w-4 h-4" />
           </Link>
-          <button
-            type="button"
-            onClick={handleDownload}
-            className="px-3 py-1.5 rounded-xl bg-navy-900 hover:bg-navy-800 text-white text-xs font-bold inline-flex items-center gap-1.5 transition shadow-xs"
-            title="Download PDF"
-          >
-            <HiOutlineDownload className="w-3.5 h-3.5" />
-            <span>Download</span>
-          </button>
+          {pdfUrl ? (
+            <a
+              href={pdfUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1.5 rounded-xl bg-navy-900 hover:bg-navy-800 text-white text-xs font-bold inline-flex items-center gap-1.5 transition shadow-xs"
+              title="Open PDF"
+            >
+              <HiOutlineDownload className="w-3.5 h-3.5" />
+              <span>View PDF</span>
+            </a>
+          ) : (
+            <button
+              type="button"
+              disabled
+              className="px-3 py-1.5 rounded-xl bg-navy-900 text-white text-xs font-bold inline-flex items-center gap-1.5 opacity-50 cursor-not-allowed"
+              title="PDF unavailable"
+            >
+              <HiOutlineDownload className="w-3.5 h-3.5" />
+              <span>PDF unavailable</span>
+            </button>
+          )}
         </div>
       </div>
     </div>

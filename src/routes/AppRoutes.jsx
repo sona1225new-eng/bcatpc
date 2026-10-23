@@ -78,12 +78,30 @@ export default function AppRoutes() {
 
         {/* PYQs Hub & Semesters */}
         <Route path="pyqs" element={<PYQsHubPage />} />
-        <Route path="pyqs/semester-1" element={<SemesterPYQPage />} />
-        <Route path="pyqs/semester-2" element={<SemesterPYQPage />} />
-        <Route path="pyqs/semester-3" element={<SemesterPYQPage />} />
-        <Route path="pyqs/semester-4" element={<SemesterPYQPage />} />
-        <Route path="pyqs/semester-5" element={<SemesterPYQPage />} />
-        <Route path="pyqs/semester-6" element={<SemesterPYQPage />} />
+        <Route
+          path="pyqs/semester-1"
+          element={<SemesterPYQPage semesterId="semester-1" />}
+        />
+        <Route
+          path="pyqs/semester-2"
+          element={<SemesterPYQPage semesterId="semester-2" />}
+        />
+        <Route
+          path="pyqs/semester-3"
+          element={<SemesterPYQPage semesterId="semester-3" />}
+        />
+        <Route
+          path="pyqs/semester-4"
+          element={<SemesterPYQPage semesterId="semester-4" />}
+        />
+        <Route
+          path="pyqs/semester-5"
+          element={<SemesterPYQPage semesterId="semester-5" />}
+        />
+        <Route
+          path="pyqs/semester-6"
+          element={<SemesterPYQPage semesterId="semester-6" />}
+        />
         <Route path="pyqs/:id" element={<PYQDetailPage />} />
 
         {/* Gallery */}

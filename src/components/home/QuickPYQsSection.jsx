@@ -115,7 +115,7 @@ export default function QuickPYQsSection() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {pyqs.map((paper) => (
-              <PYQCard key={paper.id} paper={paper} />
+              <PYQCard key={paper._id || paper.id} paper={paper} />
             ))}
           </div>
         )}

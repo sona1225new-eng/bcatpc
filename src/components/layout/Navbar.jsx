@@ -125,7 +125,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden xl:flex items-center gap-1">
+        <nav className="hidden xl:flex flex-1 items-center justify-center gap-1">
           {/* Home */}
           <NavLink
             to="/"

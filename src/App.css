@@ -28,6 +28,22 @@
   background: #062442;
 }
 
+.hero-panel {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  width: 100%;
+}
+
+.hero-panel::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: #062442;
+  clip-path: polygon(0 0, 57.8% 0, 46.8% 100%, 0 100%);
+  content: "";
+}
+
 .hero-layout {
   position: relative;
   z-index: 10;
@@ -50,17 +66,21 @@
 
 .hero-copy > :not(.hero-code-background) {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .hero-code-background {
   position: absolute;
   z-index: 0;
   inset: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
+  gap: 0.5rem;
   overflow: hidden;
   opacity: 0.28;
   pointer-events: none;
+  clip-path: polygon(0 0, 57.8% 0, 46.8% 100%, 0 100%);
 }
 
 .hero-code-column {
@@ -72,15 +92,6 @@
 .hero-code-track {
   animation: hero-code-scroll-up 22s linear infinite;
   will-change: transform;
-}
-
-.hero-code-column-2 .hero-code-track {
-  animation-name: hero-code-scroll-down;
-  animation-duration: 30s;
-}
-
-.hero-code-column-3 .hero-code-track {
-  animation-duration: 26s;
 }
 
 .hero-code-copy {
@@ -115,18 +126,12 @@
 }
 
 @keyframes hero-code-scroll-up {
-  to {
-    transform: translateY(-50%);
-  }
-}
-
-@keyframes hero-code-scroll-down {
   from {
-    transform: translateY(-50%);
+    transform: translateY(0);
   }
 
   to {
-    transform: translateY(0);
+    transform: translateY(-50%);
   }
 }
 
@@ -295,6 +300,14 @@
     min-height: 0;
   }
 
+  .hero-panel {
+    order: 1;
+  }
+
+  .hero-panel::before {
+    clip-path: none;
+  }
+
   .hero-layout {
     order: 1;
     display: block;
@@ -309,8 +322,14 @@
     max-width: 100%;
   }
 
-  .hero-code-column-3 {
+  .hero-code-column-4,
+  .hero-code-column-5,
+  .hero-code-column-6 {
     display: none;
+  }
+
+  .hero-code-background {
+    clip-path: none;
   }
 
   .hero-heading {
@@ -357,7 +376,10 @@
     padding-top: 2rem;
   }
 
-  .hero-code-column-2 {
+  .hero-code-column-3,
+  .hero-code-column-4,
+  .hero-code-column-5,
+  .hero-code-column-6 {
     display: none;
   }
 

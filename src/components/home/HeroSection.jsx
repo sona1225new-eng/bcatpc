@@ -20,17 +20,16 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="hero-layout relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="hero-copy">
-          <div className="hero-code-background" aria-hidden="true">
-            {[22, 30, 26].map((duration, columnIndex) => (
-              <div className={`hero-code-column hero-code-column-${columnIndex + 1}`} key={duration}>
-                <div
-                  className={`hero-code-track${columnIndex === 1 ? ' hero-code-track-reverse' : ''}`}
-                  style={{ animationDuration: `${duration}s` }}
-                >
-                  {[0, 1].map((copy) => (
-                    <pre className="hero-code-copy" key={copy}><code>
+      <div className="hero-panel">
+        <div className="hero-code-background" aria-hidden="true">
+          {[22, 30, 26, 24, 28, 32].map((duration, columnIndex) => (
+            <div className={`hero-code-column hero-code-column-${columnIndex + 1}`} key={duration}>
+              <div
+                className="hero-code-track"
+                style={{ animationDuration: `${duration}s` }}
+              >
+                {[0, 1, 2, 3, 4, 5, 6, 7].map((copy) => (
+                  <pre className="hero-code-copy" key={copy}><code>
                       <span className="hero-code-comment">// Department of Computer Application</span>{'\n'}
                       <span className="hero-code-keyword">const</span> <span>students</span> = <span className="hero-code-keyword">await</span> <span>learn</span>(<span className="hero-code-string">'computer science'</span>);{'\n'}
                       <span className="hero-code-keyword">function</span> <span>buildSkills</span>(<span>practice</span>) {'{'}{'\n'}
@@ -44,12 +43,14 @@ export default function HeroSection() {
                       <span className="hero-code-keyword">class</span> <span>Student</span> {'{'} <span className="hero-code-keyword">void</span> <span>learn</span>() {'{}'} {'}'}{'\n'}
                       <span className="hero-code-keyword">print</span>(<span className="hero-code-string">"Ideas into code"</span>){'\n'}
                       <span className="hero-code-comment">&lt;!-- Learn by building --&gt;</span>{'\n'}
-                    </code></pre>
-                  ))}
-                </div>
+                  </code></pre>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
+        </div>
+        <div className="hero-layout relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="hero-copy">
           <h1 className="hero-heading text-balance font-extrabold tracking-tight text-white leading-[1.08]">
             <span className="hero-heading-line">Welcome To</span>
             <span className="hero-heading-line">Department Of</span>
@@ -109,6 +110,7 @@ export default function HeroSection() {
                 <span>Learning Approach</span>
               </span>
             </div>
+          </div>
           </div>
         </div>
 

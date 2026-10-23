@@ -20,6 +20,9 @@ export default function PYQCard({ paper }) {
     try {
       const response = await fetch(pdfUrl);
       if (!response.ok) {
+        if (response.status === 404) {
+          throw new Error('This question paper PDF is currently unavailable on the server (404).');
+        }
         throw new Error(`PDF download failed with status ${response.status}.`);
       }
 

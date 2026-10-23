@@ -5,6 +5,7 @@ import {
   isPublicFileUrl,
   isPublicImageUrl,
   isPublicResumeUrl,
+  isPublicPYQPdfUrl,
 } from '../../services/api';
 import { useToast } from '../../context/ToastContext';
 import {
@@ -55,13 +56,15 @@ export default function FileUpload({
       uploadingRef.current = true;
       setUploading(true);
       onUploadStateChange?.(true);
-      if (uploadType === 'resume') {
+      if (uploadType === 'resume' || uploadType === 'pyq') {
         const isPdfExtension = file.name.toLowerCase().endsWith('.pdf');
         const isPdfMimeType = file.type === 'application/pdf';
         const header = new Uint8Array(await file.slice(0, 5).arrayBuffer());
         const isPdfContent = String.fromCharCode(...header) === '%PDF-';
         if (!isPdfExtension || !isPdfMimeType || !isPdfContent) {
-          toast.error('Invalid resume file. Select a valid PDF document.');
+          toast.error(
+            `Invalid ${uploadType === 'resume' ? 'resume' : 'question paper'} file. Select a valid PDF document.`
+          );
           return;
         }
       }
@@ -73,6 +76,9 @@ export default function FileUpload({
       if (file.type.startsWith('image/') && !isPublicImageUrl(res.data.fileUrl)) {
         throw new Error('The upload service returned an invalid public image URL. Please try again.');
       }
+      if (uploadType === 'pyq' && !isPublicPYQPdfUrl(res.data.fileUrl) && !isPublicFileUrl(res.data.fileUrl)) {
+        throw new Error('The upload service returned an invalid persistent PDF URL. Please try again.');
+      }
       onChange(res.data.fileUrl);
       onFileNameChange?.(res.data.fileName || file.name);
       if (onFileInfoChange) {
@@ -82,7 +88,13 @@ export default function FileUpload({
           fileUrl: res.data.fileUrl,
         });
       }
-      toast.success(uploadType === 'resume' ? 'Resume PDF uploaded successfully.' : 'File uploaded successfully!');
+      toast.success(
+        uploadType === 'resume'
+          ? 'Resume PDF uploaded successfully.'
+          : uploadType === 'pyq'
+            ? 'Question paper PDF uploaded successfully.'
+            : 'File uploaded successfully!'
+      );
     } catch (err) {
       toast.error(err.message || 'File upload failed');
     } finally {
@@ -158,7 +170,7 @@ export default function FileUpload({
             </div>
           </div>
           <div className="flex items-center gap-1 shrink-0">
-            {uploadType === 'resume' && publicFileUrl && !uploading && (
+            {(uploadType === 'resume' || uploadType === 'pyq') && publicFileUrl && !uploading && (
               <a
                 href={publicFileUrl}
                 target="_blank"

@@ -1,10 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import pdfWorkerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 
-export default function PDFViewer({ url, documentLabel = 'PDF document' }) {
+export default function PDFViewer({ url, documentLabel = 'PDF document', onStatusChange }) {
   const pagesRef = useRef(null);
   const [status, setStatus] = useState('loading');
   const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    onStatusChange?.(status, errorMessage);
+  }, [status, errorMessage, onStatusChange]);
 
   useEffect(() => {
     let disposed = false;
@@ -116,14 +120,36 @@ export default function PDFViewer({ url, documentLabel = 'PDF document' }) {
 
   return (
     <div className="w-full">
-      {status !== 'ready' && (
-        <p
-          className="py-6 text-center text-sm text-slate-600"
-          role={status === 'error' ? 'alert' : 'status'}
+      {status === 'error' && (
+        <div
+          className="my-3 rounded-2xl border border-amber-200 bg-amber-50/90 p-6 text-center text-amber-900"
+          role="alert"
         >
-          {status === 'error'
-            ? `Unable to display ${documentLabel}.${errorMessage ? ` ${errorMessage}` : ''}`
-            : `Loading ${documentLabel}…`}
+          <div className="mx-auto mb-2.5 flex h-10 w-10 items-center justify-center rounded-full bg-amber-100 text-amber-700">
+            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+              />
+            </svg>
+          </div>
+          <h4 className="text-sm font-bold text-amber-950">
+            {errorMessage?.includes('404')
+              ? 'PDF Document Currently Unavailable (404)'
+              : `Unable to display ${documentLabel}`}
+          </h4>
+          <p className="mx-auto mt-1 max-w-md text-xs leading-relaxed text-amber-800">
+            {errorMessage?.includes('404')
+              ? 'The digital examination PDF file for this question paper could not be found on the server. The college administration has been notified to re-upload the official question paper copy.'
+              : errorMessage || 'An error occurred while loading the PDF document.'}
+          </p>
+        </div>
+      )}
+      {status === 'loading' && (
+        <p className="py-6 text-center text-xs font-medium text-slate-500" role="status">
+          Loading {documentLabel}…
         </p>
       )}
       <div

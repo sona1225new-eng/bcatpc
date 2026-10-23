@@ -72,6 +72,12 @@ app.use(mongoSanitize());
 
 // Static folder for uploaded files
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', (req, res) => {
+  res.status(404).json({
+    success: false,
+    message: `File '${req.path.replace(/^\//, '')}' not found. Ephemeral server storage files are not retained across restarts. Please re-upload via admin dashboard to store permanently in Cloudinary.`,
+  });
+});
 
 // ── Rate Limiting ─────────────────────────────────────────────────────────────
 const loginLimiter = rateLimit({

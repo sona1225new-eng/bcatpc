@@ -8,7 +8,7 @@ import ConfirmDialog from '../components/common/ConfirmDialog';
 import Modal from '../components/common/Modal';
 import Badge from '../components/common/Badge';
 import FileUpload from '../components/common/FileUpload';
-import { getPublicFileUrl } from '../services/api';
+import { getPublicFileUrl, isEphemeralUploadUrl } from '../services/api';
 import {
   HiPlus,
   HiMagnifyingGlass,
@@ -18,6 +18,7 @@ import {
   HiOutlineDocumentDuplicate,
   HiOutlineArrowDownTray,
   HiOutlineDocumentText,
+  HiOutlineExclamationTriangle,
 } from 'react-icons/hi2';
 
 const INITIAL_FORM = {
@@ -303,17 +304,28 @@ export default function PyqManagement() {
 
                     <td className="py-3.5 px-4">
                       {p.fileUrl ? (
-                        <a
-                          href={getPublicFileUrl(p.fileUrl)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-gold-500/10 hover:bg-amber-600/20 border border-gold-500/20 text-gold-400 hover:text-gold-400 rounded-lg text-[11px] font-medium transition-colors"
-                        >
-                          <HiOutlineDocumentText className="text-sm" />
-                          <span>View PDF</span>
-                        </a>
+                        <div className="flex flex-col gap-1 items-start">
+                          <a
+                            href={getPublicFileUrl(p.fileUrl)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-gold-500/10 hover:bg-amber-600/20 border border-gold-500/20 text-gold-400 hover:text-gold-400 rounded-lg text-[11px] font-medium transition-colors"
+                          >
+                            <HiOutlineDocumentText className="text-sm" />
+                            <span>View PDF</span>
+                          </a>
+                          {isEphemeralUploadUrl(p.fileUrl) && (
+                            <span
+                              className="inline-flex items-center gap-1 text-[10px] text-amber-400 font-semibold bg-amber-500/10 border border-amber-500/20 px-1.5 py-0.5 rounded"
+                              title="Stored in temporary local storage (/uploads/...) which returns 404 on Render restarts. Please edit and re-upload to Cloudinary."
+                            >
+                              <HiOutlineExclamationTriangle className="text-xs" />
+                              Re-upload needed
+                            </span>
+                          )}
+                        </div>
                       ) : (
-                        <span className="text-slate-300">No file</span>
+                        <span className="text-slate-400">No file</span>
                       )}
                     </td>
 
@@ -583,26 +595,52 @@ export default function PyqManagement() {
             </div>
 
             {selectedPyq.fileUrl && (
-              <div className="p-4 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-gold-500/10 border border-gold-500/20 text-gold-400 flex items-center justify-center text-xl">
-                    <HiOutlineDocumentText />
+              <div className="space-y-3">
+                <div className="p-4 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-gold-500/10 border border-gold-500/20 text-gold-400 flex items-center justify-center text-xl">
+                      <HiOutlineDocumentText />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-white">
+                        {selectedPyq.fileName || 'Examination_Paper.pdf'}
+                      </p>
+                      <p className="text-slate-400 text-[11px]">{selectedPyq.fileSize || 'PDF'}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-semibold text-white">
-                      {selectedPyq.fileName || 'Examination_Paper.pdf'}
-                    </p>
-                    <p className="text-slate-400 text-[11px]">{selectedPyq.fileSize || 'PDF'}</p>
-                  </div>
+                  <a
+                    href={getPublicFileUrl(selectedPyq.fileUrl)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 py-1.5 bg-navy-900 hover:bg-navy-800 text-white rounded-lg font-medium transition-colors"
+                  >
+                    View / Download
+                  </a>
                 </div>
-                <a
-                  href={getPublicFileUrl(selectedPyq.fileUrl)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-3 py-1.5 bg-navy-900 hover:bg-navy-800 text-white rounded-lg font-medium transition-colors"
-                >
-                  Download
-                </a>
+
+                {isEphemeralUploadUrl(selectedPyq.fileUrl) && (
+                  <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl flex items-start justify-between gap-3 text-xs">
+                    <div className="flex items-start gap-2.5">
+                      <HiOutlineExclamationTriangle className="text-amber-400 text-base shrink-0 mt-0.5" />
+                      <div>
+                        <p className="font-semibold text-amber-300">Legacy Ephemeral Storage Warning</p>
+                        <p className="text-slate-300 text-[11px] mt-0.5 leading-relaxed">
+                          This PDF URL points to <code className="text-amber-300 bg-slate-900/60 px-1 py-0.5 rounded">{selectedPyq.fileUrl}</code>. On cloud platforms like Render, local disk files do not persist across restarts and return 404. Re-uploading stores the PDF permanently in Cloudinary.
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsViewOpen(false);
+                        handleOpenEdit(selectedPyq);
+                      }}
+                      className="px-2.5 py-1.5 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/30 rounded-lg font-semibold shrink-0 transition-colors"
+                    >
+                      Re-upload PDF
+                    </button>
+                  </div>
+                )}
               </div>
             )}
           </div>

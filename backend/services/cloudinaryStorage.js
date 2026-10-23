@@ -12,7 +12,7 @@ const isCloudinaryConfigured = () =>
 const uploadToCloudinary = async (file, { resourceType, folder, publicId }) => {
   const { CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET } = process.env;
   if (!isCloudinaryConfigured()) {
-    const label = resourceType === 'raw' ? 'Resume' : 'Image';
+    const label = folder === 'pyqs' ? 'Question paper' : (resourceType === 'raw' ? 'Resume' : 'Image');
     const error = new Error(
       `${label} storage is not configured. Set CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET on the backend.`
     );

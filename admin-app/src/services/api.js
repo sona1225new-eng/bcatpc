@@ -67,6 +67,31 @@ export const isPublicResumeUrl = (fileUrl) => {
   }
 };
 
+export const isPublicPYQPdfUrl = (fileUrl) => {
+  if (typeof fileUrl !== 'string' || !fileUrl.trim()) return false;
+  try {
+    const url = new URL(fileUrl);
+    return (
+      url.protocol === 'https:' &&
+      !['localhost', '127.0.0.1', '::1'].includes(url.hostname) &&
+      url.pathname.toLowerCase().endsWith('.pdf')
+    );
+  } catch {
+    return false;
+  }
+};
+
+export const isEphemeralUploadUrl = (fileUrl) => {
+  if (typeof fileUrl !== 'string' || !fileUrl.trim()) return false;
+  if (fileUrl.startsWith('/uploads/')) return true;
+  try {
+    const url = new URL(fileUrl);
+    return url.pathname.startsWith('/uploads/');
+  } catch {
+    return false;
+  }
+};
+
 // Request interceptor to attach JWT token
 api.interceptors.request.use(
   (config) => {

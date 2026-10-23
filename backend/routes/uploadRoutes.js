@@ -53,7 +53,7 @@ router.post('/', protect, parseSingleUpload, asyncHandler(async (req, res) => {
     );
   }
 
-  if (req.query.type === 'pyq') {
+  if (req.query.type === 'pyq' || req.file.mimetype === 'application/pdf') {
     const fileUrl = await storeUploadedPYQPdf(req.file);
     return sendSuccess(
       res,

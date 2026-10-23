@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { 
   HiOutlineDownload, 
@@ -15,6 +15,7 @@ import PDFViewer from '../../components/common/PDFViewer';
 export default function PYQDetailPage() {
   const { id } = useParams();
   const { paper, loading, error } = usePYQDetail(id);
+  const [pdfStatus, setPdfStatus] = useState('loading');
 
   if (loading) {
     return (
@@ -144,20 +145,30 @@ export default function PYQDetailPage() {
                     Filename: {paper.fileName || `${paper.subjectCode}_${paper.year}.pdf`}
                   </p>
                 </div>
-                <a
-                  href={pdfUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3 rounded-xl bg-navy-900 hover:bg-navy-800 text-white font-black text-xs sm:text-sm inline-flex items-center justify-center gap-2 shadow-lg transition"
-                >
-                  <HiOutlineDownload className="w-5 h-5" />
-                  <span>Open PDF</span>
-                </a>
+                {pdfStatus === 'error' ? (
+                  <span
+                    className="px-6 py-3 rounded-xl bg-slate-800 text-slate-400 font-bold text-xs sm:text-sm inline-flex items-center justify-center gap-2 cursor-not-allowed opacity-80"
+                    title="PDF file is currently unavailable on the server"
+                  >
+                    <span>PDF Unavailable</span>
+                  </span>
+                ) : (
+                  <a
+                    href={pdfUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-3 rounded-xl bg-navy-900 hover:bg-navy-800 text-white font-black text-xs sm:text-sm inline-flex items-center justify-center gap-2 shadow-lg transition"
+                  >
+                    <HiOutlineDownload className="w-5 h-5" />
+                    <span>Open PDF</span>
+                  </a>
+                )}
               </div>
               <div className="max-h-[min(80vh,900px)] overflow-y-auto rounded-2xl border border-slate-200 bg-slate-100 p-2 sm:p-4">
                 <PDFViewer
                   url={pdfUrl}
                   documentLabel={paper.title || 'question paper'}
+                  onStatusChange={(st) => setPdfStatus(st)}
                 />
               </div>
             </section>

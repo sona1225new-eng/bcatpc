@@ -7,86 +7,68 @@ export default function PYQCard({ paper }) {
   if (!paper) return null;
 
   const paperId = paper._id || paper.id;
+  const detailPath = paperId ? `/pyqs/${paperId}` : null;
   const pdfUrl = getPublicFileUrl(paper.fileUrl);
+  const title = paper.title || paper.subject || 'Question paper';
+  const semester =
+    paper.semesterLabel ||
+    (paper.semesterNumber ? `Semester ${paper.semesterNumber}` : paper.semester);
 
   return (
-    <div className="group bg-white rounded-2xl p-5 border border-slate-200/90 hover:border-gold-500 shadow-xs hover:shadow-xl transition-all duration-200 flex flex-col justify-between">
-      <div>
-        {/* Header Badges */}
-        <div className="flex items-center justify-between gap-2 mb-3">
-          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-black tracking-wide bg-ivory text-navy-900 border border-slate-200">
-            {paper.subjectCode}
-          </span>
-          <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700">
-            {paper.year}
-          </span>
-        </div>
-
-        {/* Subject Title */}
-        <h3 className="text-base font-extrabold text-navy-900 group-hover:text-navy-800 transition-colors line-clamp-2 leading-tight">
-          <Link to={paperId ? `/pyqs/${paperId}` : '/pyqs'}>
-            {paper.subject}
-          </Link>
+    <article className="flex min-w-0 flex-col justify-between gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-xs transition hover:border-gold-500 hover:shadow-md">
+      <div className="min-w-0">
+        <h3 className="line-clamp-2 text-sm font-extrabold leading-snug text-navy-900">
+          {detailPath ? (
+            <Link to={detailPath} className="transition-colors hover:text-amber-700">
+              {title}
+            </Link>
+          ) : (
+            title
+          )}
         </h3>
+        <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] font-semibold text-slate-600">
+          {semester && <span>{semester}</span>}
+          {semester && paper.year && <span aria-hidden="true">•</span>}
+          {paper.year && <span>{paper.year}</span>}
+          {(semester || paper.year) && paper.paperType && <span aria-hidden="true">•</span>}
+          {paper.paperType && <span>{paper.paperType}</span>}
+        </div>
+      </div>
 
-        {/* Description */}
-        <p className="mt-2 text-xs text-slate-600 line-clamp-2 leading-relaxed">
-          {paper.description}
-        </p>
+      <div className="flex items-center gap-2 border-t border-slate-100 pt-3">
+        {detailPath ? (
+          <Link
+            to={detailPath}
+            className="inline-flex min-h-8 items-center justify-center gap-1.5 rounded-lg border border-slate-200 px-2.5 py-1.5 text-[11px] font-bold text-navy-900 transition hover:border-amber-400 hover:bg-amber-50"
+            title="View paper details and PDF"
+          >
+            <HiOutlineEye className="h-4 w-4" />
+            <span>View PDF</span>
+          </Link>
+        ) : (
+          <span className="inline-flex min-h-8 items-center gap-1.5 rounded-lg border border-slate-200 px-2.5 py-1.5 text-[11px] font-bold text-slate-400">
+            <HiOutlineEye className="h-4 w-4" />
+            <span>View unavailable</span>
+          </span>
+        )}
 
-        {/* Topics Tags */}
-        {paper.topicsCovered && paper.topicsCovered.length > 0 && (
-          <div className="mt-3 flex flex-wrap gap-1">
-            {paper.topicsCovered.slice(0, 2).map((topic, idx) => (
-              <span key={idx} className="text-[10px] font-medium bg-slate-50 text-muted border border-slate-200 px-1.5 py-0.5 rounded">
-                {topic}
-              </span>
-            ))}
-            {paper.topicsCovered.length > 2 && (
-              <span className="text-[10px] text-muted px-1">+{paper.topicsCovered.length - 2} more</span>
-            )}
-          </div>
+        {pdfUrl ? (
+          <a
+            href={pdfUrl}
+            download={paper.fileName || `${title}.pdf`}
+            className="inline-flex min-h-8 items-center justify-center gap-1.5 rounded-lg bg-navy-900 px-2.5 py-1.5 text-[11px] font-bold text-white shadow-xs transition hover:bg-navy-800"
+            title="Download question paper PDF"
+          >
+            <HiOutlineDownload className="h-4 w-4" />
+            <span>Download</span>
+          </a>
+        ) : (
+          <span className="inline-flex min-h-8 items-center gap-1.5 rounded-lg bg-slate-100 px-2.5 py-1.5 text-[11px] font-bold text-slate-400">
+            <HiOutlineDownload className="h-4 w-4" />
+            <span>Unavailable</span>
+          </span>
         )}
       </div>
-
-      {/* Action Buttons */}
-      <div className="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
-        <span className="text-[11px] font-medium text-muted">
-          {paper.fileSize || "PDF"} • {paper.downloadsCount ? `${paper.downloadsCount} DLs` : "BNMU"}
-        </span>
-
-        <div className="flex items-center gap-1.5">
-          <Link
-            to={paperId ? `/pyqs/${paperId}` : '/pyqs'}
-            className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition"
-            title="Preview Question Details"
-          >
-            <HiOutlineEye className="w-4 h-4" />
-          </Link>
-          {pdfUrl ? (
-            <a
-              href={pdfUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 py-1.5 rounded-xl bg-navy-900 hover:bg-navy-800 text-white text-xs font-bold inline-flex items-center gap-1.5 transition shadow-xs"
-              title="Open PDF"
-            >
-              <HiOutlineDownload className="w-3.5 h-3.5" />
-              <span>View PDF</span>
-            </a>
-          ) : (
-            <button
-              type="button"
-              disabled
-              className="px-3 py-1.5 rounded-xl bg-navy-900 text-white text-xs font-bold inline-flex items-center gap-1.5 opacity-50 cursor-not-allowed"
-              title="PDF unavailable"
-            >
-              <HiOutlineDownload className="w-3.5 h-3.5" />
-              <span>PDF unavailable</span>
-            </button>
-          )}
-        </div>
-      </div>
-    </div>
+    </article>
   );
 }

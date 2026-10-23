@@ -1,13 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  HiOutlineBookOpen, 
-  HiOutlineDownload, 
-  HiOutlineSearch, 
-  HiOutlineArrowRight,
-  HiOutlineDocumentText,
-  HiOutlineSparkles
-} from 'react-icons/hi';
 import { usePYQs } from '../../hooks/usePYQs';
 import { semestersList } from '../../data/pyqs';
 import PYQCard from '../../components/cards/PYQCard';
@@ -24,11 +16,15 @@ export default function PYQsHubPage() {
 
   const { pyqs, loading, error, refetch } = usePYQs({
     semester: selectedSemester,
-    year: selectedYear,
+    year: 'all',
     search: search,
   });
 
-  const years = ["all", "2024", "2023", "2022", "2021", "2020", "2019"];
+  const years = [...new Set(pyqs.map((paper) => String(paper.year)).filter(Boolean))]
+    .sort((a, b) => Number(b) - Number(a));
+  const filteredPapers = pyqs.filter(
+    (paper) => selectedYear === 'all' || String(paper.year) === selectedYear
+  );
 
   const breadcrumbs = [
     { label: "PYQs", href: "/pyqs" },
@@ -103,9 +99,12 @@ export default function PYQsHubPage() {
                 onChange={(e) => setSelectedYear(e.target.value)}
                 className="py-2.5 px-3 rounded-xl border border-slate-200 text-xs sm:text-sm bg-white font-semibold text-slate-700 focus:outline-none focus:border-gold-500"
               >
-                <option value="all">All Years (2019-2024)</option>
-                {years.filter(y => y !== 'all').map(y => (
-                  <option key={y} value={y}>Year {y}</option>
+                <option value="all">All Years</option>
+                {selectedYear !== 'all' && !years.includes(selectedYear) && (
+                  <option value={selectedYear}>Year {selectedYear}</option>
+                )}
+                {years.map((year) => (
+                  <option key={year} value={year}>Year {year}</option>
                 ))}
               </select>
 
@@ -155,7 +154,7 @@ export default function PYQsHubPage() {
           <LoadingState message="Loading question papers..." count={6} />
         ) : error ? (
           <ErrorState message={error} onRetry={refetch} />
-        ) : pyqs.length === 0 ? (
+        ) : filteredPapers.length === 0 ? (
           <EmptyState
             title="No question papers found"
             message={`No PYQs matched your criteria (Semester: ${selectedSemester}, Year: ${selectedYear}, Search: '${search}').`}
@@ -163,10 +162,15 @@ export default function PYQsHubPage() {
             onAction={() => { setSelectedSemester('all'); setSelectedYear('all'); setSearch(''); }}
           />
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {pyqs.map((paper) => (
+          <div className="space-y-4">
+            <p className="text-xs font-semibold text-slate-500" aria-live="polite">
+              {filteredPapers.length} question {filteredPapers.length === 1 ? 'paper' : 'papers'}
+            </p>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
+            {filteredPapers.map((paper) => (
               <PYQCard key={paper._id || paper.id} paper={paper} />
             ))}
+            </div>
           </div>
         )}
 

@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  HiOutlineArrowLeft, 
-  HiOutlineBookOpen, 
-  HiOutlineDownload, 
-  HiOutlineSearch,
-  HiOutlineSparkles
-} from 'react-icons/hi';
+import { HiOutlineArrowLeft } from 'react-icons/hi';
 import { useSemesterPYQs } from '../../hooks/usePYQs';
 import { semestersList } from '../../data/pyqs';
 import PYQCard from '../../components/cards/PYQCard';
@@ -22,12 +16,15 @@ export default function SemesterPYQPage({ semesterId }) {
   const [search, setSearch] = useState('');
   const [selectedYear, setSelectedYear] = useState('all');
 
+  const years = [...new Set(papers.map((paper) => String(paper.year)).filter(Boolean))]
+    .sort((a, b) => Number(b) - Number(a));
   const filteredPapers = papers.filter((paper) => {
     const matchesYear = selectedYear === 'all' || String(paper.year) === String(selectedYear);
-    const matchesSearch = !search.trim() || 
-      paper.subject.toLowerCase().includes(search.toLowerCase()) ||
-      paper.subjectCode.toLowerCase().includes(search.toLowerCase()) ||
-      (paper.topicsCovered && paper.topicsCovered.some(t => t.toLowerCase().includes(search.toLowerCase())));
+    const query = search.trim().toLowerCase();
+    const matchesSearch = !query ||
+      [paper.title, paper.subject, paper.subjectCode]
+        .some((value) => value?.toLowerCase().includes(query)) ||
+      (paper.topicsCovered || []).some((topic) => topic.toLowerCase().includes(query));
     return matchesYear && matchesSearch;
   });
 
@@ -81,20 +78,23 @@ export default function SemesterPYQPage({ semesterId }) {
         {/* Filter controls */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Filter Year:</span>
-            {['all', '2024', '2023', '2022', '2021'].map((yr) => (
-              <button
-                key={yr}
-                onClick={() => setSelectedYear(yr)}
-                className={`px-3 py-1 rounded-lg text-xs font-bold transition ${
-                  selectedYear === yr
-                    ? 'bg-amber-500 text-slate-950 shadow-xs'
-                    : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
-                }`}
-              >
-                {yr === 'all' ? 'All' : yr}
-              </button>
-            ))}
+            <label htmlFor="semester-year-filter" className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+              Filter Year:
+            </label>
+            <select
+              id="semester-year-filter"
+              value={selectedYear}
+              onChange={(event) => setSelectedYear(event.target.value)}
+              className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-bold text-slate-700 focus:outline-none focus:border-gold-500"
+            >
+              <option value="all">All Years</option>
+              {selectedYear !== 'all' && !years.includes(selectedYear) && (
+                <option value={selectedYear}>Year {selectedYear}</option>
+              )}
+              {years.map((year) => (
+                <option key={year} value={year}>Year {year}</option>
+              ))}
+            </select>
           </div>
 
           <div className="w-full sm:w-72">
@@ -119,7 +119,7 @@ export default function SemesterPYQPage({ semesterId }) {
             onAction={() => { setSelectedYear('all'); setSearch(''); }}
           />
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
             {filteredPapers.map((paper) => (
               <PYQCard key={paper._id || paper.id} paper={paper} />
             ))}

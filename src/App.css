@@ -115,16 +115,6 @@
   color: #7a8aa6;
 }
 
-.hero-cursor {
-  display: inline-block;
-  width: 3px;
-  height: 1em;
-  margin-left: 0.12em;
-  vertical-align: -0.08em;
-  background: #4d8dff;
-  animation: hero-cursor-blink 1s steps(1) infinite;
-}
-
 @keyframes hero-code-scroll-up {
   from {
     transform: translateY(0);
@@ -132,12 +122,6 @@
 
   to {
     transform: translateY(-50%);
-  }
-}
-
-@keyframes hero-cursor-blink {
-  50% {
-    opacity: 0;
   }
 }
 
@@ -464,8 +448,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hero-heading-line,
-  .hero-code-track,
-  .hero-cursor {
+  .hero-code-track {
     animation: none;
   }
 

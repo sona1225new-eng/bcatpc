@@ -54,7 +54,7 @@ export default function HeroSection() {
           <h1 className="hero-heading text-balance font-extrabold tracking-tight text-white leading-[1.08]">
             <span className="hero-heading-line">Welcome To</span>
             <span className="hero-heading-line">Department Of</span>
-            <span className="hero-heading-line">Computer Application<span className="hero-cursor" aria-hidden="true" /></span>
+            <span className="hero-heading-line">Computer Application</span>
           </h1>
 
           <p className="hero-college-name mt-5 font-semibold tracking-tight text-white">

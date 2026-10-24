@@ -59,7 +59,7 @@ export default function DynamicPage() {
     return (
       <div className="min-h-[60vh] flex items-center justify-center py-20 px-4 bg-[#F7F6F2]">
         <div className="max-w-md w-full text-center space-y-6">
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-amber-500/10 border border-amber-500/30 text-amber-600 text-3xl font-black">
+          <div className="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-[var(--college-logo-red)]/10 border border-amber-500/30 text-amber-600 text-3xl font-black">
             404
           </div>
           <div>
@@ -158,7 +158,7 @@ export default function DynamicPage() {
               [&_p]:leading-relaxed [&_p]:mb-3
               [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-1.5 [&_ul]:my-3
               [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:space-y-1.5 [&_ol]:my-3
-              [&_blockquote]:border-l-4 [&_blockquote]:border-amber-500 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:my-4 [&_blockquote]:bg-amber-50/40 [&_blockquote]:py-2 [&_blockquote]:rounded-r-xl
+              [&_blockquote]:border-l-4 [&_blockquote]:border-amber-500 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:my-4 [&_blockquote]:bg-[var(--college-logo-red)]/5 [&_blockquote]:py-2 [&_blockquote]:rounded-r-xl
               [&_table]:w-full [&_table]:border-collapse [&_table]:my-6 [&_table]:border [&_table]:border-slate-200 [&_table]:rounded-xl [&_table]:overflow-hidden
               [&_th]:bg-slate-100 [&_th]:border [&_th]:border-slate-200 [&_th]:p-3 [&_th]:text-left [&_th]:font-bold [&_th]:text-xs [&_th]:text-[#233B5D]
               [&_td]:border [&_td]:border-slate-200 [&_td]:p-3 [&_td]:text-xs [&_td]:text-slate-700

@@ -86,7 +86,7 @@ export default function PYQDetailPage() {
               <span className="bg-slate-100 font-bold text-slate-800 px-3 py-1.5 rounded-xl">
                 Year: {paper.year}
               </span>
-              <span className="bg-amber-100 font-bold text-amber-900 px-3 py-1.5 rounded-xl">
+              <span className="bg-[var(--college-logo-red)]/10 font-bold text-amber-900 px-3 py-1.5 rounded-xl">
                 {paper.paperType || "Theory"}
               </span>
             </div>
@@ -173,7 +173,7 @@ export default function PYQDetailPage() {
               </div>
             </section>
           ) : (
-            <p className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+            <p className="rounded-xl border border-amber-200 bg-[var(--college-logo-red)]/5 p-4 text-sm text-amber-900">
               No PDF file is attached to this question paper.
             </p>
           )}

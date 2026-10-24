@@ -122,10 +122,10 @@ export default function PDFViewer({ url, documentLabel = 'PDF document', onStatu
     <div className="w-full">
       {status === 'error' && (
         <div
-          className="my-3 rounded-2xl border border-amber-200 bg-amber-50/90 p-6 text-center text-amber-900"
+          className="my-3 rounded-2xl border border-amber-200 bg-[var(--college-logo-red)]/5 p-6 text-center text-amber-900"
           role="alert"
         >
-          <div className="mx-auto mb-2.5 flex h-10 w-10 items-center justify-center rounded-full bg-amber-100 text-amber-700">
+          <div className="mx-auto mb-2.5 flex h-10 w-10 items-center justify-center rounded-full bg-[var(--college-logo-red)]/10 text-amber-700">
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
                 strokeLinecap="round"

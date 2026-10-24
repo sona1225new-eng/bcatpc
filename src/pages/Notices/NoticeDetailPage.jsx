@@ -121,9 +121,9 @@ export default function NoticeDetailPage() {
           {/* Download Box */}
           {notice.documentUrl && (
             <div className="pt-6 border-t border-slate-100">
-              <div className="bg-amber-50/70 border border-amber-200 rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="bg-[var(--college-logo-red)]/5 border border-amber-200 rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center font-bold flex-shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-[var(--college-logo-red)] text-white flex items-center justify-center font-bold flex-shrink-0">
                     <HiOutlineDocumentText className="w-6 h-6" />
                   </div>
                   <div>

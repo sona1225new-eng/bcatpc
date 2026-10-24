@@ -23,7 +23,7 @@ export default function FacultyCard({ faculty }) {
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-80" />
           
           <div className="absolute bottom-3 left-4 right-4 text-white">
-            <span className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-500/90 text-slate-950 mb-1">
+            <span className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[var(--college-logo-red)] text-white mb-1">
               {faculty.shortDesignation || faculty.designation}
             </span>
             <h3 className="text-lg font-bold text-white tracking-tight drop-shadow-sm">
@@ -45,7 +45,7 @@ export default function FacultyCard({ faculty }) {
         {resumeUrl && (
           <Link
             to={`/faculties/${faculty._id || faculty.id}`}
-            className="w-full py-2.5 px-4 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200 text-xs font-bold inline-flex items-center justify-center gap-2 transition duration-200"
+            className="w-full py-2.5 px-4 rounded-xl bg-[var(--college-logo-red)] hover:bg-[var(--college-logo-red)]/90 text-white border border-amber-200 text-xs font-bold inline-flex items-center justify-center gap-2 transition duration-200"
           >
             <HiOutlineDocumentText className="w-4 h-4" />
             <span>View Full Resume</span>

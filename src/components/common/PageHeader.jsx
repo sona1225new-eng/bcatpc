@@ -14,7 +14,7 @@ export default function PageHeader({
     <div className="relative bg-[#233B5D] text-white pt-10 pb-12 md:pb-16 border-b border-slate-800 overflow-hidden">
       {/* Background ambient gradient glow */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-navy-900/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-10 left-10 w-80 h-80 bg-gold-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-10 left-10 w-80 h-80 bg-[var(--college-logo-red)]/10 rounded-full blur-3xl pointer-events-none" />
       
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
@@ -29,7 +29,7 @@ export default function PageHeader({
 
         <div className="max-w-3xl">
           {badge && (
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-amber-500/15 text-amber-400 border border-amber-400/30 mb-3">
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-[var(--college-logo-red)] text-white border border-amber-400/30 mb-3">
               {badge}
             </span>
           )}

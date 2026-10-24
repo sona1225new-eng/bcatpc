@@ -32,7 +32,7 @@ export default function Pagination({
             onClick={() => onPageChange(p)}
             className={`min-w-9 h-9 px-3 rounded-lg text-sm font-semibold transition ${
               isActive
-                ? 'bg-amber-500 text-slate-950 shadow-xs'
+                ? 'bg-[var(--college-logo-red)] text-white shadow-xs'
                 : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'
             }`}
           >

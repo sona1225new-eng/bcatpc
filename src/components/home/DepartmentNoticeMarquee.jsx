@@ -23,12 +23,12 @@ function NoticeEntry({ notice }) {
           {notice.category}
         </span>
         {notice.tag && (
-          <span className="inline-flex items-center rounded-full border border-gold-500/30 bg-gold-500/10 px-2.5 py-0.5 text-xs font-semibold text-navy-900">
+          <span className="inline-flex items-center rounded-full border border-gold-500/30 bg-[var(--college-logo-red)]/10 px-2.5 py-0.5 text-xs font-semibold text-navy-900">
             {notice.tag}
           </span>
         )}
         {notice.isNew && (
-          <span className="inline-flex items-center rounded-full bg-gold-500/20 px-2 py-0.5 text-[10px] font-bold text-navy-900">
+          <span className="inline-flex items-center rounded-full bg-[var(--college-logo-red)] text-white px-2 py-0.5 text-[10px] font-bold">
             New
           </span>
         )}

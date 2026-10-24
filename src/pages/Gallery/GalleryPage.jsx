@@ -216,7 +216,7 @@ export default function GalleryPage() {
                     onClick={() => setSelectedCategory(cat)}
                     className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                       selectedCategory === cat
-                        ? 'bg-amber-500 text-slate-950 font-extrabold shadow-xs'
+                        ? 'bg-[var(--college-logo-red)] text-white font-extrabold shadow-xs'
                         : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
                     }`}
                   >

@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+:root {
+  --college-logo-red: #C02E2D;
+}
+
 @theme {
   --color-navy-950: #233B5D;
   --color-navy-900: #233B5D;
@@ -51,7 +55,7 @@
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #C5A15B;
+  background: var(--college-logo-red);
 }
 
 /* Ticker & Marquee Smooth Auto Scroll */
@@ -172,4 +176,37 @@
   background: rgba(35, 59, 93, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+}
+
+[class~="text-gold-400"]:not(svg),
+[class~="text-gold-500"]:not(svg),
+[class~="text-amber-300"]:not(svg),
+[class~="text-amber-400"]:not(svg),
+[class~="text-amber-500"]:not(svg),
+[class~="text-amber-600"]:not(svg),
+[class~="text-amber-700"]:not(svg),
+[class~="text-amber-800"]:not(svg),
+[class~="text-amber-900"]:not(svg),
+[class~="text-amber-950"]:not(svg),
+[class~="text-yellow-400"]:not(svg),
+[class~="text-yellow-500"]:not(svg),
+[class~="text-[#C58A20]"]:not(svg),
+[class~="text-[#C5A15B]"]:not(svg),
+[class*="hover:text-gold-"]:not(svg):hover,
+[class*="hover:text-amber-"]:not(svg):hover,
+[class*="hover:text-yellow-"]:not(svg):hover,
+[class*="hover:text-[#C58A20]"]:not(svg):hover,
+[class*="hover:text-[#C5A15B]"]:not(svg):hover,
+.group:hover [class*="group-hover:text-gold-"]:not(svg),
+.group:hover [class*="group-hover:text-amber-"]:not(svg),
+.group:hover [class*="group-hover:text-yellow-"]:not(svg),
+.group:hover [class*="group-hover:text-[#C58A20]"]:not(svg),
+.group:hover [class*="group-hover:text-[#C5A15B]"]:not(svg),
+[class*="hover:[&_a]:text-amber-"]:hover a {
+  color: var(--college-logo-red) !important;
+}
+
+.text-gold-gradient {
+  background: none;
+  -webkit-text-fill-color: var(--college-logo-red);
 }

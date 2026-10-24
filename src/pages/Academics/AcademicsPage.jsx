@@ -66,7 +66,7 @@ export default function AcademicsPage() {
         <div className="max-w-7xl mx-auto flex items-center justify-between overflow-x-auto gap-4 text-xs font-semibold">
           <span className="text-amber-400 uppercase tracking-wider whitespace-nowrap">Academics Menu:</span>
           <div className="flex items-center gap-3 whitespace-nowrap">
-            <Link to="/academics" className="px-3 py-1 rounded-lg bg-amber-500 text-slate-950 font-bold">
+            <Link to="/academics" className="px-3 py-1 rounded-lg bg-[var(--college-logo-red)] text-white font-bold">
               BCA Overview
             </Link>
             <Link to="/academics/labs-structure" className="px-3 py-1 rounded-lg hover:bg-slate-800 text-slate-200">
@@ -110,7 +110,7 @@ export default function AcademicsPage() {
           {/* Right Card: Eligibility & Admission Info */}
           <div className="lg:col-span-5 bg-gradient-to-br from-slate-900 via-navy-950 to-[#233B5D] text-white rounded-3xl p-8 border border-slate-800 shadow-xl space-y-6">
             <div>
-              <span className="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500/20 text-amber-400 border border-amber-500/30">
+              <span className="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[var(--college-logo-red)]/20 text-amber-400 border border-amber-500/30">
                 ADMISSION CRITERIA
               </span>
               <h3 className="text-2xl font-extrabold text-white mt-2">Eligibility & Intake</h3>
@@ -190,7 +190,7 @@ export default function AcademicsPage() {
                     {sem.subjects.map((sub) => (
                       <div key={sub.code} className="flex items-center justify-between py-1 border-b border-slate-100 last:border-0">
                         <span className="truncate pr-2 font-medium">{sub.name}</span>
-                        <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${sub.type === 'Practical' ? 'bg-amber-100 text-amber-800' : 'bg-slate-100 text-slate-700'}`}>
+                        <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${sub.type === 'Practical' ? 'bg-[var(--college-logo-red)]/10 text-amber-800' : 'bg-slate-100 text-slate-700'}`}>
                           {sub.type}
                         </span>
                       </div>

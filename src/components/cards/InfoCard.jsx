@@ -28,7 +28,7 @@ export default function InfoCard({
   const IconComponent = iconMap[icon] || HiAcademicCap;
 
   const badgeStyles = {
-    gold: "bg-gold-500 text-navy-900 font-bold",
+    gold: "bg-[var(--college-logo-red)] text-white font-bold",
     wine: "bg-navy-900 text-white border border-navy-800",
     blue: "bg-slate-100 text-navy-900 border border-slate-200",
     slate: "bg-slate-100 text-navy-900 border border-slate-200",

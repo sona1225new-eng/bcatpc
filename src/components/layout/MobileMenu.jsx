@@ -58,7 +58,7 @@ export default function MobileMenu({
             onClick={handleNavClick}
             className={({ isActive }) =>
               `block px-4 py-3 rounded-xl text-sm font-semibold transition ${
-                isActive ? 'bg-gold-500/20 text-gold-400 border border-gold-500/30' : 'text-slate-200 hover:bg-slate-800'
+                isActive ? 'bg-[var(--college-logo-red)]/20 text-gold-400 border border-gold-500/30' : 'text-slate-200 hover:bg-slate-800'
               }`
             }
           >
@@ -71,7 +71,7 @@ export default function MobileMenu({
             onClick={handleNavClick}
             className={({ isActive }) =>
               `block px-4 py-3 rounded-xl text-sm font-semibold transition ${
-                isActive ? 'bg-gold-500/20 text-gold-400 border border-gold-500/30' : 'text-slate-200 hover:bg-slate-800'
+                isActive ? 'bg-[var(--college-logo-red)]/20 text-gold-400 border border-gold-500/30' : 'text-slate-200 hover:bg-slate-800'
               }`
             }
           >
@@ -131,7 +131,7 @@ export default function MobileMenu({
             onClick={handleNavClick}
             className={({ isActive }) =>
               `block px-4 py-3 rounded-xl text-sm font-semibold transition ${
-                isActive ? 'bg-gold-500/20 text-gold-400 border border-gold-500/30' : 'text-slate-200 hover:bg-slate-800'
+                isActive ? 'bg-[var(--college-logo-red)]/20 text-gold-400 border border-gold-500/30' : 'text-slate-200 hover:bg-slate-800'
               }`
             }
           >
@@ -200,7 +200,7 @@ export default function MobileMenu({
                 }
               >
                 <span>PYQs</span>
-                <span className="text-[10px] bg-gold-500 text-slate-950 font-bold px-1.5 py-0.5 rounded mr-2">6 Sem</span>
+                <span className="text-[10px] bg-[var(--college-logo-red)] text-white font-bold px-1.5 py-0.5 rounded mr-2">6 Sem</span>
               </NavLink>
               <button
                 type="button"
@@ -242,7 +242,7 @@ export default function MobileMenu({
             onClick={handleNavClick}
             className={({ isActive }) =>
               `block px-4 py-3 rounded-xl text-sm font-semibold transition ${
-                isActive ? 'bg-gold-500/20 text-gold-400 border border-gold-500/30' : 'text-slate-200 hover:bg-slate-800'
+                isActive ? 'bg-[var(--college-logo-red)]/20 text-gold-400 border border-gold-500/30' : 'text-slate-200 hover:bg-slate-800'
               }`
             }
           >
@@ -255,7 +255,7 @@ export default function MobileMenu({
             onClick={handleNavClick}
             className={({ isActive }) =>
               `block px-4 py-3 rounded-xl text-sm font-semibold transition ${
-                isActive ? 'bg-gold-500/20 text-gold-400 border border-gold-500/30' : 'text-slate-200 hover:bg-slate-800'
+                isActive ? 'bg-[var(--college-logo-red)]/20 text-gold-400 border border-gold-500/30' : 'text-slate-200 hover:bg-slate-800'
               }`
             }
           >
@@ -268,7 +268,7 @@ export default function MobileMenu({
             onClick={handleNavClick}
             className={({ isActive }) =>
               `block px-4 py-3 rounded-xl text-sm font-semibold transition ${
-                isActive ? 'bg-gold-500/20 text-gold-400 border border-gold-500/30' : 'text-slate-200 hover:bg-slate-800'
+                isActive ? 'bg-[var(--college-logo-red)]/20 text-gold-400 border border-gold-500/30' : 'text-slate-200 hover:bg-slate-800'
               }`
             }
           >

@@ -196,7 +196,7 @@ export default function Footer() {
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                   BCA IT Block
                 </span>
-                <span className="text-[11px] bg-gold-500/20 text-gold-400 border border-gold-500/30 px-2 py-0.5 rounded-full font-bold">
+                <span className="text-[11px] bg-[var(--college-logo-red)]/20 text-gold-400 border border-gold-500/30 px-2 py-0.5 rounded-full font-bold">
                   Open 9:30 - 4:30
                 </span>
               </div>

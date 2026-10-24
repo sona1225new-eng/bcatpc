@@ -95,7 +95,7 @@ export default function LabsStructurePage() {
                 </h3>
               </div>
               <div className="flex items-center gap-3">
-                <span className="text-xs sm:text-sm font-bold bg-amber-50 text-amber-900 border border-amber-200 px-3.5 py-1.5 rounded-xl">
+                <span className="text-xs sm:text-sm font-bold bg-[var(--college-logo-red)]/10 text-amber-900 border border-amber-200 px-3.5 py-1.5 rounded-xl">
                   Total Credits: {currentSemesterData.credits}
                 </span>
                 <Link
@@ -127,7 +127,7 @@ export default function LabsStructurePage() {
                       <td className="py-3.5 px-4">
                         <span className={`inline-block px-2.5 py-0.5 rounded-full text-xs font-bold ${
                           sub.type === 'Practical'
-                            ? 'bg-amber-100 text-amber-900 border border-amber-200'
+                            ? 'bg-[var(--college-logo-red)]/10 text-amber-900 border border-amber-200'
                             : sub.type === 'Viva'
                             ? 'bg-purple-100 text-purple-900 border border-purple-200'
                             : 'bg-blue-50 text-blue-800 border border-blue-200'

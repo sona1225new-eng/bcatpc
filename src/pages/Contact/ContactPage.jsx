@@ -98,7 +98,7 @@ export default function ContactPage() {
             {/* Phone Numbers */}
             <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs space-y-3">
               <div className="flex items-center gap-3 pb-3 border-b border-slate-100">
-                <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-800 flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-[var(--college-logo-red)]/5 text-amber-800 flex items-center justify-center flex-shrink-0">
                   <HiOutlinePhone className="w-5 h-5" />
                 </div>
                 <div>
@@ -161,7 +161,7 @@ export default function ContactPage() {
           {/* Right Column: Admission & General Inquiry Form */}
           <div id="admission-inquiry" className="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-lg">
             <div className="mb-6 pb-4 border-b border-slate-100">
-              <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-50 text-amber-800 border border-amber-200">
+              <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[var(--college-logo-red)] text-white border border-amber-200">
                 DIRECT INQUIRY DESK
               </span>
               <h3 className="text-2xl font-extrabold text-slate-900 mt-2">

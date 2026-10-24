@@ -61,7 +61,7 @@ export function ErrorState({ title = "Unable to load data", message = "An error 
 export function EmptyState({ title = "No records found", message = "There are no items matching your criteria at this moment.", actionText, onAction }) {
   return (
     <div className="w-full my-8 p-10 rounded-2xl bg-slate-50 border border-dashed border-slate-300 text-center max-w-md mx-auto">
-      <div className="w-12 h-12 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center mx-auto mb-4 border border-amber-200">
+      <div className="w-12 h-12 rounded-full bg-[var(--college-logo-red)]/5 text-amber-600 flex items-center justify-center mx-auto mb-4 border border-amber-200">
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
         </svg>

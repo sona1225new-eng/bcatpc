@@ -109,16 +109,16 @@ export default function Navbar() {
             />
           </span>
 
-          <div className="flex flex-col">
+          <div className="flex flex-col items-start">
             <div className="flex items-center gap-2">
               <span className="text-[15px] sm:text-lg 2xl:text-[23px] font-black tracking-tight text-[#10294B] group-hover:text-[#C58A20] transition-colors">
                 T.P. College Madhepura
               </span>
-              <span className="hidden sm:inline-block px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-gold-500 text-slate-950">
+              <span className="hidden sm:inline-block px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-[var(--college-logo-red)] text-white">
                 B.C.A.
               </span>
             </div>
-            <span className="text-[10px] sm:text-xs font-semibold text-[#243B5A] group-hover:text-[#10294B] transition-colors">
+            <span className="text-[10px] sm:text-xs font-semibold text-[color:var(--college-logo-red)] group-hover:text-[#10294B] transition-colors">
               Department of Computer Application
             </span>
           </div>
@@ -244,7 +244,7 @@ export default function Navbar() {
               }
             >
               <span>PYQs</span>
-              <span className="text-[10px] bg-gold-500 text-slate-950 font-bold px-1 py-0.5 rounded leading-none">
+              <span className="text-[10px] bg-[var(--college-logo-red)] text-white font-bold px-1 py-0.5 rounded leading-none">
                 New
               </span>
               <HiChevronDown

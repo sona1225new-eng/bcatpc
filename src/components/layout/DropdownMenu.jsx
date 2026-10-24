@@ -19,7 +19,7 @@ export default function DropdownMenu({ items = [], onItemClick, width = "w-64" }
             className={({ isActive }) =>
               `group flex items-center justify-between px-3.5 py-2.5 text-xs font-medium transition-all duration-150 rounded-lg mx-1.5 ${
                 isActive
-                  ? 'bg-gold-500/15 text-gold-400 font-semibold border border-gold-500/30'
+                  ? 'bg-[var(--college-logo-red)]/15 text-gold-400 font-semibold border border-gold-500/30'
                   : 'text-slate-200 hover:text-white hover:bg-slate-800/90'
               }`
             }

@@ -118,7 +118,7 @@ export default function AcademicCalendarPage() {
                             evt.type.includes('Exam')
                               ? 'bg-rose-100 text-rose-800'
                               : evt.type.includes('Holiday')
-                              ? 'bg-amber-100 text-amber-800'
+                              ? 'bg-[var(--college-logo-red)]/10 text-amber-800'
                               : evt.type.includes('Admission')
                               ? 'bg-emerald-100 text-emerald-800'
                               : 'bg-blue-100 text-blue-800'

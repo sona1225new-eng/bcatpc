@@ -99,7 +99,7 @@ export default function BlogDetailPage() {
         </div>
 
         {/* Excerpt */}
-        <div className="p-5 bg-amber-50/70 border-l-4 border-amber-500 rounded-r-2xl text-slate-800 text-base font-semibold leading-relaxed">
+        <div className="p-5 bg-[var(--college-logo-red)]/5 border-l-4 border-amber-500 rounded-r-2xl text-slate-800 text-base font-semibold leading-relaxed">
           {blog.excerpt}
         </div>
 

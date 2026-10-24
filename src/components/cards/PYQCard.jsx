@@ -70,7 +70,7 @@ export default function PYQCard({ paper }) {
         {detailPath ? (
           <Link
             to={detailPath}
-            className="inline-flex min-h-8 items-center justify-center gap-1.5 rounded-lg border border-slate-200 px-2.5 py-1.5 text-[11px] font-bold text-navy-900 transition hover:border-amber-400 hover:bg-amber-50"
+            className="inline-flex min-h-8 items-center justify-center gap-1.5 rounded-lg border border-slate-200 px-2.5 py-1.5 text-[11px] font-bold text-navy-900 transition hover:border-amber-400 hover:bg-[var(--college-logo-red)]/5"
             title="View paper details and PDF"
           >
             <HiOutlineEye className="h-4 w-4" />

@@ -30,7 +30,7 @@ export default function TopBar() {
           <span className="hidden lg:inline text-slate-400">
             {siteConfig.affiliation}
           </span>
-          <span className="px-2 py-0.5 rounded-full bg-gold-500/10 text-gold-400 border border-gold-500/30 font-semibold text-[10px] sm:text-[11px] flex items-center gap-1">
+          <span className="px-2 py-0.5 rounded-full bg-[var(--college-logo-red)]/10 text-gold-400 border border-gold-500/30 font-semibold text-[10px] sm:text-[11px] flex items-center gap-1">
             <HiOutlineAcademicCap className="w-3 h-3" />
             <span>{siteConfig.accreditation}</span>
           </span>

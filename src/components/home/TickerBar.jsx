@@ -1,17 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { HiOutlineLightningBolt } from 'react-icons/hi';
 import { useNotices } from '../../hooks/useNotices';
 
 export default function TickerBar() {
   const { notices, loading, error } = useNotices({ limit: 6 });
 
   return (
-    <div className="bg-gradient-to-r from-navy-900 via-navy-800 to-navy-900 text-white py-2.5 px-4 shadow-md overflow-hidden relative z-20 border-y border-navy-800">
+    <div className="bg-[#F7F6F2] text-navy-900 py-2.5 px-4 shadow-md overflow-hidden relative z-20 border-y border-slate-200">
       <div className="max-w-7xl mx-auto flex items-center gap-3">
         {/* Static Badge on Left */}
         <div className="flex-shrink-0 z-10">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold-500 text-slate-900 font-extrabold text-[11px] uppercase tracking-wider shadow-sm">
-            <span>⚡</span>
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--college-logo-red)] text-white font-extrabold text-[11px] uppercase tracking-wider shadow-sm">
+            <HiOutlineLightningBolt className="w-3.5 h-3.5" aria-hidden="true" />
             <span>LATEST UPDATES</span>
           </span>
         </div>
@@ -23,15 +24,15 @@ export default function TickerBar() {
           aria-label="Latest notices"
         >
           {loading ? (
-            <p className="text-xs sm:text-sm font-semibold text-slate-100" role="status">
+            <p className="text-xs sm:text-sm font-semibold text-navy-900" role="status">
               Loading latest notices…
             </p>
           ) : error ? (
-            <p className="text-xs sm:text-sm font-semibold text-slate-100" role="status">
+            <p className="text-xs sm:text-sm font-semibold text-navy-900" role="status">
               Latest notices are temporarily unavailable.
             </p>
           ) : notices.length === 0 ? (
-            <p className="text-xs sm:text-sm font-semibold text-slate-100">
+            <p className="text-xs sm:text-sm font-semibold text-navy-900">
               No notices available.
             </p>
           ) : (
@@ -42,9 +43,9 @@ export default function TickerBar() {
                   to={`/notices/${notice.id}`}
                   className="hover:underline hover:text-slate-900 inline-flex items-center gap-2 whitespace-nowrap"
                 >
-                  <span className="text-gold-400">★</span>
+                  <span className="text-navy-900">★</span>
                   <span>{notice.title}</span>
-                  <span className="text-[10px] bg-white/10 text-slate-100 px-1.5 py-0.2 rounded font-mono font-bold">
+                  <span className="text-[10px] bg-navy-900/10 text-navy-900 px-1.5 py-0.2 rounded font-mono font-bold">
                     {notice.category}
                   </span>
                 </Link>
@@ -58,9 +59,9 @@ export default function TickerBar() {
                   aria-hidden="true"
                   className="ticker-duplicate hover:underline hover:text-slate-900 inline-flex items-center gap-2 whitespace-nowrap"
                 >
-                  <span className="text-gold-400">★</span>
+                  <span className="text-navy-900">★</span>
                   <span>{notice.title}</span>
-                  <span className="text-[10px] bg-white/10 text-slate-100 px-1.5 py-0.2 rounded font-mono font-bold">
+                  <span className="text-[10px] bg-navy-900/10 text-navy-900 px-1.5 py-0.2 rounded font-mono font-bold">
                     {notice.category}
                   </span>
                 </Link>
@@ -73,7 +74,7 @@ export default function TickerBar() {
         <div className="hidden md:flex flex-shrink-0 pl-2">
           <Link
             to="/notices"
-            className="text-[11px] font-extrabold text-slate-100 hover:underline uppercase tracking-wider"
+            className="text-[11px] font-extrabold text-navy-900 hover:underline uppercase tracking-wider"
           >
             All Notices →
           </Link>

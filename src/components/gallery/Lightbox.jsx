@@ -47,7 +47,7 @@ export default function Lightbox({ image, onClose, onPrev, onNext }) {
           className="max-h-[75vh] w-auto max-w-full rounded-xl shadow-2xl object-contain"
         />
         <div className="mt-4 text-white max-w-2xl px-4">
-          <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500 text-slate-950 mb-1.5">
+          <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[var(--college-logo-red)] text-white mb-1.5">
             {image.category}
           </span>
           <h3 className="text-lg sm:text-xl font-bold">{image.title}</h3>

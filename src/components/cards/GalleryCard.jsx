@@ -28,7 +28,7 @@ export default function GalleryCard({ item, onClick }) {
 
       {/* Hover Eye Icon */}
       <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-        <div className="w-12 h-12 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-300">
+        <div className="w-12 h-12 rounded-full bg-[var(--college-logo-red)] text-white flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-300">
           <HiOutlineEye className="w-6 h-6" />
         </div>
       </div>

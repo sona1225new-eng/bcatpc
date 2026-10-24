@@ -13,11 +13,11 @@ export default function SectionHeading({
 }) {
   const badgeStyles = {
     wine: "text-navy-900 bg-ivory border-slate-200",
-    gold: "text-navy-900 bg-gold-500/15 border-gold-500/30",
+    gold: "text-navy-900 bg-[var(--college-logo-red)]/10 border-gold-500/30",
     blue: "text-navy-900 bg-ivory border-slate-200",
     navy: "text-navy-900 bg-slate-100 border-slate-200",
-    darkGold: "text-gold-400 bg-gold-500/10 border-gold-500/30",
-    darkWine: "text-gold-400 bg-gold-500/10 border-gold-500/30",
+    darkGold: "text-gold-400 bg-[var(--college-logo-red)]/10 border-gold-500/30",
+    darkWine: "text-gold-400 bg-[var(--college-logo-red)]/10 border-gold-500/30",
   };
 
   const getBadgeClass = () => {

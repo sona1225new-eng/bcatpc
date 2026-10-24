@@ -69,7 +69,7 @@ export default function ComputingLabsPage() {
                 key={idx}
                 className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-xs hover:shadow-xl hover:border-amber-400 transition-all duration-300 space-y-3"
               >
-                <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-700 border border-amber-200/60 flex items-center justify-center font-bold">
+                <div className="w-12 h-12 rounded-2xl bg-[var(--college-logo-red)]/5 text-amber-700 border border-amber-200/60 flex items-center justify-center font-bold">
                   <HiOutlineDesktopComputer className="w-6 h-6" />
                 </div>
                 <h3 className="text-lg font-extrabold text-slate-900">
@@ -86,7 +86,7 @@ export default function ComputingLabsPage() {
         {/* Lab Rules & Best Practices */}
         <section className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 border border-slate-800">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center border border-amber-500/30">
+            <div className="w-10 h-10 rounded-xl bg-[var(--college-logo-red)]/20 text-amber-400 flex items-center justify-center border border-amber-500/30">
               <HiOutlineExclamation className="w-6 h-6" />
             </div>
             <div>
@@ -100,7 +100,7 @@ export default function ComputingLabsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm text-slate-300">
             {infrastructure.rules.map((rule, idx) => (
               <div key={idx} className="flex items-start gap-3 bg-slate-800/60 p-4 rounded-xl border border-slate-700/60">
-                <span className="w-6 h-6 rounded-full bg-amber-400 text-slate-950 font-bold text-xs flex items-center justify-center flex-shrink-0">
+                <span className="w-6 h-6 rounded-full bg-[var(--college-logo-red)] text-white font-bold text-xs flex items-center justify-center flex-shrink-0">
                   {idx + 1}
                 </span>
                 <span className="leading-relaxed">{rule}</span>

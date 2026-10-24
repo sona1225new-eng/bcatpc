@@ -67,7 +67,7 @@ export default function PYQsHubPage() {
                 to={`/pyqs/${sem.id}`}
                 className="group bg-white rounded-2xl p-4 border border-slate-200 hover:border-amber-400 hover:bg-[#233B5D] text-slate-800 hover:text-white shadow-xs hover:shadow-xl transition-all duration-200 flex flex-col items-center text-center justify-between space-y-2"
               >
-                <div className="w-10 h-10 rounded-xl bg-amber-50 group-hover:bg-amber-500 text-amber-700 group-hover:text-slate-950 flex items-center justify-center font-black text-xs transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-[var(--college-logo-red)]/5 group-hover:bg-[var(--college-logo-red)] text-amber-700 group-hover:text-white flex items-center justify-center font-black text-xs transition-colors">
                   {sem.code}
                 </div>
                 <div>
@@ -139,7 +139,7 @@ export default function PYQsHubPage() {
                 onClick={() => setSelectedSemester(sem.id)}
                 className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition ${
                   selectedSemester === sem.id
-                    ? 'bg-amber-500 text-slate-950 shadow-sm'
+                    ? 'bg-[var(--college-logo-red)] text-white shadow-sm'
                     : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
                 }`}
               >

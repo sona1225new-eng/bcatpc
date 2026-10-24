@@ -6,7 +6,7 @@ export default function NotFoundPage() {
   return (
     <div className="min-h-[70vh] flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8 bg-[#F7F6F2]">
       <div className="max-w-md w-full text-center space-y-6">
-        <div className="inline-flex items-center justify-center w-24 h-24 rounded-3xl bg-amber-500/10 border-2 border-amber-500/30 text-amber-600 text-4xl font-black shadow-inner">
+        <div className="inline-flex items-center justify-center w-24 h-24 rounded-3xl bg-[var(--college-logo-red)]/10 border-2 border-amber-500/30 text-amber-600 text-4xl font-black shadow-inner">
           404
         </div>
 

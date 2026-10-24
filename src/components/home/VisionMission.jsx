@@ -6,7 +6,7 @@ export default function VisionMission() {
   return (
     <section className="py-20 md:py-28 bg-[#F7F6F2] text-slate-900 relative overflow-hidden border-b border-slate-200">
       {/* Background ambient lighting */}
-      <div className="absolute top-0 right-1/3 w-[500px] h-[500px] bg-gold-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-1/3 w-[500px] h-[500px] bg-[var(--college-logo-red)]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-navy-900/5 rounded-full blur-3xl pointer-events-none" />
 
       {/* Starry dot texture */}
@@ -30,7 +30,7 @@ export default function VisionMission() {
             <div className="space-y-6">
               {/* Header Badge */}
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-gold-500/20 border border-gold-500/40 text-gold-400 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-2xl bg-[var(--college-logo-red)]/20 border border-gold-500/40 text-gold-400 flex items-center justify-center">
                   <HiOutlineEye className="w-6 h-6" />
                 </div>
                 <div>
@@ -63,7 +63,7 @@ export default function VisionMission() {
             <div className="space-y-6">
               {/* Header Badge */}
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-gold-500/15 border border-gold-500/40 text-navy-800 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-2xl bg-[var(--college-logo-red)]/15 border border-gold-500/40 text-navy-800 flex items-center justify-center">
                   <HiOutlineFlag className="w-6 h-6" />
                 </div>
                 <div>
@@ -99,7 +99,7 @@ export default function VisionMission() {
         {/* 3 Bottom Feature Pills / Widgets matching reference */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
           <div className="bg-white backdrop-blur border border-slate-200 rounded-2xl p-5 flex items-start gap-4">
-            <div className="w-10 h-10 rounded-xl bg-gold-500/20 text-gold-400 flex items-center justify-center flex-shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-[var(--college-logo-red)]/20 text-gold-400 flex items-center justify-center flex-shrink-0">
               <HiOutlineAcademicCap className="w-5 h-5" />
             </div>
             <div>
@@ -109,7 +109,7 @@ export default function VisionMission() {
           </div>
 
           <div className="bg-white backdrop-blur border border-slate-200 rounded-2xl p-5 flex items-start gap-4">
-            <div className="w-10 h-10 rounded-xl bg-gold-500/20 text-gold-400 flex items-center justify-center flex-shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-[var(--college-logo-red)]/20 text-gold-400 flex items-center justify-center flex-shrink-0">
               <HiOutlineLightningBolt className="w-5 h-5" />
             </div>
             <div>
@@ -119,7 +119,7 @@ export default function VisionMission() {
           </div>
 
           <div className="bg-white backdrop-blur border border-slate-200 rounded-2xl p-5 flex items-start gap-4">
-            <div className="w-10 h-10 rounded-xl bg-gold-500/20 text-navy-800 flex items-center justify-center flex-shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-[var(--college-logo-red)]/20 text-navy-800 flex items-center justify-center flex-shrink-0">
               <HiOutlineSparkles className="w-5 h-5" />
             </div>
             <div>

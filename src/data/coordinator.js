@@ -2,7 +2,7 @@
 // Compact data model ready for future backend/Admin Dashboard integration
 
 export const coordinatorData = {
-  name: "Coordinator Name", // Editable placeholder
+  name: "Gaurav Kumar",
   designation: "Coordinator, Department of Computer Applications", // Editable placeholder
   institution: "T.P. College, Madhepura",
   photo: "/coordinator-photo.png",

@@ -29,7 +29,7 @@ export default function CoordinatorMessage() {
         <div className="bg-slate-50 border border-slate-200 rounded-2xl p-7 sm:p-9 flex flex-col sm:flex-row items-start gap-6 sm:gap-8 shadow-sm hover:shadow-md transition-shadow duration-300">
 
           {/* Photo + Identity */}
-          <div className="flex-shrink-0 flex flex-col items-center sm:items-start gap-3 w-full sm:w-auto">
+          <div className="flex-shrink-0 flex flex-col items-center gap-3 w-full sm:w-auto">
             <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-gold-500/50 bg-slate-200 shadow-md flex-shrink-0">
               <img
                 src={photo}
@@ -38,7 +38,7 @@ export default function CoordinatorMessage() {
                 loading="lazy"
               />
             </div>
-            <div className="text-center sm:text-left">
+            <div className="text-center">
               <p className="text-sm font-extrabold text-slate-900 leading-tight">{name}</p>
               <p className="text-[11px] font-semibold text-navy-800 mt-0.5">{designation}</p>
               {institution && (

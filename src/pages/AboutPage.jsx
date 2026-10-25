@@ -1,6 +1,7 @@
 import React from 'react';
 import PageHeader from '../components/common/PageHeader';
 import WelcomeAbout from '../components/home/WelcomeAbout';
+import VisionMission from '../components/home/VisionMission';
 
 export default function AboutPage() {
   return (
@@ -15,6 +16,7 @@ export default function AboutPage() {
         ]}
       />
       <WelcomeAbout />
+      <VisionMission />
     </div>
   );
 }

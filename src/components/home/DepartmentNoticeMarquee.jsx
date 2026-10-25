@@ -131,7 +131,7 @@ function NoticeColumn({ category, notices }) {
   return (
     <article
       tabIndex={0}
-      className="department-notice-card flex h-[28rem] min-w-0 flex-col overflow-hidden rounded-xl border border-slate-200 border-t-2 border-t-sky-600 bg-white shadow-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
+      className="department-notice-card flex h-[28rem] min-w-0 flex-col overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
     >
       <div className="flex min-h-[4.5rem] items-center border-b border-dotted border-sky-200 px-4 py-3">
         <span className="rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-bold leading-relaxed text-navy-900">
@@ -184,14 +184,16 @@ function NoticeColumn({ category, notices }) {
 
 export default function DepartmentNoticeMarquee({ columns }) {
   return (
-    <div className="grid min-w-0 grid-cols-1 items-stretch gap-4 md:grid-cols-2 xl:grid-cols-4">
-      {columns.map((column) => (
-        <NoticeColumn
-          key={column.category}
-          category={column.category}
-          notices={column.notices}
-        />
-      ))}
+    <div className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 shadow-xs">
+      <div className="grid min-w-0 grid-cols-1 items-stretch gap-4 md:grid-cols-2 xl:grid-cols-4">
+        {columns.map((column) => (
+          <NoticeColumn
+            key={column.category}
+            category={column.category}
+            notices={column.notices}
+          />
+        ))}
+      </div>
     </div>
   );
 }

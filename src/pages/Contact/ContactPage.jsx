@@ -69,9 +69,6 @@ export default function ContactPage() {
           {/* Left Column: Official Contact Cards & Working Hours */}
           <div className="lg:col-span-5 space-y-6">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-rose-700 bg-rose-50 px-3 py-1 rounded-full border border-rose-200">
-                OFFICIAL HELPLINE
-              </span>
               <h3 className="text-2xl font-extrabold text-slate-900 mt-2">
                 Department Office & Helpdesk
               </h3>
@@ -161,9 +158,6 @@ export default function ContactPage() {
           {/* Right Column: Admission & General Inquiry Form */}
           <div id="admission-inquiry" className="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-lg">
             <div className="mb-6 pb-4 border-b border-slate-100">
-              <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[var(--college-logo-red)] text-white border border-amber-200">
-                DIRECT INQUIRY DESK
-              </span>
               <h3 className="text-2xl font-extrabold text-slate-900 mt-2">
                 Send an Online Inquiry
               </h3>

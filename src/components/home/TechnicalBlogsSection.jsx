@@ -14,8 +14,6 @@ export default function TechnicalBlogsSection() {
     <section className="py-16 md:py-24 bg-[#F7F6F2] border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          badge="KNOWLEDGE HUB"
-          badgeVariant="gold"
           title="Technical Blogs &"
           titleHighlight="Articles"
           subtitle="Explore practical tutorials, technology insights, and career guidance from our faculty and students."

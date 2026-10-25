@@ -23,9 +23,6 @@ export default function WelcomeAbout() {
           {/* Left Column: Department Description & Highlights */}
           <div className="lg:col-span-7 space-y-6">
             <div>
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-rose-700 bg-rose-50 border border-rose-200 mb-3">
-                WELCOME TO BCA T.P. COLLEGE
-              </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
                 About the Department
               </h2>

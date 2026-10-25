@@ -88,8 +88,6 @@ export default function AcademicsPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-7 space-y-6">
             <SectionHeading
-              badge="PROGRAM OVERVIEW"
-              badgeVariant="wine"
               title="About the BCA Curriculum"
               subtitle={programOverview.overview}
             />
@@ -150,8 +148,6 @@ export default function AcademicsPage() {
         {/* 6 Semesters Curriculum High-Level Breakdown */}
         <section>
           <SectionHeading
-            badge="SEMESTER BREAKDOWN"
-            badgeVariant="gold"
             title="6-Semester Course Matrix"
             subtitle="Overview of all 6 semesters. Click any semester to explore detailed lab subjects, theory papers, and syllabus credit distribution."
             align="between"
@@ -214,8 +210,6 @@ export default function AcademicsPage() {
         {/* Career Pathways */}
         <section className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12">
           <SectionHeading
-            badge="CAREER PROSPECTS"
-            badgeVariant="gold"
             title="Where Can a BCA Degree Take You?"
             subtitle="Graduates from our department excel across diversified domains including software development, data analytics, cloud systems, and premier higher education."
             light

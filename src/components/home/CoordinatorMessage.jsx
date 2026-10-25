@@ -17,14 +17,6 @@ export default function CoordinatorMessage() {
     <section className="py-10 md:py-14 bg-white border-b border-slate-200/80">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Section Label */}
-        <div className="flex items-center justify-center mb-6">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-ivory text-navy-900 border border-slate-200">
-            <span>★</span>
-            <span>{badge || 'DESK OF THE COORDINATOR'}</span>
-          </span>
-        </div>
-
         {/* Card */}
         <div className="bg-slate-50 border border-slate-200 rounded-2xl p-7 sm:p-9 flex flex-col sm:flex-row items-start gap-6 sm:gap-8 shadow-sm hover:shadow-md transition-shadow duration-300">
 

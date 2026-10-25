@@ -59,8 +59,6 @@ export default function LabsStructurePage() {
         {/* Section 1: Detailed Semester Syllabus Selector */}
         <section>
           <SectionHeading
-            badge="SEMESTER-WISE SYLLABUS"
-            badgeVariant="wine"
             title="Syllabus & Subject Breakdown"
             subtitle="Select a semester to inspect course codes, theory vs practical distribution, examination marks, and credit weightage."
           />
@@ -148,8 +146,6 @@ export default function LabsStructurePage() {
         {/* Section 2: Specialized Department Labs */}
         <section>
           <SectionHeading
-            badge="PRACTICAL INFRASTRUCTURE"
-            badgeVariant="gold"
             title="Department Computing Laboratories"
             subtitle="Hands-on software development environments equipped with dedicated compilers, DBMS servers, and AI workstations."
           />

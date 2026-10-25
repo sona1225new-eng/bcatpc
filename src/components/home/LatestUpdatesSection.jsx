@@ -24,8 +24,6 @@ export default function LatestUpdatesSection() {
       <section className="w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
           <SectionHeading
-            badge="CAMPUS HAPPENINGS"
-            badgeVariant="blue"
             title="Latest Campus Updates"
             subtitle="Achievements, laboratory upgrades, workshops, hackathons, and placement milestones from our department."
             align="between"
@@ -89,8 +87,6 @@ export default function LatestUpdatesSection() {
       {/* 2. Latest Blogs & Technical Articles */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          badge="KNOWLEDGE HUB"
-          badgeVariant="gold"
           title="Latest Technical Blogs"
           subtitle="Insightful guides, roadmaps, and programming articles penned by our faculty members and student leaders."
           align="between"

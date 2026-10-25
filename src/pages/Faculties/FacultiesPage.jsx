@@ -31,7 +31,6 @@ export default function FacultiesPage() {
   return (
     <div>
       <PageHeader
-        badge="ACADEMIC MENTORSHIP"
         title="Our Distinguished"
         highlight="Faculty Members"
         description="Meet the experienced academicians, researchers, and technical mentors leading the Department of Computer Application at T.P. College Madhepura."

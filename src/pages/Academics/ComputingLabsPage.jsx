@@ -57,8 +57,6 @@ export default function ComputingLabsPage() {
         {/* Core Infrastructure Pillars */}
         <section>
           <SectionHeading
-            badge="HARDWARE & NETWORKING"
-            badgeVariant="wine"
             title="Computational Capabilities"
             subtitle="Engineered to provide seamless, hands-on programming and experimental environments for over 180+ enrolled undergraduate students."
           />

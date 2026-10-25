@@ -29,9 +29,6 @@ export default function QuickPYQsSection() {
         {/* Header with Search and Year Filter */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8">
           <div>
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-[var(--college-logo-red)] border border-amber-200 mb-2.5">
-              ACADEMIC RESOURCE HUB
-            </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
               Previous Year Papers & Question Bank
             </h2>

@@ -46,7 +46,6 @@ export default function AcademicCalendarPage() {
   return (
     <div>
       <PageHeader
-        badge="ANNUAL SCHEDULE"
         title="Department Academic"
         highlight="Calendar"
         description={`Official schedule for Academic Session ${academicCalendar.currentSession}. Includes admission timelines, continuous internal assessments, BNMU university examination windows, and holidays.`}

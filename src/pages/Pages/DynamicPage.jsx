@@ -97,7 +97,6 @@ export default function DynamicPage() {
   return (
     <div className="bg-[#FAF9F5] min-h-screen pb-20">
       <PageHeader
-        badge="DEPARTMENT INFORMATION & POLICIES"
         title={page.title}
         description={page.description || 'Official communication and guidelines from T.P. College BCA Department.'}
         breadcrumbs={breadcrumbs}

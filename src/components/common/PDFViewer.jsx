@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import pdfWorkerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 
+const PDFJS_IMPORT_RELOAD_KEY = 'bcatpc:pdfjs-import-reload';
+
 export default function PDFViewer({ url, documentLabel = 'PDF document', onStatusChange }) {
   const pagesRef = useRef(null);
   const [status, setStatus] = useState('loading');
@@ -84,7 +86,19 @@ export default function PDFViewer({ url, documentLabel = 'PDF document', onStatu
 
     const loadPdf = async () => {
       try {
-        const pdfjs = await import('pdfjs-dist');
+        let pdfjs;
+        try {
+          pdfjs = await import('pdfjs-dist');
+          sessionStorage.removeItem(PDFJS_IMPORT_RELOAD_KEY);
+        } catch (error) {
+          if (!sessionStorage.getItem(PDFJS_IMPORT_RELOAD_KEY)) {
+            sessionStorage.setItem(PDFJS_IMPORT_RELOAD_KEY, '1');
+            window.location.reload();
+            return;
+          }
+          throw error;
+        }
+
         if (disposed) return;
         pdfjs.GlobalWorkerOptions.workerSrc = pdfWorkerUrl;
         documentTask = pdfjs.getDocument({ url });

@@ -41,7 +41,6 @@ export default function PYQsHubPage() {
   return (
     <div>
       <PageHeader
-        badge="ACADEMIC RESOURCE ARCHIVE"
         title="Previous Year Question Papers"
         highlight="(PYQs)"
         description="Download authentic B.N. Mandal University term-end examination question papers, internal mid-semester tests, and solution model sets across Semesters 1 through 6."

@@ -44,7 +44,6 @@ export default function ComputingLabsPage() {
   return (
     <div>
       <PageHeader
-        badge="HIGH-TECH FACILITIES"
         title="Computing Labs &"
         highlight="Infrastructure"
         description="State-of-the-art software laboratories, dedicated high-speed optical fiber backbone, dual operating system workstations, and smart interactive theatres."

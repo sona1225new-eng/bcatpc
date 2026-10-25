@@ -54,7 +54,6 @@ export default function ContactPage() {
   return (
     <div>
       <PageHeader
-        badge="GET IN TOUCH"
         title="Contact Department of"
         highlight="Computer Application"
         description="Have queries regarding BCA admissions for 2026-2029 session, university examinations, lab access, or student verifications? Reach out to our department office."

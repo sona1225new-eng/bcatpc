@@ -53,7 +53,6 @@ export default function AcademicsPage() {
     <div>
       {/* Page Header */}
       <PageHeader
-        badge="ACADEMIC EXCELLENCE"
         title="Bachelor of Computer"
         highlight="Applications (BCA)"
         description="A full-time 3-year professional degree program under B.N. Mandal University, designed to equip students with comprehensive software development and algorithmic abilities."
@@ -108,9 +107,6 @@ export default function AcademicsPage() {
           {/* Right Card: Eligibility & Admission Info */}
           <div className="lg:col-span-5 bg-gradient-to-br from-slate-900 via-navy-950 to-[#233B5D] text-white rounded-3xl p-8 border border-slate-800 shadow-xl space-y-6">
             <div>
-              <span className="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[var(--college-logo-red)]/20 text-amber-400 border border-amber-500/30">
-                ADMISSION CRITERIA
-              </span>
               <h3 className="text-2xl font-extrabold text-white mt-2">Eligibility & Intake</h3>
             </div>
 

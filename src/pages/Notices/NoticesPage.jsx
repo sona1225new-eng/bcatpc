@@ -32,7 +32,6 @@ export default function NoticesPage() {
   return (
     <div>
       <PageHeader
-        badge="DEPARTMENT NOTIFICATION BOARD"
         title="Official Circulars &"
         highlight="Notices"
         description="Access official departmental orders, university examination routines, admission schedules, and administrative circulars for T.P. College Madhepura."

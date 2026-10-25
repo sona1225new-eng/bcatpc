@@ -38,7 +38,7 @@ export default function SemesterPYQPage({ semesterId }) {
   return (
     <div>
       <PageHeader
-        badge={semInfo.code || "SEMESTER ARCHIVE"}
+        badge={semInfo.code}
         title={semInfo.name}
         highlight="Question Papers"
         description={`Download subject-wise previous year questions, semester final papers, and internal assessment sets for ${semInfo.name} (${semInfo.roman}).`}

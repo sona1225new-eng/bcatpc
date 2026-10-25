@@ -102,7 +102,6 @@ export default function GalleryPage() {
   return (
     <div>
       <PageHeader
-        badge="CAMPUS LIFE & INFRASTRUCTURE"
         title={activeAlbum ? activeAlbum.title : 'Department Photo & Video'}
         highlight={activeAlbum ? '' : 'Gallery'}
         description={

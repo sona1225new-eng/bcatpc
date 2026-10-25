@@ -190,29 +190,16 @@ export default function Footer() {
               <span>Visit Us</span>
             </h4>
 
-            <div className="bg-slate-900/90 rounded-2xl p-4 border border-slate-800 space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-white flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                  BCA IT Block
-                </span>
-                <span className="text-[11px] bg-[var(--college-logo-red)]/20 text-gold-400 border border-gold-500/30 px-2 py-0.5 rounded-full font-bold">
-                  Open 9:30 - 4:30
-                </span>
-              </div>
-
-              <p className="text-xs text-slate-300">
-                Main Campus, T.P. College, Stadium Road, Madhepura, Bihar - 852113.
-              </p>
-
-              <Link
-                to="/contact"
-                className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-navy-900 via-navy-800 to-navy-900 hover:from-navy-800 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition shadow-md"
-              >
-                <span>GET IN TOUCH</span>
-                <HiOutlineArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3588.130140522364!2d86.7958578745153!3d25.930951301592522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ee37bce0b2539d%3A0x3e402c4bbc630742!2sT%20P%20College%20Play%20Ground!5e0!3m2!1sen!2sin!4v1792940807398!5m2!1sen!2sin"
+              width="100%"
+              height="260"
+              style={{ border: 0, borderRadius: '0.5rem' }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="T P College Play Ground, Madhepura"
+            />
           </div>
         </div>
       </div>

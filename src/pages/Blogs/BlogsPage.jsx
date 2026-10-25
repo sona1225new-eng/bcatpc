@@ -23,7 +23,6 @@ export default function BlogsPage() {
   return (
     <div>
       <PageHeader
-        badge="STUDENT & FACULTY INSIGHTS"
         title="Technical Blogs &"
         highlight="Articles"
         description="Programming tutorials, technology trends, career guidance, and academic roadmaps curated by BCA faculty and students."

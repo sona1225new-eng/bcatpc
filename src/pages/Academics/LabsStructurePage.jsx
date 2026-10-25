@@ -47,7 +47,6 @@ export default function LabsStructurePage() {
     <div>
       {/* Header */}
       <PageHeader
-        badge="CURRICULUM & PRACTICALS"
         title="BCA Labs & Course"
         highlight="Structure"
         description="Detailed semester-wise syllabus, theory papers, practical coding laboratories, credit allocations, and specialized computational lab configurations."

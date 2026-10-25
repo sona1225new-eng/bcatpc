@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { HiOutlineLightningBolt } from 'react-icons/hi';
 import { useNotices } from '../../hooks/useNotices';
 
 export default function TickerBar() {
@@ -9,14 +8,6 @@ export default function TickerBar() {
   return (
     <div className="bg-[#F7F6F2] text-navy-900 py-2.5 px-4 shadow-md overflow-hidden relative z-20 border-y border-slate-200">
       <div className="max-w-7xl mx-auto flex items-center gap-3">
-        {/* Static Badge on Left */}
-        <div className="flex-shrink-0 z-10">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--college-logo-red)] text-white font-extrabold text-[11px] uppercase tracking-wider shadow-sm">
-            <HiOutlineLightningBolt className="w-3.5 h-3.5" aria-hidden="true" />
-            <span>LATEST UPDATES</span>
-          </span>
-        </div>
-
         {/* Dynamic Scrolling Marquee */}
         <div
           className="ticker-viewport flex-1 overflow-hidden relative"

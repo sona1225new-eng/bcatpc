@@ -7,7 +7,6 @@ export default function AboutPage() {
   return (
     <div>
       <PageHeader
-        badge="T.P. COLLEGE MADHEPURA"
         title="About"
         highlight="Our Department"
         description="Thakur Prasad College is a constituent unit of B.N. Mandal University. Its Department of Computer Application prepares students with academic foundations and practical skills for the evolving world of computing."

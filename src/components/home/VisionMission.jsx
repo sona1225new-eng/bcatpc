@@ -15,8 +15,6 @@ export default function VisionMission() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Heading */}
         <SectionHeading
-          badge="OUR GUIDING PRINCIPLES"
-          badgeVariant="gold"
           title="Vision & Mission"
           subtitle="Fostering academic distinction, innovation in software development, and ethical leadership in computing."
           align="center"

@@ -26,7 +26,6 @@ export default function CampusUpdatesPage() {
   return (
     <div>
       <PageHeader
-        badge="CAMPUS HIGHLIGHTS"
         title="Department News &"
         highlight="Campus Updates"
         description="Stay connected with hackathons, student milestones, placement drives, infrastructure upgrades, and academic activities at T.P. College Madhepura."
